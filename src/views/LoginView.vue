@@ -7,7 +7,7 @@
     <div class="grid grid-cols-2">
       <div class="col-span-1">
 
-        <div id="bloco" class="shadow rounded-50 bg-verde flex flex-col m-10 gap-1 pt-5 p-10">
+        <div id="bloco" class="bg shadow rounded-50 bg-verde flex flex-col m-10 gap-1 pt-5 p-10">
           <p class="font-bold text-2xl text-center">Identificação</p>
           <form class="flex flex-col gap-4" action="">
             <label class="flex flex-col gap-0 font-medium text-2xl">E-mail

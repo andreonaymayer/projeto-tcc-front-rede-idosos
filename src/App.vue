@@ -1,16 +1,10 @@
 <template>
-    <nav>
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/about">About</router-link>
-      |
-      <router-link to="/login">login</router-link>
-    </nav>
-    <router-view></router-view>
+  <router-view class="full"></router-view>
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900');
+
 #app {
   font-family: 'Montserrat';
   margin: 0;
@@ -18,4 +12,7 @@
   background-color: #F9FFFA;
 }
 
+.full {
+  height: 100vh;
+}
 </style>
