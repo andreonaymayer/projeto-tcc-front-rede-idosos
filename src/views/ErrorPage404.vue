@@ -1,6 +1,6 @@
 <template>
   <div class="p-20">
-    <span class="font-bold text-2xl text-center leading-10">Página não encontrada</span>
+    <span class="bg font-bold text-2xl text-center leading-10">Página não encontrada</span>
     <p>Error 404 not found</p>
     <br>
     <a href="/login"
