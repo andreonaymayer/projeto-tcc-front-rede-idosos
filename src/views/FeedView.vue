@@ -6,7 +6,6 @@
       style="white-space: nowrap;">
         Opção legal demais
       </button>
-
     </div>
     <div class="flex flex-col pt-2 pl-2 pr-2">
       <button class="hover:bg-verde2 hover:text-white bg-verde ml-2 mr-2 rounded-50 shaddow mb-2">
@@ -32,7 +31,7 @@
                 scelerisque. Nullam ultrices ullamcorper nibh, a tincidunt massa ultricies id. Aliquam vehicula mi
                 porttitor.</p>
             </div>
-            <img class="object-contain items-center" src="../assets/ney.jpeg"
+            <img class=" object-contain items-center" src="../assets/ney.jpeg"
                  alt="Imagem da publicação"
                  style="max-height: 34rem;max-width: 34rem;min-height: 34rem; min-width: 34rem;">
           </div>
@@ -67,7 +66,7 @@
                 scelerisque. Nullam ultrices ullamcorper nibh, a tincidunt massa ultricies id. Aliquam vehicula mi
                 porttitor.</p>
             </div>
-            <img class="object-contain items-center" src="../assets/imagem_exemplo_1.jpeg"
+            <img class="object-contain items-center" src="../assets/wide.jpeg"
                  alt="Imagem da publicação"
                  style="max-height: 34rem;max-width: 34rem;min-height: 34rem; min-width: 34rem;">
           </div>
@@ -95,9 +94,9 @@ export default {
 </script>
 
 <style scoped>
+
 .post-scrool-margin {
   overflow-y: scroll;
-
 }
 
 ::-webkit-scrollbar {
@@ -108,13 +107,11 @@ export default {
   background: rgba(0, 0, 0, .5);
   border-radius: 10px;
 }
-.andressa {
-  /*object-fit: fill;*/
-  object-fit: contain;
-  /*object-fit: cover;*/
-  /*object-fit: none;*/
-  /*object-fit: scale-down;*/
-  background-color: black;
-  height: 30rem;
-}
 </style>
+
+<div class="flex flex-column">
+<label class="flex gap-2">
+  <p>Nome</p>
+  <input type="text">
+</label>
+</div>
