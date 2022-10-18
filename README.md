@@ -1,29 +1,5 @@
-# projeto-tcc-front
+# Rede Social
 
-## Project setup
-```
-yarn install
-```
-## Create a new component
-
-```
-vgc -s home
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+yarn install para instalar as dependecias do sistema
+se der algum problema do tipo deu problema na dependencia 'react-scripts' rodar o comando yarn install react-script ou yarn -i react-script
+yarn start para subir
