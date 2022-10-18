@@ -1,0 +1,87 @@
+.register-container {
+  &__welcome {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .register-subtitle {
+    font-weight: 500;
+    margin: -10px 0 40px 0;
+  }
+
+
+  .register-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    &__enter {
+      width: 65%;
+      background-color: #e3f1e4;
+      padding: 0 30px 30px;
+      border-radius: 50px;
+      flex-direction: row;
+      justify-content: space-evenly;
+      display: flex;
+    }
+
+    &__title {
+      justify-content: center;
+      display: flex;
+    }
+
+    &__inputs {
+      display: flex;
+      justify-content: left;
+      flex-direction: column;
+      width: 45%;
+    }
+
+    &__input {
+      height: 34px;
+      background-color: #fff;
+      border: 2px solid #A4A4A4;
+      border-radius: 50px;
+      text-indent: 15px;
+      margin-top: 5px;
+    }
+
+    &__input::placeholder {
+      font-family: 'Montserrat';
+    }
+
+    &__input-mail {
+      padding: 0 0 0 5px;
+    }
+
+    &__input-password {
+      padding: 30px 0 0 5px;
+    }
+  }
+
+  .register-submit {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+      width: 100%;
+      background-color: #3478E3;
+      border-radius: 25px;
+      height: 70px;
+      font-size: 25px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      margin-top: 40px;
+
+      &--reset {
+        background-color: #A1CAF9;
+        margin-top: 20px;
+      }
+    }
+  }
+}
