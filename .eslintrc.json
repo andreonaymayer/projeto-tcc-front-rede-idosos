@@ -17,6 +17,7 @@
       1,
       { "extensions": [".js", ".jsx", ".scss"] }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off"
   }
 }

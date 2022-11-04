@@ -8,7 +8,6 @@ export function useApi() {
 	// const axios = useAxios(apiUrl, {
 	// 	Authorization: 'Bearer ' + token,
 	// });
-  console.log(user)
 
 	const cadastroUsuario = useAxios(apiUrl);
 
@@ -44,10 +43,41 @@ export function useApi() {
 		}
 	}
 
+  async function showStates() {
+		try {
+			const response = await cadastroUsuario.get('/v1/location/state');
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function showCities(stateId) {
+		try {
+			const response = await cadastroUsuario.get(`/v1/location/cities/${stateId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function resetPassword(email) {
+		try {
+			const response = await cadastroUsuario.post('/v1/password-recovery/request', {email});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+
 	return useCallback(
 		{
 			createToken,
-			newUserRegister
+			newUserRegister,
+      showStates,
+      showCities,
+      resetPassword
 		},
 		[]
 	);
