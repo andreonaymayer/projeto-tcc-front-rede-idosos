@@ -4,9 +4,7 @@ import '../src/sccs/index.scss';
 import {
 	LoginScreen,
 	RegisterScreen,
-  HomeScreen,
-  ForgotPasswordScreen,
-  ProfileScreen
+  HomeScreen
 } from './ui/screens';
 function App() {
 
@@ -21,12 +19,6 @@ function App() {
         </Route>
         <Route path="/home" exact>
           <HomeScreen />
-        </Route>
-        <Route path="/reset" exact>
-          <ForgotPasswordScreen />
-        </Route>
-        <Route path="/profile" exact>
-          <ProfileScreen />
         </Route>
 			</Switch>
 		</div>

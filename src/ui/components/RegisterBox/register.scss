@@ -16,17 +16,12 @@
     flex-direction: row;
     justify-content: space-evenly;
 
-    &__layout {
-      display: flex;
-      justify-content: space-around;
-    }
-
     &__enter {
       width: 65%;
       background-color: #e3f1e4;
       padding: 0 30px 30px;
       border-radius: 50px;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-evenly;
       display: flex;
     }
@@ -50,16 +45,6 @@
       border-radius: 50px;
       text-indent: 15px;
       margin-top: 5px;
-
-      &--select {
-        height: 40px;
-      }
-
-      &--area {
-        height: 60px;
-        padding: 10px 5px;
-        resize: none;
-      }
     }
 
     &__input::placeholder {
@@ -81,7 +66,7 @@
     flex-direction: column;
 
     &__button {
-      width: 45%;
+      width: 100%;
       background-color: #3478E3;
       border-radius: 25px;
       height: 70px;
@@ -95,6 +80,7 @@
 
       &--reset {
         background-color: #A1CAF9;
+        margin-top: 20px;
       }
     }
   }
