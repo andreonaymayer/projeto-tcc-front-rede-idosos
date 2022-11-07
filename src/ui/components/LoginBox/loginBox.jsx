@@ -56,10 +56,10 @@ export function LoginBox() {
               <img src={submit} />
             </button>
 
-            <Link className='login-submit__button login-submit__button--reset link' to='/reset'>
+            <button className='login-submit__button login-submit__button--reset'>
               Não lembro minha senha&nbsp;&nbsp;
               <img src={help} />
-            </Link>
+            </button>
           </div>
         </div>
         <div className='login-wrapper__register'>
