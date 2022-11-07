@@ -4,10 +4,11 @@ import { useGlobalUser } from '../../context/index';
 
 export function useApi() {
 	const [user, setUser] = useGlobalUser();
+  const token = user ? user.jwt : ''
 	const apiUrl = 'http://localhost:8080';
-	// const axios = useAxios(apiUrl, {
-	// 	Authorization: 'Bearer ' + token,
-	// });
+	const axios = useAxios(apiUrl, {
+		Authorization: 'Bearer ' + token,
+	});
 
 	const cadastroUsuario = useAxios(apiUrl);
 
@@ -15,7 +16,7 @@ export function useApi() {
     const response = await cadastroUsuario.post('/v1/login', {email, password})
 
     if (response && response.status === 200) {
-      setUser(response.data.jwt)
+      setUser(response.data)
     }
     return response
 	}
@@ -70,6 +71,54 @@ export function useApi() {
 		}
 	}
 
+  async function getUserInfo() {
+		try {
+			const response = await axios.get('/v1/user');
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function putUserInfo(
+    email,
+    name,
+    birthDate,
+    details,
+    city
+  ) {
+		try {
+			const response = await axios.put('/v1/user', {
+        email,
+        name,
+        birthDate,
+        details,
+        city
+      });
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function uploadPostImage(image) {
+		try {
+			const response = await axios.post('/v1/user/img', image);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function changePassword(newPassword, oldPassword) {
+		try {
+			const response = await axios.put('/v1/user/password', {newPassword, oldPassword});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
 
 	return useCallback(
 		{
@@ -77,7 +126,11 @@ export function useApi() {
 			newUserRegister,
       showStates,
       showCities,
-      resetPassword
+      resetPassword,
+      getUserInfo,
+      putUserInfo,
+      uploadPostImage,
+      changePassword,
 		},
 		[]
 	);

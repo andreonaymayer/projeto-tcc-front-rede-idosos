@@ -3,4 +3,8 @@ body {
   font-family: 'Montserrat'
 }
 
+.back-image-rotate {
+  transform: rotate(180deg);
+}
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900');

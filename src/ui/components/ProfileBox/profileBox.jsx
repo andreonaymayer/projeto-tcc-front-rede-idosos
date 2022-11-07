@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './profile.scss';
 import React, { useEffect, useState } from 'react';
 import back from '../../../images/back.svg'
@@ -6,16 +7,17 @@ import perfil from '../../../images/perfil.jpeg'
 import { Link, useHistory } from 'react-router-dom';
 import { useApi } from '../../../hooks/api';
 
-export function Profile() {
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [birthDate, setBirthDate] = useState('');
+export function Profile({ user }) {
+  console.log(user)
+	const [name, setName] = useState(user.name);
+	const [email, setEmail] = useState(user.email);
+	const [birthDate, setBirthDate] = useState(user.birthDate);
 	const [state, setState] = useState('');
-	const [details, setDetails] = useState('');
+	const [details, setDetails] = useState(user.details);
 	const [states, setStates] = useState(0);
-	const [city, setCity] = useState('');
+	const [city, setCity] = useState(user.city);
 	const [cities, setCities] = useState('');
+  const [imagePreview, setImagePreview] = useState();
 	const history = useHistory();
 	const api = useApi();
 
@@ -41,34 +43,18 @@ export function Profile() {
     showState();
   },[]);
 
-	async function newUserprofile() {
-		const response = await api.newUserprofile(
-      birthDate,
-      city,
-      details,
-      email,
-      name,
-      password
-		);
-		if (response && response.status === 201) {
-			history.push('/');
-		} else {
-			console.log("deu ruim")
-		}
-	}
 
+  async function putUserInfo() {
+		const response = await api.putUserInfo(email, name, birthDate, details, city);
+	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		newUserprofile();
+		putUserInfo();
 	}
 
 	function onChangeName(event) {
 		setName(event.target.value);
-	}
-
-	function onChangePassword(event) {
-		setPassword(event.target.value);
 	}
 
 	function onChangeEmail(event) {
@@ -88,10 +74,23 @@ export function Profile() {
     setCity(event.target.value);
 	}
 
-	function onChangeBirthDate() {
-		setBirthDate(
-			'2022-10-13T23:11:50.592Z'
-		);
+	function onChangeBirthDate(event) {
+		setBirthDate(event.target.value);
+	}
+
+  async function addPhoto(event) {
+    let file = event.target.files[0];
+    let image = new FormData();
+    image.append('file', file);
+    event.target.value = null;
+    const response = await api.uploadPostImage(image);
+    setImagePreview(response.data);
+
+    if (response.status === 200) {
+      alert('imagem carregada com sucesso')
+    } else {
+      alert('imagem com erro')
+    }
 	}
 
 	return (
@@ -102,27 +101,37 @@ export function Profile() {
             <div className='profile-wrapper__inputs'>
               <h1 className='profile-title'>Minhas informações</h1>
               <label className='profile-wrapper__input-password'>Nome</label>
-              <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input' onChange={onChangeName}></input>
+              <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input' onChange={onChangeName} value={name}></input>
               <label className='profile-wrapper__input-password'>Email</label>
-              <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='profile-wrapper__input' onChange={onChangeEmail}></input>
-              <label className='profile-wrapper__input-password'>Senha</label>
-              <input type='password' placeholder='Exemplo: @!MinhaS3nha*' className='profile-wrapper__input' onChange={onChangePassword}></input>
+              <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='profile-wrapper__input' onChange={onChangeEmail} value={email}></input>
               <label className='profile-wrapper__input-password'>Data de nascimento</label>
-              <input type='text' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input' onChange={onChangeBirthDate}></input>
+              <input type='date' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input' onChange={onChangeBirthDate} value={birthDate}></input>
               <label className='profile-wrapper__input-password'>Estado</label>
               <select onClick={onChangeState} className='profile-wrapper__input profile-wrapper__input--select'>{states && states.map(state => <option key={state.id} value={state.id}>{state.name}</option>)}</select>
               <label className='profile-wrapper__input-password'>Cidade</label>
               <select onClick={onChangeCity} className='profile-wrapper__input profile-wrapper__input--select' disabled={!cities}>{cities && cities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}</select>
               <label className='profile-wrapper__input-password'>Detalhes</label>
-              <textarea type='text' placeholder='Fale sobre você' className='profile-wrapper__input profile-wrapper__input--area' onChange={onChangeDetails}></textarea>
+              <textarea type='text' placeholder='Fale sobre você' className='profile-wrapper__input profile-wrapper__input--area' onChange={onChangeDetails} value={details}></textarea>
             </div>
           </div>
           <div className='profile-wrapper__layout'>
             <div className='profile-wrapper__editor'>
-              <img className='profile-wrapper__image' src={perfil} />
-              <button className='profile-submit__button profile-submit__button--image' onClick={handleSubmit}>
-                Selecionar uma nova foto
-              </button>
+              {imagePreview
+                ? <img className='profile-wrapper__image' src={imagePreview} />
+                : <img className='profile-wrapper__image' src={perfil} />
+              }
+              <div className='profile-submit__container'>
+                <button className='profile-submit__button profile-submit__button--image'>
+                  Selecionar uma nova foto
+                </button>
+                <input
+                  accept="image/*"
+                  id="icon-button-file"
+                  type="file"
+                  className="profile-submit__input"
+                  onChange={addPhoto}
+                />
+				      </div>
             </div>
 
             <div className='profile-wrapper__editor'>
@@ -130,7 +139,12 @@ export function Profile() {
                 Registrar&nbsp;&nbsp;
                 <img src={register} />
               </button>
-              <Link to='/' className='profile-submit__button profile-submit__button--reset link'>
+
+              <Link to="/change-password" className='profile-submit__button link'>
+                Alterar senha&nbsp;&nbsp;
+                <img src={back} className="back-image-rotate" />
+              </Link>
+              <Link to='/home' className='profile-submit__button profile-submit__button--reset link'>
                 Não desejo mudar nada&nbsp;&nbsp;
                 <img src={back} />
               </Link>

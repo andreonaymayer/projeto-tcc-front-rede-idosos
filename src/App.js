@@ -6,7 +6,8 @@ import {
 	RegisterScreen,
   HomeScreen,
   ForgotPasswordScreen,
-  ProfileScreen
+  ProfileScreen,
+  ChangePassword
 } from './ui/screens';
 function App() {
 
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route path="/profile" exact>
           <ProfileScreen />
+        </Route>
+        <Route path="/change-password" exact>
+          <ChangePassword />
         </Route>
 			</Switch>
 		</div>
