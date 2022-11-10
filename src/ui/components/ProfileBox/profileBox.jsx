@@ -8,44 +8,73 @@ import { Link, useHistory } from 'react-router-dom';
 import { useApi } from '../../../hooks/api';
 
 export function Profile({ user }) {
-  console.log(user)
 	const [name, setName] = useState(user.name);
 	const [email, setEmail] = useState(user.email);
 	const [birthDate, setBirthDate] = useState(user.birthDate);
-	const [state, setState] = useState('');
 	const [details, setDetails] = useState(user.details);
-	const [states, setStates] = useState(0);
+	const [states, setStates] = useState();
 	const [city, setCity] = useState(user.city);
 	const [cities, setCities] = useState('');
   const [imagePreview, setImagePreview] = useState();
 	const history = useHistory();
 	const api = useApi();
 
-  async function showState() {
-		const response = await api.showStates();
-		if (response && response.status === 200) {
-			setStates(response.data)
-		} else {
-			console.log("deu ruim")
-		}
-	}
 
-  async function showCity(stateId) {
+
+  async function showCity(stateId, cityId) {
 		const response = await api.showCities(stateId);
 		if (response && response.status === 200) {
+      await response.data.forEach(function(item,i){
+        if(item.id === cityId){
+          response.data.splice(i, 1);
+          response.data.unshift(item);
+        }
+      });
 			setCities(response.data)
 		} else {
-			console.log("deu ruim")
+			alert("deu ruim")
 		}
 	}
 
+
+
   useEffect(() => {
-    showState();
-  },[]);
+    async function showState(stateId) {
+      const response = await api.showStates();
+      if (response && response.status === 200) {
+        await response.data.forEach(function(item,i){
+          if(item.id === stateId){
+            response.data.splice(i, 1);
+            response.data.unshift(item);
+          }
+        });
+        setStates(response.data)
+      } else {
+        alert("deu ruim")
+      }
+    }
+
+    async function showStateSelected() {
+      const response = await api.showStateSelected(user.city);
+      if (response && response.status === 200) {
+        showState(response.data.state.id);
+        showCity(response.data.state.id, response.data.city.id);
+      } else {
+        alert("deu ruim")
+      }
+    }
+
+    showStateSelected();
+  }, []);
 
 
   async function putUserInfo() {
 		const response = await api.putUserInfo(email, name, birthDate, details, city);
+    if (response && response.status === 200) {
+			alert("deu bom")
+		} else {
+			alert("deu ruim")
+		}
 	}
 
 	function handleSubmit(event) {
@@ -62,7 +91,6 @@ export function Profile({ user }) {
 	}
 
   function onChangeState(event) {
-		setState(event.target.value);
     showCity(event.target.value);
 	}
 
@@ -83,7 +111,7 @@ export function Profile({ user }) {
     let image = new FormData();
     image.append('file', file);
     event.target.value = null;
-    const response = await api.uploadPostImage(image);
+    const response = await api.profileImage(image);
     setImagePreview(response.data);
 
     if (response.status === 200) {
@@ -107,7 +135,9 @@ export function Profile({ user }) {
               <label className='profile-wrapper__input-password'>Data de nascimento</label>
               <input type='date' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input' onChange={onChangeBirthDate} value={birthDate}></input>
               <label className='profile-wrapper__input-password'>Estado</label>
-              <select onClick={onChangeState} className='profile-wrapper__input profile-wrapper__input--select'>{states && states.map(state => <option key={state.id} value={state.id}>{state.name}</option>)}</select>
+              <select onClick={onChangeState} className='profile-wrapper__input profile-wrapper__input--select'>
+                {states && states.map(state => <option key={state.id} value={state.id} selected={state.id === states[0].id}>{state.name}</option>)}
+              </select>
               <label className='profile-wrapper__input-password'>Cidade</label>
               <select onClick={onChangeCity} className='profile-wrapper__input profile-wrapper__input--select' disabled={!cities}>{cities && cities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}</select>
               <label className='profile-wrapper__input-password'>Detalhes</label>
@@ -117,8 +147,8 @@ export function Profile({ user }) {
           <div className='profile-wrapper__layout'>
             <div className='profile-wrapper__editor'>
               {imagePreview
-                ? <img className='profile-wrapper__image' src={imagePreview} />
-                : <img className='profile-wrapper__image' src={perfil} />
+                ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
+                : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
               }
               <div className='profile-submit__container'>
                 <button className='profile-submit__button profile-submit__button--image'>

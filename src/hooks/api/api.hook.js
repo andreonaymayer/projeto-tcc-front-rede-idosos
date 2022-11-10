@@ -62,6 +62,15 @@ export function useApi() {
 		}
 	}
 
+  async function showStateSelected(cityId) {
+		try {
+			const response = await cadastroUsuario.get(`/v1/location/state-of/${cityId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
   async function resetPassword(email) {
 		try {
 			const response = await cadastroUsuario.post('/v1/password-recovery/request', {email});
@@ -101,9 +110,18 @@ export function useApi() {
 		}
 	}
 
-  async function uploadPostImage(image) {
+  async function profileImage(image) {
 		try {
 			const response = await axios.post('/v1/user/img', image);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function postImage(image) {
+		try {
+			const response = await axios.post('/v1/posts/img', image);
 			return response;
 		} catch (error) {
 			return error.response;
@@ -129,8 +147,10 @@ export function useApi() {
       resetPassword,
       getUserInfo,
       putUserInfo,
-      uploadPostImage,
+      profileImage,
       changePassword,
+      showStateSelected,
+      postImage,
 		},
 		[]
 	);

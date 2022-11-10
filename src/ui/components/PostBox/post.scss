@@ -1,11 +1,5 @@
-.profile-container {
-
-  .profile-title {
-    font-size: 40px;
-    margin-bottom: -10px;
-  }
-
-  .profile-wrapper {
+.post-container {
+  .post-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -19,26 +13,16 @@
       width: 40%;
     }
 
-    &__image {
-      width: 200px;
-      border-radius: 50%;
-      height: 200px;
-    }
-
     &__enter {
       width: 65%;
       background-color: #e3f1e4;
       padding: 0 30px 90px;
       border-radius: 50px;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-evenly;
       display: flex;
     }
 
-    &__title {
-      justify-content: center;
-      display: flex;
-    }
 
     &__inputs {
       display: flex;
@@ -47,28 +31,15 @@
       width: 100%;
     }
 
-    &__editor {
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
     &__input {
-      height: 34px;
       background-color: #fff;
       border: 2px solid #A4A4A4;
-      border-radius: 50px;
+      border-radius: 25px;
       text-indent: 15px;
       margin-top: 5px;
 
-      &--select {
-        height: 40px;
-      }
-
       &--area {
-        height: 60px;
+        height: 200px;
         padding: 10px 5px;
         resize: none;
       }
@@ -77,43 +48,12 @@
     &__input::placeholder {
       font-family: 'Montserrat';
     }
-
-    &__input-mail {
-      padding: 0 0 0 5px;
-    }
-
-    &__input-password {
-      padding: 30px 0 0 5px;
-    }
   }
 
-  .profile-submit {
+  .post-submit {
     width: 100%;
     display: flex;
     flex-direction: column;
-
-    &__button {
-      width: 100%;
-      background-color: #3478E3;
-      border-radius: 25px;
-      height: 70px;
-      font-size: 25px;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      margin-top: 40px;
-
-      &--reset {
-        background-color: #A1CAF9;
-      }
-
-      &--image {
-        background-color: #4A804E;
-        margin-bottom: -70px;
-      }
-    }
 
     &__input {
       height: 70px;
@@ -122,7 +62,44 @@
     }
 
     &__container {
-      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
     }
+
+    &__button {
+      width: 100%;
+      background-color: #4A804E;
+      border-radius: 25px;
+      height: 70px;
+      font-size: 25px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      margin-bottom: -70px;
+
+      &--delete {
+        background-color: #EB4141;
+        width: 45%;
+      }
+
+      &--publish {
+        background-color: #3478E3;
+        width: 45%;
+      }
+    }
+  }
+
+  .post-title {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .post-sub-title {
+    font-size: 15px;
+    margin-top: 10px;
   }
 }
