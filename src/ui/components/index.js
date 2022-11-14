@@ -4,5 +4,6 @@ export { ForgotPassword } from './ForgotPasswordBox/forgotPasswordBox';
 export { Header } from './HeaderBox/headerBox';
 export { Profile } from './ProfileBox/profileBox';
 export { ChangePasswordBox } from './ChangePasswordBox/changePasswordBox';
+export { CreatePostBox } from './CreatePostBox/createPostBox';
+export { ModalBox } from './ModalBox/modalBox';
 export { PostBox } from './PostBox/postBox';
-export { ModalBox } from './ModalBox/modalBox'

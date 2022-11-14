@@ -11,17 +11,17 @@ export function Header() {
         <div className='header-group__links'>
           <Link className='link header-group__link' to='/profile'>Meu perfil</Link>
           <Link className='link header-group__link' to='/create-post'>Criar publicação</Link>
-          <Link className='link header-group__link' to='/pages'>Ver páginas</Link>
-          <Link className='link header-group__link' to='/events'>Ver Eventos</Link>
-          <Link className='link header-group__link' to='/feed'>Ver publicações</Link>
+          <Link className='link header-group__link' to='/home'>Ver publicações</Link>
+          <Link className='link header-group__link' to='/events'>--Ver Eventos</Link>
+          <Link className='link header-group__link' to='/feed'>--Ver publicações</Link>
         </div>
       </div>
       <div className='header-group'>
         <div className='header-group__title'>Conversas</div>
         <div className='header-group__links'>
-          <Link className='link header-group__link' to='/chat'>Meu perfil</Link>
-          <Link className='link header-group__link' to='/chat'>Meu perfil</Link>
-          <Link className='link header-group__link' to='/chat'>Meu perfil</Link>
+          <Link className='link header-group__link' to='/chat'>--Meu perfil</Link>
+          <Link className='link header-group__link' to='/chat'>--Meu perfil</Link>
+          <Link className='link header-group__link' to='/chat'>--Meu perfil</Link>
         </div>
       </div>
       <div className='header-wrapper-buttons'>

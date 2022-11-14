@@ -8,7 +8,7 @@ import {
   ForgotPasswordScreen,
   ProfileScreen,
   ChangePassword,
-  PostScreen
+  CreatePostScreen
 } from './ui/screens';
 function App() {
 
@@ -34,7 +34,7 @@ function App() {
           <ChangePassword />
         </Route>
         <Route path="/create-post" exact>
-          <PostScreen />
+          <CreatePostScreen />
         </Route>
 			</Switch>
 		</div>

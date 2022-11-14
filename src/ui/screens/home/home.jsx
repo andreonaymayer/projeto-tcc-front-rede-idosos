@@ -1,5 +1,5 @@
 import { useGlobalUser } from "../../../context";
-import { Header } from '../../components';
+import { Header, PostBox } from '../../components';
 import './index.scss'
 
 export function HomeScreen() {
@@ -8,7 +8,12 @@ export function HomeScreen() {
 	return (
     <div className="home-container">
       <Header />
-      Teste
+      <div className="home-container__posts">
+        <PostBox />
+        <PostBox />
+        <PostBox />
+        <PostBox />
+      </div>
     </div>
 	);
 }
