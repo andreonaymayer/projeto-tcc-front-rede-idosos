@@ -4,14 +4,17 @@ import React, { useState } from 'react';
 import register from '../../../images/register.svg'
 import { useApi } from '../../../hooks/api';
 import perfil from '../../../images/perfil.jpeg'
-import exemplo from '../../../images/imagem_exemplo_2.jpeg'
+import { Link, useHistory } from 'react-router-dom';
 
-export function CreatePostBox() {
-	const [text, setText] = useState();
-  const [imagePreview, setImagePreview] = useState();
+export function CreatePostBox({ user }) {
+  const post = JSON.parse(localStorage.getItem('post'))
+  const editPost = localStorage.getItem('editPost');
+	const [text, setText] = useState(post.conteudo ? post.conteudo : '');
+  const [imagePreview, setImagePreview] = useState(post.midiaUrls[0] ? post.midiaUrls[0] : null);
   const date = new Date();
   const day = date.getDate();
   const year = date.getFullYear();
+  const history = useHistory();
   const nameOfMonthBR = date.toLocaleString('pt-BR', {
     month: 'long',
   });
@@ -36,6 +39,36 @@ export function CreatePostBox() {
       alert('imagem com erro')
     }
 	}
+
+  async function createPost() {
+    let midiaUrl = []
+    midiaUrl.push(imagePreview)
+    const response = await api.createPost(text, midiaUrl);
+
+    if (response.status === 200) {
+      alert('imagem carregada com sucesso')
+      history.push('/home')
+    } else {
+      alert('imagem com erro')
+    }
+	}
+
+  async function editPostInfo() {
+    let midiaUrl = []
+    midiaUrl.push(imagePreview)
+    console.log(imagePreview)
+    const response = await api.editPostInfo(post.id, text, midiaUrl);
+
+    if (response.status === 200) {
+      alert('imagem carregada com sucesso')
+      localStorage.clear();
+      history.push('/home')
+    } else {
+      alert('imagem com erro')
+    }
+	}
+
+
 
 	return (
 		<div className='create-post-container'>
@@ -66,29 +99,40 @@ export function CreatePostBox() {
               <h1 className='create-post-title'>Como vai aparecer:</h1>
               <div className='create-post-profile'>
                 <div>
-                  <img className='create-post-profile__picture' src={perfil} alt='Foto do usuário'/>
+                  {user.imgUrl
+                    ? <img className='create-post-profile__picture' src={user.imgUrl} alt='Foto do usuário'/>
+                    : <img className='create-post-profile__picture' src={perfil} alt='Foto do usuário'/>
+                  }
                 </div>
                 <div className='create-post-profile__info'>
-                  <label className='create-post-profile__name'>Carlos Kasper</label>
+                  <label className='create-post-profile__name'>{user.name}</label>
                   <label>{day} {nameOfMonthBR} {year}</label>
                 </div>
               </div>
-              <div className='create-post-profile__added-photo'>
-                <img src={exemplo} className='create-post-profile__photo' alt='foto carregada'/>
-              </div>
+              {imagePreview
+              ? <div className='create-post-profile__added-photo'>
+                  <img src={imagePreview} className='create-post-profile__photo' alt='foto carregada'/>
+                </div>
+              : null}
               <div className='create-post-profile__text-post'>
-                <label>Mama mama mama mama</label>
+                <label>{text}</label>
               </div>
             </div>
           </div>
           <div className='create-post-submit__container'>
-            <button className='create-post-submit__button create-post-submit__button--delete'>
+            <Link to='/home' className='create-post-submit__button create-post-submit__button--delete link'>
               Desistir da publicação
-            </button>
-            <button className='create-post-submit__button create-post-submit__button--publish'>
-              Registrar&nbsp;&nbsp;
-              <img src={register} />
-            </button>
+            </Link>
+            {editPost
+              ? <button className='create-post-submit__button create-post-submit__button--publish' onClick={editPostInfo}>
+                  Alterar publicação&nbsp;&nbsp;
+                  <img src={register} />
+                </button>
+              : <button className='create-post-submit__button create-post-submit__button--publish' onClick={createPost}>
+                  Registrar&nbsp;&nbsp;
+                  <img src={register} />
+                </button>
+            }
           </div>
         </div>
       </div>

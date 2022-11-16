@@ -4,11 +4,12 @@ import { useGlobalUser } from '../../context/index';
 
 export function useApi() {
 	const [user, setUser] = useGlobalUser();
-  const token = user ? user.jwt : ''
-	const apiUrl = 'http://localhost:8080';
+	// const apiUrl = 'http://localhost:8080';
+	const apiUrl = 'http://ec2-54-86-1-208.compute-1.amazonaws.com:8080';
 	const axios = useAxios(apiUrl, {
-		Authorization: 'Bearer ' + token,
+		Authorization: 'Bearer ' + sessionStorage.getItem('token'),
 	});
+
 
 	const cadastroUsuario = useAxios(apiUrl);
 
@@ -17,6 +18,7 @@ export function useApi() {
 
     if (response && response.status === 200) {
       setUser(response.data)
+      sessionStorage.setItem('token', user.jwt);
     }
     return response
 	}
@@ -137,6 +139,48 @@ export function useApi() {
 		}
 	}
 
+  async function createPost(conteudo, midiaUrl) {
+		try {
+      const form = new FormData();
+      form.append('conteudo', conteudo);
+      form.append('midiaUrl', midiaUrl);
+			const response = await axios.post('/v1/posts', form);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function getPost(postId) {
+		try {
+			const response = await axios.get(`/v1/posts/${postId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function softDeletePost(postId) {
+		try {
+			const response = await axios.delete(`/v1/posts/delete/${postId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function editPostInfo(postId, text, midiaUrl) {
+		try {
+      const form = new FormData();
+      form.append('conteudo', text);
+      form.append('midiaUrl', midiaUrl);
+			const response = await axios.put(`/v1/posts/edit/${postId}`, form);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
 
 	return useCallback(
 		{
@@ -151,6 +195,10 @@ export function useApi() {
       changePassword,
       showStateSelected,
       postImage,
+      createPost,
+      getPost,
+      softDeletePost,
+      editPostInfo
 		},
 		[]
 	);
