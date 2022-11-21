@@ -18,7 +18,7 @@ export function useApi() {
 
     if (response && response.status === 200) {
       setUser(response.data)
-      sessionStorage.setItem('token', user.jwt);
+      sessionStorage.setItem('token', response.data.jwt);
     }
     return response
 	}
@@ -181,6 +181,61 @@ export function useApi() {
 		}
 	}
 
+  async function showProfiles(name) {
+		try {
+			const response = await axios.get(`/v1/friends/buscar`, {name});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+	async function addAsFriend(nick) {
+		try {
+			const response = await axios.post(`/v1/friends/solicita/${nick}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+	async function showSolicitations() {
+		try {
+			const response = await axios.get(`/v1/friends/pedidos`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+	async function acceptAsFriend(nick) {
+		try {
+			const response = await axios.post(`/v1/friends/aceitar/${nick}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+	async function denyAsFriend(nick) {
+		try {
+			const response = await axios.post(`/v1/friends/recusar/${nick}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+	async function showFriends() {
+		try {
+			const response = await axios.get(`/v1/friends`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+
 
 	return useCallback(
 		{
@@ -198,7 +253,13 @@ export function useApi() {
       createPost,
       getPost,
       softDeletePost,
-      editPostInfo
+      editPostInfo,
+			showProfiles,
+			addAsFriend,
+			showSolicitations,
+			acceptAsFriend,
+			denyAsFriend,
+			showFriends
 		},
 		[]
 	);

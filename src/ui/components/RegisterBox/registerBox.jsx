@@ -47,7 +47,7 @@ export function RegisterBox() {
       name,
       password
 		);
-		if (response && response.status === 201) {
+		if (response && response.status === 200) {
 			setShowModalSuccess(true)
 		} else {
 			setShowModalFailed(true)

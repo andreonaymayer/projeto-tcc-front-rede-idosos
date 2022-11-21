@@ -8,9 +8,14 @@ import {
   ForgotPasswordScreen,
   ProfileScreen,
   ChangePassword,
-  CreatePostScreen
+  CreatePostScreen,
+  SearchFriendsScreen,
+  ListFriendsRequestsScreen,
+  ListFriendsScreen
 } from './ui/screens';
 function App() {
+  let removeIframe = document.getElementsByTagName('iframe');
+  if(removeIframe[0]) removeIframe[0].remove()
 
 	return (
 		<div>
@@ -35,6 +40,15 @@ function App() {
         </Route>
         <Route path="/create-post" exact>
           <CreatePostScreen />
+        </Route>
+        <Route path="/search-friend" exact>
+          <SearchFriendsScreen />
+        </Route>
+        <Route path="/friends-requests" exact>
+          <ListFriendsRequestsScreen />
+        </Route>
+        <Route path="/friends" exact>
+          <ListFriendsScreen />
         </Route>
 			</Switch>
 		</div>

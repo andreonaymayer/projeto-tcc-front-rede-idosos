@@ -31,8 +31,6 @@ export function PostBox({ post }) {
     history.push('create-post')
 	}
 
-  console.log(post)
-
 	return (
     <div className='post-wrapper'>
       <div className='post-wrapper__layout'>

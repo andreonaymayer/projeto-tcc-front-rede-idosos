@@ -56,7 +56,6 @@ export function CreatePostBox({ user }) {
   async function editPostInfo() {
     let midiaUrl = []
     midiaUrl.push(imagePreview)
-    console.log(imagePreview)
     const response = await api.editPostInfo(post.id, text, midiaUrl);
 
     if (response.status === 200) {

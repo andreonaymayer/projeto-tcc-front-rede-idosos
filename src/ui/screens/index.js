@@ -5,3 +5,6 @@ export { ForgotPasswordScreen } from './forgotPassword/forgotPassword';
 export { ProfileScreen } from './profile/profile';
 export { ChangePassword } from './changePassword/changePassword';
 export { CreatePostScreen } from './createPost/createPost';
+export { SearchFriendsScreen } from './searchFriends/searchFriends';
+export { ListFriendsRequestsScreen } from './listFriendsRequests/listFriendsRequests';
+export { ListFriendsScreen } from './listFriends/listFriends';

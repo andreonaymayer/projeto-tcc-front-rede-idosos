@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useApi } from '../../../hooks/api';
-import { Profile } from '../../components';
+import { PersonProfileBox, Profile } from '../../components';
 
 export function ProfileScreen() {
 	const [user, setUser] = useState();
+  const person = JSON.parse(sessionStorage.getItem('user'));
+  const isNotYourProfile = JSON.parse(sessionStorage.getItem('isNotYourProfile'));
+
 	const api = useApi();
 
   useEffect(() => {
@@ -17,7 +20,20 @@ export function ProfileScreen() {
     getUserInfo();
   }, []);
 
+  function renderProfileLogged() {
+    if (!!user && !isNotYourProfile) {
+      return <Profile user={user} />
+    }
+
+    if (isNotYourProfile) {
+      return <PersonProfileBox user={person} />
+    }
+
+    return ''
+  }
+
+
 	return (
-    user ? <Profile user={user}/> : null
+    renderProfileLogged()
 	);
 }

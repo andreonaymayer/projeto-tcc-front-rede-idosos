@@ -1,0 +1,35 @@
+.searchFriends {
+  display: flex;
+
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 0 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-left: 20%;
+    width: 60%;
+    flex-direction: column;
+  }
+
+  &__search {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  &__input {
+    height: 40px;
+    margin: auto 0;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding-left: 15px;
+    outline: none;
+  }
+
+  &__results {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

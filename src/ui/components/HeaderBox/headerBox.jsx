@@ -12,8 +12,9 @@ export function Header() {
           <Link className='link header-group__link' to='/profile'>Meu perfil</Link>
           <Link className='link header-group__link' to='/create-post'>Criar publicação</Link>
           <Link className='link header-group__link' to='/home'>Ver publicações</Link>
-          <Link className='link header-group__link' to='/events'>--Ver Eventos</Link>
-          <Link className='link header-group__link' to='/feed'>--Ver publicações</Link>
+          <Link className='link header-group__link' to='/search-friend'>Procurar por amigos</Link>
+          <Link className='link header-group__link' to='/friends-requests'>Solicitações de amizade</Link>
+          <Link className='link header-group__link' to='/friends'>Amizades</Link>
         </div>
       </div>
       <div className='header-group'>
