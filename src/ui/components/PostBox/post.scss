@@ -86,3 +86,30 @@
   padding-left: 30px;
   font-size: 16px;
 }
+
+@media screen and (max-width: 480px) {
+  .post-wrapper {
+    padding: 0;
+  }
+
+  .post-information {
+    flex-direction: column-reverse;
+  }
+
+  .post-profile {
+    &__added-photo {
+      width: 95%;
+      margin: 10px;
+    }
+
+    &__text-post {
+      margin: 0 10px;
+    }
+  }
+
+  .post-button {
+    width: 30%;
+    padding-left: 5px;
+    font-size: 12px;
+  }
+}

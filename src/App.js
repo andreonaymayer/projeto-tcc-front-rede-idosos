@@ -14,8 +14,10 @@ import {
   ListFriendsScreen
 } from './ui/screens';
 function App() {
-  let removeIframe = document.getElementsByTagName('iframe');
-  if(removeIframe[0]) removeIframe[0].remove()
+  setTimeout(() => {
+    let removeIframe = document.getElementsByTagName('iframe');
+    if(removeIframe[0]) removeIframe[0].remove()
+  }, 1000);
 
 	return (
 		<div>

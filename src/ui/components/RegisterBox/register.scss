@@ -99,3 +99,55 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .register-container {
+    &__welcome {
+      text-align: center;
+    }
+
+    .register-title {
+      font-size: 30px;
+      width: 74%;
+    }
+
+    .register-subtitle {
+      font-size: 17px;
+      width: 80%;
+    }
+
+    .register-wrapper {
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto 20px;
+
+      &__enter {
+        width: 80%;
+        justify-content: center;
+        margin: auto;
+      }
+
+      &__layout {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      &__inputs {
+        width: 100%;
+      }
+
+      .register-submit {
+        width: 100%;
+      }
+
+      .register-submit__button {
+        width: 100%;
+      }
+
+      &__register {
+        width: 80%;
+        margin: 20px auto;
+      }
+    }
+  }
+}

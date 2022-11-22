@@ -100,3 +100,37 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  .login-container {
+    &__welcome {
+      text-align: center;
+    }
+
+    .login-title {
+      font-size: 30px;
+      width: 74%;
+    }
+
+    .login-subtitle {
+      font-size: 25px;
+      width: 80%;
+    }
+
+    .login-wrapper {
+      flex-direction: column;
+      width: 100%;
+
+      &__enter {
+        width: 80%;
+        justify-content: center;
+        margin: auto;
+      }
+
+      &__register {
+        width: 80%;
+        margin: 20px auto;
+      }
+    }
+  }
+}
