@@ -102,6 +102,10 @@
         background-color: #3478E3;
         width: 40%;
       }
+
+      &--disabled {
+        opacity: 0.5;
+      }
     }
   }
 
@@ -137,17 +141,65 @@
     }
 
     &__added-photo {
-      display: flex;
+      display: flex !important;
       justify-content: center;
       background: black;
-    }
-
-    &__photo {
-      width: 60%;
+      height: 360px;
+      width: auto !important;
     }
 
     &__text-post {
       margin-top: 10px;
+    }
+  }
+}
+.create-post-container {
+  .slick-slider {
+    width: 100%;
+    height: 20%;
+  }
+
+  .slick-arrow {
+    top: 140%;
+
+    &::before {
+      color: #000;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .create-post-container {
+    .create-post-wrapper {
+      &__enter {
+        width: 75%;
+        margin-bottom: 30px;
+      }
+
+      &__row {
+        flex-direction: column;
+      }
+
+      &__layout {
+        width: 100%;
+      }
+
+      .create-post-profile__added-photo {
+        width: 95% !important;
+        margin: 10px;
+        height: 320px;
+      }
+
+      .create-post-submit {
+        &__container {
+          flex-direction: column-reverse;
+          margin-bottom: 100px;
+        }
+
+        &__button  {
+          width: 100%;
+        }
+      }
     }
   }
 }

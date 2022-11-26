@@ -18,7 +18,7 @@
     width: 100%;
     justify-content: space-between;
   }
-  
+
   &__input {
     height: 40px;
     margin: auto 0;
@@ -31,5 +31,17 @@
   &__results {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 480px) {
+   &__container {
+    width: 75%;
+    margin-left: 0;
+    margin: 60px auto;
+   }
+
+   &__search {
+    flex-direction: column;
+   }
   }
 }

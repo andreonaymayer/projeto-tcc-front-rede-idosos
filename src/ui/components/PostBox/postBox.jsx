@@ -4,6 +4,7 @@ import React from 'react';
 import { useApi } from '../../../hooks/api';
 import perfil from '../../../images/perfil.jpeg'
 import { useHistory } from 'react-router-dom';
+import Slider from 'react-slick';
 
 export function PostBox({ post }) {
   const date = new Date();
@@ -14,6 +15,13 @@ export function PostBox({ post }) {
     month: 'long',
   });
 	const api = useApi();
+
+  const settings = {
+    arrows: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: false,
+  };
 
   async function handleSoftDelete() {
     const response = await api.softDeletePost(post.id);
@@ -47,15 +55,26 @@ export function PostBox({ post }) {
               <label>{day} {nameOfMonthBR} {year}</label>
             </div>
           </div>
-          <div onClick={handleSoftDelete}>X</div>
-          <div onClick={handleEditPost}>vamo editar bebe</div>
+          <div className='post-delete-edit'>
+            <div onClick={handleSoftDelete}>Excluir</div>
+            <div onClick={handleEditPost}>Editar</div>
+          </div>
         </div>
         <div className='post-information'>
           {post.midiaUrls.length > 0
-            ? <div className='post-profile__added-photo'>
-                <img src={post.midiaUrls[0]} className='post-profile__photo' alt='foto carregada'/>
-              </div>
-            : null
+          ?
+            <Slider {...settings}>
+            {
+              post.midiaUrls.map((image, key) => {
+                return (
+                  <div className='post-profile__added-photo' key={key}>
+                    <img src={image} className='post-profile__photo' alt='foto carregada'/>
+                  </div>
+                )
+              })
+            }
+            </Slider>
+          : null
           }
           <div className='post-profile__text-post'>
             <label>{post.conteudo}</label>

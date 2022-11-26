@@ -27,4 +27,10 @@
     justify-content: center;
     font-size: 15px;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 43%;
+    padding: 10px 5px;
+    margin: 20px 5px;
+   }
 }

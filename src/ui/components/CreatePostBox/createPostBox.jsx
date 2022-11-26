@@ -5,16 +5,18 @@ import register from '../../../images/register.svg'
 import { useApi } from '../../../hooks/api';
 import perfil from '../../../images/perfil.jpeg'
 import { Link, useHistory } from 'react-router-dom';
+import Slider from 'react-slick';
 
 export function CreatePostBox({ user }) {
   const post = JSON.parse(localStorage.getItem('post'))
   const editPost = localStorage.getItem('editPost');
-	const [text, setText] = useState(post.conteudo ? post.conteudo : '');
-  const [imagePreview, setImagePreview] = useState(post.midiaUrls[0] ? post.midiaUrls[0] : null);
+	const [text, setText] = useState(post ? post.conteudo : '');
+  const [imagePreview, setImagePreview] = useState(post ? post.midiaUrls : []);
   const date = new Date();
   const day = date.getDate();
   const year = date.getFullYear();
   const history = useHistory();
+  const selectPictureButton = editPost ? 'create-post-submit__button create-post-submit__button--disabled' : 'create-post-submit__button';
   const nameOfMonthBR = date.toLocaleString('pt-BR', {
     month: 'long',
   });
@@ -24,6 +26,13 @@ export function CreatePostBox({ user }) {
 		setText(event.target.value);
 	}
 
+  const settings = {
+    arrows: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: false,
+  };
+
   async function addPhoto(event) {
 		event.preventDefault();
     let file = event.target.files[0];
@@ -31,7 +40,15 @@ export function CreatePostBox({ user }) {
     image.append('file', file);
     event.target.value = null;
     const response = await api.postImage(image);
-    setImagePreview(response.data);
+    if (imagePreview === []) {
+      setImagePreview(imagePreview)
+    } else {
+      setImagePreview((imagePreview) => [
+        ...imagePreview,
+        response.data
+      ]);
+    }
+
 
     if (response.status === 200) {
       alert('imagem carregada com sucesso')
@@ -67,7 +84,10 @@ export function CreatePostBox({ user }) {
     }
 	}
 
-
+  function exitPost () {
+  localStorage.removeItem('post');
+  localStorage.removeItem('editPost');
+  }
 
 	return (
 		<div className='create-post-container'>
@@ -78,7 +98,7 @@ export function CreatePostBox({ user }) {
               <div className='create-post-wrapper__inputs'>
                 <h1 className='create-post-title'>Nova publicação</h1>
                 <div className='profile-submit__container'>
-                  <button className='create-post-submit__button'>
+                  <button className={selectPictureButton} disabled={editPost}>
                     Selecionar nova foto
                   </button>
                   <input
@@ -87,6 +107,7 @@ export function CreatePostBox({ user }) {
                       type="file"
                       className="create-post-submit__input"
                       onChange={addPhoto}
+                      disabled={editPost}
                     />
                 </div>
                 <label className='create-post-sub-title'>Descrição</label>
@@ -108,10 +129,19 @@ export function CreatePostBox({ user }) {
                   <label>{day} {nameOfMonthBR} {year}</label>
                 </div>
               </div>
-              {imagePreview
-              ? <div className='create-post-profile__added-photo'>
-                  <img src={imagePreview} className='create-post-profile__photo' alt='foto carregada'/>
-                </div>
+              {imagePreview.length > 0
+              ?
+              <Slider {...settings}>
+              {
+                imagePreview.map((image, key) => {
+                  return (
+                    <div className='create-post-profile__added-photo' key={key}>
+                      <img src={image} className='create-post-profile__photo' alt='foto carregada'/>
+                    </div>
+                  )
+                })
+              }
+              </Slider>
               : null}
               <div className='create-post-profile__text-post'>
                 <label>{text}</label>
@@ -119,8 +149,8 @@ export function CreatePostBox({ user }) {
             </div>
           </div>
           <div className='create-post-submit__container'>
-            <Link to='/home' className='create-post-submit__button create-post-submit__button--delete link'>
-              Desistir da publicação
+            <Link to='/home' className='create-post-submit__button create-post-submit__button--delete link' onClick={exitPost}>
+              {editPost ? 'Cancelar edição' : 'Desistir da publicação'}
             </Link>
             {editPost
               ? <button className='create-post-submit__button create-post-submit__button--publish' onClick={editPostInfo}>

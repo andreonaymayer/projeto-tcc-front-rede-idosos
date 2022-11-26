@@ -3,8 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function Header() {
+  const isMobile = window.innerWidth < 500;
+  const showHeader = !isMobile ? 'header-test' : 'header-test display-none';
 
   function openHeader(clicked = false) {
+    if (!isMobile) return;
+
     const header = document.getElementsByClassName('header-test');
     const headerClosed = document.getElementsByClassName('header-closed');
     const headerContainer = document.getElementsByClassName('header-container');
@@ -24,9 +28,9 @@ export function Header() {
   }
 
 	return (
-		<div className='header-container'>
-      <div onClick={() => openHeader(true)} class="header-closed display-none">Menu</div>
-      <div className='header-test'>
+		<div className='header-container header-container-closed'>
+      {isMobile ? <div onClick={() => openHeader(true)} class="header-closed">Menu</div> : null}
+      <div className={showHeader}>
         <div className='header-group'>
           <div>
             <div className='header-group__title' onClick={() => openHeader(false)}>Menu</div>
@@ -41,12 +45,6 @@ export function Header() {
           </div>
         </div>
         <div className='header-group'>
-          <div className='header-group__title'>Conversas</div>
-          <div className='header-group__links'>
-            <Link className='link header-group__link' to='/chat'>--Meu perfil</Link>
-            <Link className='link header-group__link' to='/chat'>--Meu perfil</Link>
-            <Link className='link header-group__link' to='/chat'>--Meu perfil</Link>
-          </div>
         </div>
         <div className='header-wrapper-buttons'>
           <button className='help-button header-button'>

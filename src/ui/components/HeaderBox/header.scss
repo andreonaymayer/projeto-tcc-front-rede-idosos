@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 20%;
   position: fixed;
+  z-index: 2;
 
   .header-group {
     display: flex;
@@ -66,6 +67,7 @@
   .header-container {
     width: 50%;
     background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   .display-none {
@@ -89,5 +91,10 @@
 
   .header-container-closed {
     width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .header-test {
+    margin-bottom: 15px;
   }
 }

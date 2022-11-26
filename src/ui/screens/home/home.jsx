@@ -9,7 +9,7 @@ export function HomeScreen() {
 
   useEffect(() => {
     async function getPost() {
-      const response = await api.getPost('ab65d164-4c89-4368-af44-53dc09148660');
+      const response = await api.getPost("07dc8934-7320-48f1-a36a-22392675801d");
       if (response.status === 200) {
         setPost(response.data)
       }

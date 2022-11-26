@@ -22,9 +22,8 @@ export function Profile({ user }) {
 	const [title, setTitle] = useState(false);
 	const [mainText, setMainText] = useState(false);
 	const [buttonText, setButtonText] = useState(false);
+  const isMobile = window.innerWidth < 500;
 	const api = useApi();
-
-
 
   async function showCity(stateId, cityId) {
 		const response = await api.showCities(stateId);
@@ -161,6 +160,13 @@ export function Profile({ user }) {
             <div className='profile-wrapper__layout'>
               <div className='profile-wrapper__inputs'>
                 <h1 className='profile-title'>Minhas informações</h1>
+                {isMobile
+                ?
+                  imagePreview
+                  ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
+                  : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
+                : null
+                }
                 <label className='profile-wrapper__input-password'>Nome</label>
                 <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input' onChange={onChangeName} value={name}></input>
                 <label className='profile-wrapper__input-password'>Email</label>
@@ -177,42 +183,47 @@ export function Profile({ user }) {
                 <textarea type='text' placeholder='Fale sobre você' className='profile-wrapper__input profile-wrapper__input--area' onChange={onChangeDetails} value={details}></textarea>
               </div>
             </div>
-            <div className='profile-wrapper__layout'>
-              <div className='profile-wrapper__editor'>
-                {imagePreview
-                  ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
-                  : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
+
+              <div className='profile-wrapper__layout'>
+                <div className='profile-wrapper__editor'>
+                {!isMobile
+                ?
+                  imagePreview
+                    ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
+                    : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
+                :
+                null
                 }
-                <div className='profile-submit__container'>
-                  <button className='profile-submit__button profile-submit__button--image'>
-                    Selecionar uma nova foto
+                  <div className='profile-submit__container'>
+                    <button className='profile-submit__button profile-submit__button--image'>
+                      Selecionar uma nova foto
+                    </button>
+                    <input
+                      accept="image/*"
+                      id="icon-button-file"
+                      type="file"
+                      className="profile-submit__input"
+                      onChange={addPhoto}
+                    />
+                  </div>
+                </div>
+
+                <div className='profile-wrapper__editor'>
+                  <button className='profile-submit__button' onClick={handleSubmit}>
+                    Registrar&nbsp;&nbsp;
+                    <img src={register} />
                   </button>
-                  <input
-                    accept="image/*"
-                    id="icon-button-file"
-                    type="file"
-                    className="profile-submit__input"
-                    onChange={addPhoto}
-                  />
+
+                  <Link to="/change-password" className='profile-submit__button link'>
+                    Alterar senha&nbsp;&nbsp;
+                    <img src={back} className="back-image-rotate" />
+                  </Link>
+                  <Link to='/home' className='profile-submit__button profile-submit__button--reset link'>
+                    Não desejo mudar nada&nbsp;&nbsp;
+                    <img src={back} />
+                  </Link>
                 </div>
               </div>
-
-              <div className='profile-wrapper__editor'>
-                <button className='profile-submit__button' onClick={handleSubmit}>
-                  Registrar&nbsp;&nbsp;
-                  <img src={register} />
-                </button>
-
-                <Link to="/change-password" className='profile-submit__button link'>
-                  Alterar senha&nbsp;&nbsp;
-                  <img src={back} className="back-image-rotate" />
-                </Link>
-                <Link to='/home' className='profile-submit__button profile-submit__button--reset link'>
-                  Não desejo mudar nada&nbsp;&nbsp;
-                  <img src={back} />
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </div>
