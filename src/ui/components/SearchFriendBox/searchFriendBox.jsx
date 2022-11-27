@@ -19,7 +19,6 @@ export function SearchFriendBox({ profile, setShowModalFailed, setShowModalSucce
   }
 
   function handleGoToUserProfile() {
-    console.log(profile)
     sessionStorage.setItem('user', JSON.stringify(profile));
     sessionStorage.setItem('isNotYourProfile', true);
     history.push('profile')

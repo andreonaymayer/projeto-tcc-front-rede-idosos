@@ -57,14 +57,14 @@
   &__added-photo {
     display: flex !important;
     justify-content: center;
-    background: black;
-    height: 360px;
-    width: auto !important;
-    margin-left: 20px;
+    width: 95% !important;
+    margin: 10px;
+    height: 320px;
   }
 
   &__text-post {
     margin-top: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -93,6 +93,10 @@
   font-family: 'Montserrat';
   text-align: inherit;
   font-size: 16px;
+}
+
+.justifyStart {
+  justify-content: flex-end;
 }
 
 @media screen and (max-width: 480px) {

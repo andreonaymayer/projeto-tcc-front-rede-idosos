@@ -20,7 +20,7 @@ export function ListFriendsScreen() {
 		}
 
     showFriends();
-  },[]);
+  },[showModalAdded]);
 
   function closeModal() {
 		setShowModalAdded(false);
@@ -32,17 +32,17 @@ export function ListFriendsScreen() {
 			<ModalBox
         show={showModalAdded}
         handleClose={() => closeModal()}
-        title={'Pedido de amizade'}
-        mainText={'Você aceitou o pedido de amizade'}
-				buttonText={'Pedido de amizade aceito'}
+        title={'Amizade removida!'}
+        mainText={'Você removeu a amizade'}
+				buttonText={'Pedido de amizade removido'}
 				buttonClass='modal-main__button--success'
       />
 			<ModalBox
         show={showModalDenied}
         handleClose={() => closeModal()}
-        title='Pedido de amizade'
-        mainText='TVocê recusou o pedido de amizade'
-				buttonText='Pedido de amizade recusado!'
+        title='Amizade não removida!'
+        mainText='Falha ao remover a amizade'
+				buttonText='Amizade não foi removido!'
 				buttonClass='modal-main__button--danger'
       />
       <div className='listFriends'>
@@ -52,7 +52,12 @@ export function ListFriendsScreen() {
             <h1>Amizades</h1>
           </div>
           <div className='listFriends__results'>
-            {friends && friends.map(friend => <ListFriendsBox friend={friend} setShowModalAdded={setShowModalAdded} setShowModalDenied={setShowModalDenied}/>)}
+            {friends && friends.length > 0
+            ?
+              friends.map((friend, key) =>
+                <ListFriendsBox id={key} friend={friend} setShowModalAdded={setShowModalAdded} setShowModalDenied={setShowModalDenied}/>)
+            : <h3>Você ainda não possui nenhuma amizade!</h3>
+            }
           </div>
         </div>
       </div>

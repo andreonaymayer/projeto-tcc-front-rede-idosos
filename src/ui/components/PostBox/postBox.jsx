@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import './post.scss';
 import React from 'react';
-import { useApi } from '../../../hooks/api';
 import perfil from '../../../images/perfil.jpeg'
 import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 
-export function PostBox({ post }) {
+export function PostBox({ post, handleSoftDelete, isMyPost }) {
   const date = new Date();
   const day = date.getDate();
   const year = date.getFullYear();
@@ -14,7 +13,7 @@ export function PostBox({ post }) {
   const nameOfMonthBR = date.toLocaleString('pt-BR', {
     month: 'long',
   });
-	const api = useApi();
+  const postInformation = post.midiaUrls.length == 0 ? 'post-information justifyStart' : 'post-information'
 
   const settings = {
     arrows: true,
@@ -23,30 +22,35 @@ export function PostBox({ post }) {
     infinite: false,
   };
 
-  async function handleSoftDelete() {
-    const response = await api.softDeletePost(post.id);
-
-    if (response.status === 200) {
-      alert('detelado mermao')
-    } else {
-      alert('nao deletado')
-    }
-	}
-
   async function handleEditPost() {
     localStorage.setItem('post', JSON.stringify(post));
     localStorage.setItem('editPost', true);
     history.push('create-post')
 	}
 
+  function goToProfile() {
+    const autor = {
+      "nick": post.autor.nick,
+      "name": post.autor.name,
+      "url": post.autor.imgUrl,
+      "details": post.autor.descricao,
+      "city": post.autor.cidade,
+      "state": post.autor.estado
+    }
+
+    sessionStorage.setItem('user', JSON.stringify(autor));
+    sessionStorage.setItem('isNotYourProfile', true);
+    history.push('profile')
+  }
+
 	return (
     <div className='post-wrapper'>
       <div className='post-wrapper__layout'>
         <div className='post-profile'>
-          <div className='post-profile__container'>
+          <div className='post-profile__container' onClick={goToProfile}>
             <div>
-              {post.autor.img
-                ? <img className='post-profile__picture' src={post.autor.img} alt='Foto do usuário'/>
+              {post.autor.imgUrl
+                ? <img className='post-profile__picture' src={post.autor.imgUrl} alt='Foto do usuário'/>
                 : <img className='post-profile__picture' src={perfil} alt='Foto do usuário'/>
               }
             </div>
@@ -55,12 +59,16 @@ export function PostBox({ post }) {
               <label>{day} {nameOfMonthBR} {year}</label>
             </div>
           </div>
-          <div className='post-delete-edit'>
-            <div onClick={handleSoftDelete}>Excluir</div>
-            <div onClick={handleEditPost}>Editar</div>
-          </div>
+          {isMyPost
+          ?
+            <div className='post-delete-edit'>
+              <div onClick={() =>  handleSoftDelete(post)}>Excluir</div>
+              <div onClick={handleEditPost}>Editar</div>
+            </div>
+          :
+          null}
         </div>
-        <div className='post-information'>
+        <div className={postInformation}>
           {post.midiaUrls.length > 0
           ?
             <Slider {...settings}>

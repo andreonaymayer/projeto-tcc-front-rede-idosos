@@ -17,6 +17,7 @@ export function Profile({ user }) {
 	const [city, setCity] = useState(user.city);
 	const [cities, setCities] = useState('');
   const [imagePreview, setImagePreview] = useState();
+  const [imgUrl, setImgUrl] = useState('')
 	const [showModalSuccess, setShowModalSuccess] = useState(false);
 	const [showModalFailed, setShowModalFailed] = useState(false);
 	const [title, setTitle] = useState(false);
@@ -69,11 +70,11 @@ export function Profile({ user }) {
     }
 
     showStateSelected();
-  }, []);
+  },[]);
 
 
   async function putUserInfo() {
-		const response = await api.putUserInfo(email, name, birthDate, details, city);
+		const response = await api.putUserInfo(email, name, birthDate, imgUrl, details, city);
     if (response && response.status === 200) {
       setShowModalSuccess(true)
       setTitle('Informações alteradas!')
@@ -120,6 +121,8 @@ export function Profile({ user }) {
     event.target.value = null;
     const response = await api.profileImage(image);
     setImagePreview(response.data);
+    setImgUrl(response.data)
+    putUserInfo();
 
     if (response.status === 200) {
       setShowModalSuccess(true)

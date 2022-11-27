@@ -50,9 +50,8 @@ export function Header() {
           <button className='help-button header-button'>
             Ajuda
           </button>
-          <button className='exit-button header-button'>
-            Sair
-          </button>
+
+          <Link className='link exit-button header-button' to='/'>Sair</Link>
         </div>
       </div>
     </div>

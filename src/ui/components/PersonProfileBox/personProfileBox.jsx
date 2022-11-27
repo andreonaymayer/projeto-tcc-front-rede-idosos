@@ -20,16 +20,12 @@ export function PersonProfileBox({ user }) {
             <div className='person-profile-wrapper__layout'>
               <div className='person-profile-wrapper__inputs'>
                 <h1 className='person-profile-title'>Informações do usuário</h1>
-                {isMobile
-                ?
-                  <div className='person-profile-wrapper__editor'>
-                    {user.url
-                      ? <img className='person-profile-wrapper__image' src={user.url} alt='Foto do usuário' />
-                      : <img className='person-profile-wrapper__image' src={perfil} alt='Foto do usuário' />
-                    }
-                  </div>
-                : null
-                }
+                <div className='person-profile-wrapper__editor'>
+                  {user.url
+                    ? <img className='person-profile-wrapper__image' src={user.url} alt='Foto do usuário' />
+                    : <img className='person-profile-wrapper__image' src={perfil} alt='Foto do usuário' />
+                  }
+                </div>
                 <div className='person-profile-wrapper__position'>
                   <div className='person-profile-wrapper__div-label'>
                     <label className='person-profile-wrapper__input-password'>Nome: {user.name}</label>
@@ -50,21 +46,24 @@ export function PersonProfileBox({ user }) {
               </div>
             </div>
             <div className='person-profile-wrapper__layout'>
-              {!isMobile
+              {isMobile
               ?
-                <div className='person-profile-wrapper__editor'>
-                  {user.url
-                    ? <img className='person-profile-wrapper__image' src={user.url} alt='Foto do usuário' />
-                    : <img className='person-profile-wrapper__image' src={perfil} alt='Foto do usuário' />
-                  }
-                </div>
+                <Link to='/home' className='person-profile-submit__button person-profile-submit__button--reset link' onClick={handleGoBack}>
+                  Voltar&nbsp;&nbsp;
+                  <img src={back} />
+                </Link>
               : null
               }
+            </div>
+
+            {!isMobile
+            ?
               <Link to='/home' className='person-profile-submit__button person-profile-submit__button--reset link' onClick={handleGoBack}>
                 Voltar&nbsp;&nbsp;
                 <img src={back} />
               </Link>
-            </div>
+            : null
+            }
           </div>
         </div>
       </div>

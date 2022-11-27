@@ -14,13 +14,14 @@ export function useApi() {
 	const cadastroUsuario = useAxios(apiUrl);
 
 	async function createToken(email, password) {
-    const response = await cadastroUsuario.post('/v1/login', {email, password})
-
-    if (response && response.status === 200) {
+    try {
+      const response = await cadastroUsuario.post('/v1/login', {email, password})
       setUser(response.data)
       sessionStorage.setItem('token', response.data.jwt);
-    }
-    return response
+			return response;
+		} catch (error) {
+			return error.response;
+		}
 	}
 
 	async function newUserRegister(
@@ -95,6 +96,7 @@ export function useApi() {
     email,
     name,
     birthDate,
+    imgUrl,
     details,
     city
   ) {
@@ -183,7 +185,7 @@ export function useApi() {
 
   async function showProfiles(name) {
 		try {
-			const response = await axios.get(`/v1/friends/buscar`, {name});
+			const response = await axios.get(`/v1/friends/buscar?name=${name}`);
 			return response;
 		} catch (error) {
 			return error.response;
@@ -235,6 +237,32 @@ export function useApi() {
 		}
 	}
 
+  async function getFeed() {
+		try {
+			const response = await axios.get(`/v1/feed`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function getMyPosts() {
+		try {
+			const response = await axios.get(`/v1/posts`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function removeFriendship(nick) {
+		try {
+			const response = await axios.post(`/v1/friends/desfazer/${nick}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
 
 
 	return useCallback(
@@ -259,7 +287,10 @@ export function useApi() {
 			showSolicitations,
 			acceptAsFriend,
 			denyAsFriend,
-			showFriends
+			showFriends,
+      getFeed,
+      getMyPosts,
+      removeFriendship
 		},
 		[]
 	);

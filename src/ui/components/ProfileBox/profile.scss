@@ -20,9 +20,9 @@
     }
 
     &__image {
-      width: 200px;
+      width: 250px;
+      clip-path: circle();
       border-radius: 50%;
-      height: 200px;
     }
 
     &__enter {

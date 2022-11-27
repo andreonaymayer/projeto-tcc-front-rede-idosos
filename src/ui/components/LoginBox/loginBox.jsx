@@ -5,10 +5,12 @@ import help from '../../../images/help.svg'
 import register from '../../../images/register.svg'
 import { useApi } from '../../../hooks/api';
 import { Link, useHistory } from 'react-router-dom';
+import { ModalBox } from '../ModalBox/modalBox';
 
 export function LoginBox() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [showModalFailed, setShowModalFailed] = useState(false);
 	const history = useHistory();
 	const api = useApi();
 
@@ -17,7 +19,7 @@ export function LoginBox() {
 		if (response && response.status === 200) {
       history.push('/home')
 		} else {
-			console.log('deu ruim')
+      setShowModalFailed(true)
 		}
 	}
 
@@ -34,42 +36,56 @@ export function LoginBox() {
 		setPassword(event.target.value);
 	}
 
-	return (
-		<div className='login-container'>
-      <div className='login-container__welcome'>
-        <h1 className='login-title'>Bem-vindo ao Rede idosos!</h1>
-        <h2 className='login-subtitle'>Identifique-se e entre, ou registre-se caso ainda não tenha um cadastro</h2>
-      </div>
-      <div className='login-wrapper'>
-        <div className='login-wrapper__enter'>
-          <h2 className='login-wrapper__title'>Identificação</h2>
-          <br/>
-          <div className='login-wrapper__inputs'>
-            <label className='login-wrapper__input-mail'>E-mail</label>
-            <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='login-wrapper__input' onChange={onChangeEmail}></input>
-            <label className='login-wrapper__input-password'>Senha</label>
-            <input type='password' placeholder='Exemplo: @!MinhaS3nha*' className='login-wrapper__input' onChange={onChangePassword}></input>
-          </div>
-          <div className='login-submit'>
-            <button className='login-submit__button' onClick={handleSubmit}>
-              Entrar&nbsp;&nbsp;
-              <img src={submit} />
-            </button>
+  function closeModal() {
+		setShowModalFailed(false);
+  }
 
-            <button className='login-submit__button login-submit__button--reset'>
-              Não lembro minha senha&nbsp;&nbsp;
-              <img src={help} />
-            </button>
+	return (
+    <>
+			<ModalBox
+        show={showModalFailed}
+        handleClose={() => closeModal()}
+        title='Tivemos um problema!'
+        mainText='Tivemos um problema, tente novamente.'
+				buttonText='Login não realizada!'
+				buttonClass='modal-main__button--danger'
+      />
+      <div className='login-container'>
+        <div className='login-container__welcome'>
+          <h1 className='login-title'>Bem-vindo ao Rede idosos!</h1>
+          <h2 className='login-subtitle'>Identifique-se e entre, ou registre-se caso ainda não tenha um cadastro</h2>
+        </div>
+        <div className='login-wrapper'>
+          <div className='login-wrapper__enter'>
+            <h2 className='login-wrapper__title'>Identificação</h2>
+            <br/>
+            <div className='login-wrapper__inputs'>
+              <label className='login-wrapper__input-mail'>E-mail</label>
+              <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='login-wrapper__input' onChange={onChangeEmail}></input>
+              <label className='login-wrapper__input-password'>Senha</label>
+              <input type='password' placeholder='Exemplo: @!MinhaS3nha*' className='login-wrapper__input' onChange={onChangePassword}></input>
+            </div>
+            <div className='login-submit'>
+              <button className='login-submit__button' onClick={handleSubmit}>
+                Entrar&nbsp;&nbsp;
+                <img src={submit} />
+              </button>
+
+              <button className='login-submit__button login-submit__button--reset'>
+                Não lembro minha senha&nbsp;&nbsp;
+                <img src={help} />
+              </button>
+            </div>
+          </div>
+          <div className='login-wrapper__register'>
+            <label className='login-wrapper__title'>Não tem cadastro? <br/> Clique no botão abaixo <br/> para se registrar.</label>
+            <Link className='login-submit__button login-submit__button--register link' to={`/register`}>
+              Registrar&nbsp;&nbsp;
+              <img src={register} />
+            </Link>
           </div>
         </div>
-        <div className='login-wrapper__register'>
-          <label className='login-wrapper__title'>Não tem cadastro? <br/> Clique no botão abaixo <br/> para se registrar.</label>
-          <Link className='login-submit__button login-submit__button--register link' to={`/register`}>
-            Registrar&nbsp;&nbsp;
-            <img src={register} />
-          </Link>
-        </div>
       </div>
-    </div>
+    </>
 	);
 }

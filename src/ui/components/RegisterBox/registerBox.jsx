@@ -2,7 +2,7 @@ import './register.scss';
 import React, { useEffect, useState } from 'react';
 import register from '../../../images/register.svg'
 import back from '../../../images/back.svg'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useApi } from '../../../hooks/api';
 import { ModalBox } from '../index';
 
@@ -18,6 +18,7 @@ export function RegisterBox() {
 	const [cities, setCities] = useState('');
 	const [showModalSuccess, setShowModalSuccess] = useState(false);
 	const [showModalFailed, setShowModalFailed] = useState(false);
+	const history = useHistory();
 	const api = useApi();
 
   async function showState() {
@@ -34,9 +35,7 @@ export function RegisterBox() {
 		}
 	}
 
-  useEffect(() => {
-    showState();
-  },[]);
+
 
 	async function newUserRegister() {
 		const response = await api.newUserRegister(
@@ -73,7 +72,7 @@ export function RegisterBox() {
 	}
 
   function onChangeState(event) {
-		setState(event.target.value);
+    showState();
     showCity(event.target.value);
 	}
 
@@ -89,16 +88,18 @@ export function RegisterBox() {
 		setBirthDate(event.target.value);
 	}
 
-	function closeModal() {
+	function closeModal(succeed) {
 		setShowModalSuccess(false);
 		setShowModalFailed(false);
+
+    if (succeed) history.push('/')
 	}
 
 	return (
 		<>
 			<ModalBox
         show={showModalSuccess}
-        handleClose={() => closeModal()}
+        handleClose={() => closeModal(true)}
         title='Cadastro realizado!'
         mainText='O seu cadastro foi realizado com sucesso.'
 				buttonText='Cadastro bem sucessido!'
@@ -135,7 +136,7 @@ export function RegisterBox() {
 							</div>
 							<div className='register-submit'>
 								<label className='register-wrapper__input-password'>Estado</label>
-								<select onClick={onChangeState} className='register-wrapper__input register-wrapper__input--select'>{states && states.map(state => <option key={state.id} value={state.id}>{state.name}</option>)}</select>
+								<select onClick={onChangeState} className='register-wrapper__input register-wrapper__input--select'>{states ? states.map(state => <option key={state.id} value={state.id}>{state.name}</option>) : <option>Seleciona o seu estado</option>}</select>
 								<label className='register-wrapper__input-password'>Cidade</label>
 								<select onClick={onChangeCity} className='register-wrapper__input register-wrapper__input--select' disabled={!cities}>{cities && cities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}</select>
 								<label className='register-wrapper__input-password'>Detalhes</label>

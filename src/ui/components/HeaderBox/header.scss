@@ -54,6 +54,8 @@
 
     .exit-button {
       background-color: #3478E3;
+      display: flex;
+      align-items: center;
     }
 
     .help-button {
@@ -71,7 +73,7 @@
   }
 
   .display-none {
-    display: none;
+    display: none !important;
   }
 
   .display-flex {

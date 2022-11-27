@@ -5,15 +5,17 @@ import { useState } from 'react';
 import { useApi } from '../../../hooks/api';
 import { useHistory } from 'react-router-dom';
 
-export function ListFriendsBox({ friend, setShowModalDenied, setShowModalAdded}) {
+export function ListFriendsBox({ friend, id, setShowModalDenied, setShowModalAdded }) {
 	const api = useApi();
   const history = useHistory();
 
   async function handleRemoveAsFriend() {
-    // const response = await api.removeFriendship(friend.nick);
-    // if (response && response.status === 200) {
-    //   setShowModalAdded(true)
-    // }
+    const response = await api.removeFriendship(friend.nick);
+    if (response && response.status === 200) {
+      setShowModalAdded(true)
+    } else {
+      setShowModalDenied(true)
+    }
   }
 
   function handleGoToUserProfile() {
@@ -23,7 +25,7 @@ export function ListFriendsBox({ friend, setShowModalDenied, setShowModalAdded})
   }
 
 	return (
-    <div className='friends'>
+    <div className='friends' id={id}>
       {friend.url
         ? <img src={friend.url} alt="foto do usuário" className='friends__photo'/>
         : <img src={perfil} alt="foto do usuário" className='friends__photo'/>
