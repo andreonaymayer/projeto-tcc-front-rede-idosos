@@ -265,7 +265,7 @@ export function useApi() {
 		}
 	}
 
-  async function getReactions(postId) {
+  async function setReaction(postId) {
 		try {
 			const response = await axios.post(`/v1/reaction/${postId}`);
 			return response;
@@ -274,9 +274,36 @@ export function useApi() {
 		}
 	}
 
-  async function setReaction(postId) {
+  async function getReactions(postId) {
 		try {
 			const response = await axios.get(`/v1/reaction/list/${postId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function updatePicture(imgUrl) {
+		try {
+			const response = await axios.patch(`/v1/user?imgUrl=${imgUrl}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function addComment(postId, text) {
+		try {
+			const response = await axios.post(`/v1/comment/${postId}`, {text});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function getPostComments(postId) {
+		try {
+			const response = await axios.get(`/v1/comment/list/${postId}`);
 			return response;
 		} catch (error) {
 			return error.response;
@@ -311,7 +338,10 @@ export function useApi() {
       getMyPosts,
       removeFriendship,
       getReactions,
-      setReaction
+      setReaction,
+      updatePicture,
+      addComment,
+      getPostComments
 		},
 		[]
 	);

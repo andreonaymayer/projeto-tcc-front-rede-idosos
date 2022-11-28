@@ -36,12 +36,15 @@ export function Profile({ user }) {
         }
       });
 			setCities(response.data)
-		} else {
-			alert("deu ruim")
 		}
 	}
 
-
+  async function updateProfilePicture() {
+		const response = await api.updatePicture(imgUrl);
+		if (response && response.status === 200) {
+      setShowModalSuccess(true)
+		}
+	}
 
   useEffect(() => {
     async function showState(stateId) {
@@ -122,7 +125,7 @@ export function Profile({ user }) {
     const response = await api.profileImage(image);
     setImagePreview(response.data);
     setImgUrl(response.data)
-    putUserInfo();
+    updateProfilePicture();
 
     if (response.status === 200) {
       setShowModalSuccess(true)
@@ -165,7 +168,7 @@ export function Profile({ user }) {
                 <h1 className='profile-title'>Minhas informações</h1>
                 {isMobile
                 ?
-                  imagePreview
+                  imagePreview || user.imgUrl
                   ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
                   : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
                 : null
@@ -191,7 +194,7 @@ export function Profile({ user }) {
                 <div className='profile-wrapper__editor'>
                 {!isMobile
                 ?
-                  imagePreview
+                    imagePreview || user.imgUrl
                     ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
                     : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
                 :

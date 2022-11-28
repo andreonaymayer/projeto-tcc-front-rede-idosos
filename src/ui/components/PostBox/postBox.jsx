@@ -6,12 +6,11 @@ import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useApi } from '../../../hooks/api';
 
-export function PostBox({ post, handleSoftDelete, isMyPost, setRenderPosts, renderPosts }) {
+export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, handleCommment }) {
   const date = new Date();
   const day = date.getDate();
   const year = date.getFullYear();
   const history = useHistory();
-	const [reactions, setReactions] = useState();
 	const api = useApi();
   const nameOfMonthBR = date.toLocaleString('pt-BR', {
     month: 'long',
@@ -45,20 +44,6 @@ export function PostBox({ post, handleSoftDelete, isMyPost, setRenderPosts, rend
     sessionStorage.setItem('isNotYourProfile', true);
     history.push('profile')
   }
-
-  async function handleReaction() {
-    const response = await api.setReaction(post.id);
-    if (response.status === 200) {
-      setRenderPosts(!renderPosts)
-    }
-	}
-
-  async function handleReaction() {
-    const response = await api.getReactions(post.id);
-    if (response.status === 200) {
-      console.log(response.data)
-    }
-	}
 
 	return (
     <div className='post-wrapper'>
@@ -106,8 +91,8 @@ export function PostBox({ post, handleSoftDelete, isMyPost, setRenderPosts, rend
           </div>
         </div>
         <div className='post-buttons'>
-          <button className='post-button' onClick={handleReaction}>Interessante ({post.reaccoes.length})</button>
-          <button className='post-button'>Comentar</button>
+          <button className='post-button' onClick={() => handleReaction(post.id)}>Interessante ({post.reaccoes.length})</button>
+          <button className='post-button' onClick={() => handleCommment(post)}>Comentar</button>
           <button className='post-button'>Compartilhar</button>
         </div>
       </div>
