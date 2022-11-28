@@ -15,6 +15,10 @@
     height: 500px;
     justify-content: center;
     margin: auto;
+
+    &--empty {
+      background-color: transparent;
+    }
   }
 
   &__container-information {
@@ -50,6 +54,7 @@
   &__container-name {
     font-size: 22px;
     font-weight: 600;
+    margin-left: 10px;
 
     &--comment {
       font-size: 17px;

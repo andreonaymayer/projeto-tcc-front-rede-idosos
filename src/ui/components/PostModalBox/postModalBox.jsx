@@ -8,10 +8,11 @@ import Slider from 'react-slick';
 export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRenderPosts }) {
   const isMobile = window.innerWidth < 500;
   const [text, setText] = useState();
-  const [postInfo, setPostInfo] = useState();
 	const api = useApi();
   const body = document.getElementsByTagName('body')
   const root = document.getElementById('root')
+  const thereIsImagesClass = post.midiaUrls.length > 0 ? 'post-modal__container-image' : 'post-modal__container-image post-modal__container-image--empty'
+
   if (modalPost) {
     body[0].classList.add('overflow-hidden-body')
     root.classList.add('overflow-hidden-body')
@@ -19,7 +20,6 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
 
   useEffect(() => {
     async function getPost() {
-      console.log(post.id)
       if(post.id.length === '') return
       const response = await api.getPostComments(post.id);
       if (response.status === 200) {
@@ -64,7 +64,7 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
       <div className='post-modal'>
         {!isMobile
         ?
-          <div className='post-modal__container-image'>
+          <div className={thereIsImagesClass}>
             {post.midiaUrls.length > 0
             ?
               <Slider {...settings}>
@@ -79,10 +79,10 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
               }
               </Slider>
             :
-            <img src={perfil} alt="foto do post"/>
+              null
             }
           </div>
-        :null }
+        : null }
         <div className='post-modal__container-information'>
           <div className='post-modal__container-user'>
             <div>
