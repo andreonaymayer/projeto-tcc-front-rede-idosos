@@ -18,6 +18,7 @@ export function useApi() {
       const response = await cadastroUsuario.post('/v1/login', {email, password})
       setUser(response.data)
       sessionStorage.setItem('token', response.data.jwt);
+      sessionStorage.setItem('nickname', response.data.user.nick);
 			return response;
 		} catch (error) {
 			return error.response;
@@ -264,6 +265,24 @@ export function useApi() {
 		}
 	}
 
+  async function getReactions(postId) {
+		try {
+			const response = await axios.post(`/v1/reaction/${postId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function setReaction(postId) {
+		try {
+			const response = await axios.get(`/v1/reaction/list/${postId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
 
 	return useCallback(
 		{
@@ -290,7 +309,9 @@ export function useApi() {
 			showFriends,
       getFeed,
       getMyPosts,
-      removeFriendship
+      removeFriendship,
+      getReactions,
+      setReaction
 		},
 		[]
 	);
