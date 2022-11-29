@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useGlobalUser } from '../../context/index';
 
 export function useApi() {
-	const [user, setUser] = useGlobalUser();
+	const [setUser] = useGlobalUser();
 	// const apiUrl = 'http://localhost:8080';
 	const apiUrl = 'http://ec2-54-86-1-208.compute-1.amazonaws.com:8080';
 	const axios = useAxios(apiUrl, {
