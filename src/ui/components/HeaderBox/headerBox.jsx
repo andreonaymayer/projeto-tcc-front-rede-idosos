@@ -2,7 +2,6 @@ import './header.scss';
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {TutorialModalBox} from '../TutorialModalBox/tutorialModalBox';
-import perfil from '../../../images/perfil1.jpeg'
 import logo from '../../../images/rede.png'
 import principal_1 from '../../../images/principal/principal-1.jpg'
 import principal_2 from '../../../images/principal/principal-2.jpg'

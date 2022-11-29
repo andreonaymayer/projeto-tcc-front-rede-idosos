@@ -81,7 +81,7 @@ export function Profile({user}) {
     }
 
     showStateSelected();
-  }, []);
+  }, [api, showCity, user.city]);
 
 
   async function putUserInfo() {
