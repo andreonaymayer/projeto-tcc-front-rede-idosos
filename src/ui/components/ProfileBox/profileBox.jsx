@@ -1,58 +1,65 @@
 /* eslint-disable react/prop-types */
 import './profile.scss';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import back from '../../../images/back.svg'
 import register from '../../../images/register.svg'
-import perfil from '../../../images/perfil.jpeg'
-import { Link } from 'react-router-dom';
-import { useApi } from '../../../hooks/api';
-import { ModalBox, TutorialModalBox } from '../index';
+import perfil from '../../../images/perfil1.jpeg'
+import {Link} from 'react-router-dom';
+import {useApi} from '../../../hooks/api';
+import {ModalBox, TutorialModalBox} from '../index';
 
-export function Profile({ user }) {
-	const [name, setName] = useState(user.name);
-	const [email, setEmail] = useState(user.email);
-	const [birthDate, setBirthDate] = useState(user.birthDate);
-	const [details, setDetails] = useState(user.details);
-	const [states, setStates] = useState();
-	const [city, setCity] = useState(user.city);
-	const [cities, setCities] = useState('');
+import ajudaPerfil_1 from '../../../images/perfil/perfil-1.jpg'
+import ajudaPerfil_2 from '../../../images/perfil/perfil-2.jpg'
+import ajudaPerfil_3 from '../../../images/perfil/perfil-3.jpg'
+import ajudaPerfil_4 from '../../../images/perfil/perfil-4.jpg'
+import ajudaPerfil_5 from '../../../images/perfil/perfil-5.jpg'
+import ajudaPerfil_6 from '../../../images/perfil/perfil-6.jpg'
+
+export function Profile({user}) {
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [birthDate, setBirthDate] = useState(user.birthDate);
+  const [details, setDetails] = useState(user.details);
+  const [states, setStates] = useState();
+  const [city, setCity] = useState(user.city);
+  const [cities, setCities] = useState('');
   const [imagePreview, setImagePreview] = useState();
   const [imgUrl, setImgUrl] = useState('')
-	const [showModalSuccess, setShowModalSuccess] = useState(false);
-	const [showModalFailed, setShowModalFailed] = useState(false);
-	const [title, setTitle] = useState(false);
-	const [mainText, setMainText] = useState(false);
-	const [buttonText, setButtonText] = useState(false);
-	const [helpModal, setHelpModal] = useState(false);
+  const [showModalSuccess, setShowModalSuccess] = useState(false);
+  const [showModalFailed, setShowModalFailed] = useState(false);
+  const [title, setTitle] = useState(false);
+  const [mainText, setMainText] = useState(false);
+  const [buttonText, setButtonText] = useState(false);
+  const [helpModal, setHelpModal] = useState(false);
   const isMobile = window.innerWidth < 500;
-	const api = useApi();
+  const api = useApi();
 
   async function showCity(stateId, cityId) {
-		const response = await api.showCities(stateId);
-		if (response && response.status === 200) {
-      await response.data.forEach(function(item,i){
-        if(item.id === cityId){
+    const response = await api.showCities(stateId);
+    if (response && response.status === 200) {
+      await response.data.forEach(function (item, i) {
+        if (item.id === cityId) {
           response.data.splice(i, 1);
           response.data.unshift(item);
         }
       });
-			setCities(response.data)
-		}
-	}
+      setCities(response.data)
+    }
+  }
 
   async function updateProfilePicture() {
-		const response = await api.updatePicture(imgUrl);
-		if (response && response.status === 200) {
+    const response = await api.updatePicture(imgUrl);
+    if (response && response.status === 200) {
       setShowModalSuccess(true)
-		}
-	}
+    }
+  }
 
   useEffect(() => {
     async function showState(stateId) {
       const response = await api.showStates();
       if (response && response.status === 200) {
-        await response.data.forEach(function(item,i){
-          if(item.id === stateId){
+        await response.data.forEach(function (item, i) {
+          if (item.id === stateId) {
             response.data.splice(i, 1);
             response.data.unshift(item);
           }
@@ -74,11 +81,11 @@ export function Profile({ user }) {
     }
 
     showStateSelected();
-  },[]);
+  }, []);
 
 
   async function putUserInfo() {
-		const response = await api.putUserInfo(email, name, birthDate, imgUrl, details, city);
+    const response = await api.putUserInfo(email, name, birthDate, imgUrl, details, city);
     if (response && response.status === 200) {
       setShowModalSuccess(true)
       setTitle('Informações alteradas!')
@@ -87,36 +94,36 @@ export function Profile({ user }) {
     } else {
       setShowModalFailed(true)
     }
-	}
+  }
 
-	function handleSubmit(event) {
-		event.preventDefault();
-		putUserInfo();
-	}
+  function handleSubmit(event) {
+    event.preventDefault();
+    putUserInfo();
+  }
 
-	function onChangeName(event) {
-		setName(event.target.value);
-	}
+  function onChangeName(event) {
+    setName(event.target.value);
+  }
 
-	function onChangeEmail(event) {
-		setEmail(event.target.value);
-	}
+  function onChangeEmail(event) {
+    setEmail(event.target.value);
+  }
 
   function onChangeState(event) {
     showCity(event.target.value);
-	}
+  }
 
   function onChangeDetails(event) {
-		setDetails(event.target.value);
-	}
+    setDetails(event.target.value);
+  }
 
   function onChangeCity(event) {
     setCity(event.target.value);
-	}
+  }
 
-	function onChangeBirthDate(event) {
-		setBirthDate(event.target.value);
-	}
+  function onChangeBirthDate(event) {
+    setBirthDate(event.target.value);
+  }
 
   async function addPhoto(event) {
     let file = event.target.files[0];
@@ -136,37 +143,38 @@ export function Profile({ user }) {
     } else {
       setShowModalFailed(true)
     }
-	}
+  }
 
   function closeModal() {
-		setShowModalSuccess(false);
-		setShowModalFailed(false);
+    setShowModalSuccess(false);
+    setShowModalFailed(false);
     setHelpModal(false);
-	}
+  }
 
 
   function handleHelp() {
     setHelpModal(!helpModal)
   }
 
-	return (
+  return (
     <>
-      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
-			<ModalBox
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
+                        carrouselImages={[ajudaPerfil_1, ajudaPerfil_2, ajudaPerfil_3, ajudaPerfil_4, ajudaPerfil_5, ajudaPerfil_6]}/>
+      <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
         title={title}
         mainText={mainText}
-				buttonText={buttonText}
-				buttonClass='modal-main__button--success'
+        buttonText={buttonText}
+        buttonClass='modal-main__button--success'
       />
-			<ModalBox
+      <ModalBox
         show={showModalFailed}
         handleClose={() => closeModal()}
         title='Tivemos um problema!'
         mainText='Tivemos um problema, tente novamente.'
-				buttonText='Cadastro não realizado!'
-				buttonClass='modal-main__button--danger'
+        buttonText='Cadastro não realizado!'
+        buttonClass='modal-main__button--danger'
       />
       <div className='profile-container'>
         <div className='profile-wrapper'>
@@ -174,75 +182,87 @@ export function Profile({ user }) {
             <div className='profile-wrapper__layout'>
               <div className='profile-wrapper__inputs'>
                 <h1 className='profile-title'>Minhas informações</h1>
-                {isMobile ? <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
+                {isMobile ?
+                  <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
                 {isMobile
-                ?
+                  ?
                   imagePreview || user.imgUrl
-                  ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
-                  : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
-                : null
+                    ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview}
+                           alt='Foto do usuário'/>
+                    : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário'/>
+                  : null
                 }
                 <label className='profile-wrapper__input-password'>Nome</label>
-                <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input' onChange={onChangeName} value={name}></input>
+                <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input'
+                       onChange={onChangeName} value={name}></input>
                 <label className='profile-wrapper__input-password'>Email</label>
-                <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='profile-wrapper__input' onChange={onChangeEmail} value={email}></input>
+                <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='profile-wrapper__input'
+                       onChange={onChangeEmail} value={email}></input>
                 <label className='profile-wrapper__input-password'>Data de nascimento</label>
-                <input type='date' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input' onChange={onChangeBirthDate} value={birthDate}></input>
+                <input type='date' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input'
+                       onChange={onChangeBirthDate} value={birthDate}></input>
                 <label className='profile-wrapper__input-password'>Estado</label>
                 <select onClick={onChangeState} className='profile-wrapper__input profile-wrapper__input--select'>
-                  {states && states.map(state => <option key={state.id} value={state.id} selected={state.id === states[0].id}>{state.name}</option>)}
+                  {states && states.map(state => <option key={state.id} value={state.id}
+                                                         selected={state.id === states[0].id}>{state.name}</option>)}
                 </select>
                 <label className='profile-wrapper__input-password'>Cidade</label>
-                <select onClick={onChangeCity} className='profile-wrapper__input profile-wrapper__input--select' disabled={!cities}>{cities && cities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}</select>
+                <select onClick={onChangeCity} className='profile-wrapper__input profile-wrapper__input--select'
+                        disabled={!cities}>{cities && cities.map(city => <option key={city.id}
+                                                                                 value={city.id}>{city.name}</option>)}</select>
                 <label className='profile-wrapper__input-password'>Detalhes</label>
-                <textarea type='text' placeholder='Fale sobre você' className='profile-wrapper__input profile-wrapper__input--area' onChange={onChangeDetails} value={details}></textarea>
+                <textarea type='text' placeholder='Fale sobre você'
+                          className='profile-wrapper__input profile-wrapper__input--area' onChange={onChangeDetails}
+                          value={details}></textarea>
               </div>
             </div>
 
-              <div className='profile-wrapper__layout'>
-                <div className='profile-wrapper__editor'>
+            <div className='profile-wrapper__layout'>
+              <div className='profile-wrapper__editor'>
                 {!isMobile
-                ?
-                    imagePreview || user.imgUrl
-                    ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview} alt='Foto do usuário' />
-                    : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário' />
-                :
-                null
+                  ?
+                  imagePreview || user.imgUrl
+                    ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview}
+                           alt='Foto do usuário'/>
+                    : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário'/>
+                  :
+                  null
                 }
-                  <div className='profile-submit__container'>
-                    <button className='profile-submit__button profile-submit__button--image'>
-                      Selecionar uma nova foto
-                    </button>
-                    <input
-                      accept="image/*"
-                      id="icon-button-file"
-                      type="file"
-                      className="profile-submit__input"
-                      onChange={addPhoto}
-                    />
-                  </div>
-                </div>
-
-                <div className='profile-wrapper__editor'>
-                  <button className='profile-submit__button' onClick={handleSubmit}>
-                    Registrar&nbsp;&nbsp;
-                    <img src={register} />
+                <div className='profile-submit__container'>
+                  <button className='profile-submit__button profile-submit__button--image'>
+                    Selecionar uma nova foto
                   </button>
-
-                  <Link to="/change-password" className='profile-submit__button link'>
-                    Alterar senha&nbsp;&nbsp;
-                    <img src={back} className="back-image-rotate" />
-                  </Link>
-                  <Link to='/home' className='profile-submit__button profile-submit__button--reset link'>
-                    Não desejo mudar nada&nbsp;&nbsp;
-                    <img src={back} />
-                  </Link>
+                  <input
+                    accept="image/*"
+                    id="icon-button-file"
+                    type="file"
+                    className="profile-submit__input"
+                    onChange={addPhoto}
+                  />
                 </div>
               </div>
-              {!isMobile ? <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
+
+              <div className='profile-wrapper__editor'>
+                <button className='profile-submit__button' onClick={handleSubmit}>
+                  Registrar&nbsp;&nbsp;
+                  <img src={register}/>
+                </button>
+
+                <Link to="/change-password" className='profile-submit__button link'>
+                  Alterar senha&nbsp;&nbsp;
+                  <img src={back} className="back-image-rotate"/>
+                </Link>
+                <Link to='/home' className='profile-submit__button profile-submit__button--reset link'>
+                  Não desejo mudar nada&nbsp;&nbsp;
+                  <img src={back}/>
+                </Link>
+              </div>
+            </div>
+            {!isMobile ?
+              <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
           </div>
         </div>
       </div>
     </>
-	);
+  );
 }

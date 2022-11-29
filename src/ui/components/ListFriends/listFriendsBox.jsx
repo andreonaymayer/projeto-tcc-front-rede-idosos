@@ -1,5 +1,5 @@
 import './listFriends.scss';
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import { ModalBox } from '../ModalBox/modalBox';
 import { useState } from 'react';
 import { useApi } from '../../../hooks/api';

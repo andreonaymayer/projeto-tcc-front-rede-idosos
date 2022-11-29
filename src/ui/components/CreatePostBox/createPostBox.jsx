@@ -1,26 +1,31 @@
 /* eslint-disable react/prop-types */
 import './post.scss';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import register from '../../../images/register.svg'
-import { useApi } from '../../../hooks/api';
-import perfil from '../../../images/perfil.jpeg'
-import { Link, useHistory } from 'react-router-dom';
+import {useApi} from '../../../hooks/api';
+import perfil from '../../../images/perfil1.jpeg'
+import {Link, useHistory} from 'react-router-dom';
 import Slider from 'react-slick';
-import { ModalBox } from '../ModalBox/modalBox';
-import { TutorialModalBox } from '../TutorialModalBox/tutorialModalBox';
+import {ModalBox} from '../ModalBox/modalBox';
+import {TutorialModalBox} from '../TutorialModalBox/tutorialModalBox';
+import publicacao_1 from '../../../images/publicacao/publicacao-1.jpg'
+import publicacao_2 from '../../../images/publicacao/publicacao-2.jpg'
+import publicacao_3 from '../../../images/publicacao/publicacao-3.jpg'
+import publicacao_4 from '../../../images/publicacao/publicacao-4.jpg'
+import publicacao_5 from '../../../images/publicacao/publicacao-5.jpg'
 
-export function CreatePostBox({ user }) {
+export function CreatePostBox({user}) {
   const post = JSON.parse(localStorage.getItem('post'))
   const editPost = localStorage.getItem('editPost');
-	const [text, setText] = useState(post ? post.conteudo : '');
-	const [showModalSuccess, setShowModalSuccess] = useState(false);
-	const [showModalFailed, setShowModalFailed] = useState(false);
-	const [isPublished, setIsPublished] = useState(false);
-	const [isEdited, setIsEdited] = useState(false);
-	const [title, setTitle] = useState('Imagem adicionada com sucesso!');
-	const [mainText, setMainText] = useState('Agora você pode adicionar mais imagens ou adicionar algum texto na sua publicação.');
-	const [buttonText, setButtonText] = useState('Imagem adicionada');
-	const [helpModal, setHelpModal] = useState(false);
+  const [text, setText] = useState(post ? post.conteudo : '');
+  const [showModalSuccess, setShowModalSuccess] = useState(false);
+  const [showModalFailed, setShowModalFailed] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
+  const [isEdited, setIsEdited] = useState(false);
+  const [title, setTitle] = useState('Imagem adicionada com sucesso!');
+  const [mainText, setMainText] = useState('Agora você pode adicionar mais imagens ou adicionar algum texto na sua publicação.');
+  const [buttonText, setButtonText] = useState('Imagem adicionada');
+  const [helpModal, setHelpModal] = useState(false);
   const [imagePreview, setImagePreview] = useState(post ? post.midiaUrls : []);
   const date = new Date();
   const day = date.getDate();
@@ -30,11 +35,11 @@ export function CreatePostBox({ user }) {
   const nameOfMonthBR = date.toLocaleString('pt-BR', {
     month: 'long',
   });
-	const api = useApi();
+  const api = useApi();
 
-	function onChangePostText(event) {
-		setText(event.target.value);
-	}
+  function onChangePostText(event) {
+    setText(event.target.value);
+  }
 
   const settings = {
     arrows: true,
@@ -44,7 +49,7 @@ export function CreatePostBox({ user }) {
   };
 
   async function addPhoto(event) {
-		event.preventDefault();
+    event.preventDefault();
     let file = event.target.files[0];
     let image = new FormData();
     image.append('file', file);
@@ -65,7 +70,7 @@ export function CreatePostBox({ user }) {
     } else {
       setShowModalFailed(true)
     }
-	}
+  }
 
   async function createPost() {
     let midiaUrl = []
@@ -86,7 +91,7 @@ export function CreatePostBox({ user }) {
     } else {
       setShowModalFailed(true)
     }
-	}
+  }
 
   async function editPostInfo() {
     let midiaUrl = []
@@ -102,17 +107,17 @@ export function CreatePostBox({ user }) {
     } else {
       setShowModalFailed(true)
     }
-	}
+  }
 
-  function exitPost () {
+  function exitPost() {
     localStorage.removeItem('post');
     localStorage.removeItem('editPost');
   }
 
 
   function closeModal() {
-		setShowModalSuccess(false);
-		setShowModalFailed(false);
+    setShowModalSuccess(false);
+    setShowModalFailed(false);
     setHelpModal(false);
 
     if (isPublished) {
@@ -125,31 +130,32 @@ export function CreatePostBox({ user }) {
       history.push('/home')
       setIsEdited(false)
     }
-	}
+  }
 
   function handleHelp() {
     setHelpModal(!helpModal)
   }
 
 
-	return (
+  return (
     <>
-      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
-			<ModalBox
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
+                        carrouselImages={[publicacao_1, publicacao_2, publicacao_3, publicacao_4, publicacao_5]}/>
+      <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
         title={title}
         mainText={mainText}
-				buttonText={buttonText}
-				buttonClass='modal-main__button--success'
+        buttonText={buttonText}
+        buttonClass='modal-main__button--success'
       />
-			<ModalBox
+      <ModalBox
         show={showModalFailed}
         handleClose={() => closeModal()}
         title='Tivemos um problema!'
         mainText='Tivemos um problema, tente novamente.'
-				buttonText='Publicação não realizada!'
-				buttonClass='modal-main__button--danger'
+        buttonText='Publicação não realizada!'
+        buttonClass='modal-main__button--danger'
       />
       <div className='create-post-container'>
         <div className='create-post-wrapper'>
@@ -164,16 +170,18 @@ export function CreatePostBox({ user }) {
                       Selecionar nova foto
                     </button>
                     <input
-                        accept="image/*"
-                        id="icon-button-file"
-                        type="file"
-                        className="create-post-submit__input"
-                        onChange={addPhoto}
-                        disabled={editPost}
-                      />
+                      accept="image/*"
+                      id="icon-button-file"
+                      type="file"
+                      className="create-post-submit__input"
+                      onChange={addPhoto}
+                      disabled={editPost}
+                    />
                   </div>
                   <label className='create-post-sub-title'>Descrição</label>
-                  <textarea type='text' placeholder='Escreva aqui' className='create-post-wrapper__input create-post-wrapper__input--area' onChange={onChangePostText} value={text}></textarea>
+                  <textarea type='text' placeholder='Escreva aqui'
+                            className='create-post-wrapper__input create-post-wrapper__input--area'
+                            onChange={onChangePostText} value={text}></textarea>
 
                 </div>
               </div>
@@ -192,43 +200,46 @@ export function CreatePostBox({ user }) {
                   </div>
                 </div>
                 {imagePreview.length > 0
-                ?
-                <Slider {...settings}>
-                {
-                  imagePreview.map((image, key) => {
-                    return (
-                      <div className='create-post-profile__added-photo' key={key}>
-                        <img src={image} className='create-post-profile__photo' alt='foto carregada'/>
-                      </div>
-                    )
-                  })
-                }
-                </Slider>
-                : null}
+                  ?
+                  <Slider {...settings}>
+                    {
+                      imagePreview.map((image, key) => {
+                        return (
+                          <div className='create-post-profile__added-photo' key={key}>
+                            <img src={image} className='create-post-profile__photo' alt='foto carregada'/>
+                          </div>
+                        )
+                      })
+                    }
+                  </Slider>
+                  : null}
                 <div className='create-post-profile__text-post'>
                   <label>{text}</label>
                 </div>
               </div>
             </div>
             <div className='create-post-submit__container'>
-              <Link to='/home' className='create-post-submit__button create-post-submit__button--delete link' onClick={exitPost}>
+              <Link to='/home' className='create-post-submit__button create-post-submit__button--delete link'
+                    onClick={exitPost}>
                 {editPost ? 'Cancelar edição' : 'Desistir da publicação'}
               </Link>
               {editPost
-                ? <button className='create-post-submit__button create-post-submit__button--publish' onClick={editPostInfo}>
-                    Alterar publicação&nbsp;&nbsp;
-                    <img src={register} />
-                  </button>
-                : <button className='create-post-submit__button create-post-submit__button--publish' onClick={createPost}>
-                    Registrar&nbsp;&nbsp;
-                    <img src={register} />
-                  </button>
+                ? <button className='create-post-submit__button create-post-submit__button--publish'
+                          onClick={editPostInfo}>
+                  Alterar publicação&nbsp;&nbsp;
+                  <img src={register}/>
+                </button>
+                :
+                <button className='create-post-submit__button create-post-submit__button--publish' onClick={createPost}>
+                  Registrar&nbsp;&nbsp;
+                  <img src={register}/>
+                </button>
               }
             </div>
           </div>
         </div>
       </div>
     </>
-	);
+  );
 }
 

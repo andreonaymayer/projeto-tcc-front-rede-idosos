@@ -1,5 +1,5 @@
 import './searchFriend.scss';
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import { useHistory } from 'react-router-dom';
 import { useApi } from '../../../hooks/api';
 

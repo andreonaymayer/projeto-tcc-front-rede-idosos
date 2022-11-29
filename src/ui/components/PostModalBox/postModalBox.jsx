@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import './postModal.scss';
 import React, { useEffect, useState } from 'react';
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import { useApi } from '../../../hooks/api';
 import Slider from 'react-slick';
+import seta from '../../../images/send.svg'
+
 
 export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRenderPosts }) {
   const isMobile = window.innerWidth < 500;
@@ -60,7 +62,7 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
 
 	return (
     <>
-      <button className='close-post-modal' onClick={handleCloseModalPost}>Fechar exibição da imagem</button>
+      <button className='close-post-modal' onClick={handleCloseModalPost}>Fechar exibição</button>
       <div className='post-modal'>
         {!isMobile
         ?
@@ -148,7 +150,7 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
             </div>
             <div className='post-modal__form'>
               <input className='post-modal__input' type="text" placeholder='Adicione um comentário' onChange={handleText} value={text}/>
-              <button className='post-modal__button' onClick={addComment}> seta </button>
+              <button className='post-modal__button' onClick={addComment}>  <img src={seta} /> </button>
             </div>
           </div>
         </div>
