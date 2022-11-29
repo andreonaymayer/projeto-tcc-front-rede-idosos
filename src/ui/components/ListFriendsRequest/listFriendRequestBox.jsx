@@ -1,5 +1,5 @@
 import './listFriendRequest.scss';
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import { useApi } from '../../../hooks/api';
 import { useHistory } from 'react-router-dom';
 

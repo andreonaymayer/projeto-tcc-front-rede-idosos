@@ -38,11 +38,11 @@ export function TutorialModalBox({
               })
             }
           </Slider>
-        </div>
-        <div className='tutorial-modal-main__info'>
-          <label className='tutorial-modal-main__text'>As setas nas laterais são utilizadas para passar as imagens.</label>
+          <div className='tutorial-modal-main__info'>
+            <label className='tutorial-modal-main__text'>As setas nas laterais são utilizadas para passar as imagens.</label>
 
-          <label className='tutorial-modal-main__text '>Para mais informações <Link to='/help' className='link'> clique aqui</Link></label>
+            <label className='tutorial-modal-main__text '>Para mais informações <Link to='/help' className='link'> clique aqui</Link></label>
+          </div>
         </div>
       </section>
     </div>

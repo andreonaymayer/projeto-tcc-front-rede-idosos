@@ -2,8 +2,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useApi } from '../../../hooks/api';
 import { Header, ListFriendRequestBox, ModalBox, TutorialModalBox } from '../../components';
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import './index.scss'
+import pedidosamizade_1 from '../../../images/pedidosamizade/pedidosamizade-1.jpg'
+import pedidosamizade_2 from '../../../images/pedidosamizade/pedidosamizade-2.jpg'
+import pedidosamizade_3 from '../../../images/pedidosamizade/pedidosamizade-3.jpg'
 
 export function ListFriendsRequestsScreen() {
 	const [requests, setRequests] = useState([]);
@@ -37,7 +40,7 @@ export function ListFriendsRequestsScreen() {
 
 	return (
     <>
-      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[pedidosamizade_1,pedidosamizade_2,pedidosamizade_3]}/>
 			<ModalBox
         show={showModalAdded}
         handleClose={() => closeModal()}

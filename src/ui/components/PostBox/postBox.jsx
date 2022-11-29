@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import './post.scss';
 import React, { useState } from 'react';
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useApi } from '../../../hooks/api';
@@ -95,13 +95,14 @@ export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, hand
           : null
           }
           <div className='post-profile__text-post'>
-            <label>{post.conteudo}</label>
+            <label className='post-profile__text-size'>{post.conteudo}</label>
           </div>
         </div>
         <div className='post-buttons'>
           <button className='post-button' onClick={() => handleReaction(post.id)}>Interessante ({post.reaccoes.length})</button>
           <button className='post-button' onClick={() => handleCommment(post)}>Comentar</button>
-          <button className='post-button'>Compartilhar</button>
+          <button className='post-button' onClick={() => handleCommment(post)}>Expandir</button>
+          {/*<button className='post-button'>Compartilhar</button>*/}
         </div>
       </div>
     </div>

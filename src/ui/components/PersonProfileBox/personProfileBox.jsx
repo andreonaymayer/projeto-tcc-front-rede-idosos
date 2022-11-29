@@ -2,7 +2,7 @@
 import './personProfile.scss';
 import React from 'react';
 import back from '../../../images/back.svg'
-import perfil from '../../../images/perfil.jpeg'
+import perfil from '../../../images/perfil1.jpeg'
 import { Link } from 'react-router-dom';
 
 export function PersonProfileBox({ user }) {
