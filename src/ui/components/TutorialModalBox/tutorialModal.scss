@@ -112,6 +112,14 @@
     font-family: 'Montserrat';
   }
 
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
   &__button {
     border: none;
     width: 60%;
@@ -136,12 +144,6 @@
     &--warning {
       color: #89702E;
       background: #FDF3D1;
-    }
-
-    &__info {
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 

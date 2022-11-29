@@ -11,7 +11,8 @@ import {
   CreatePostScreen,
   SearchFriendsScreen,
   ListFriendsRequestsScreen,
-  ListFriendsScreen
+  ListFriendsScreen,
+  HelpScreen
 } from './ui/screens';
 function App() {
   setTimeout(() => {
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/home" exact>
           <HomeScreen />
+        </Route>
+        <Route path="/help" exact>
+          <HelpScreen />
         </Route>
         <Route path="/reset" exact>
           <ForgotPasswordScreen />

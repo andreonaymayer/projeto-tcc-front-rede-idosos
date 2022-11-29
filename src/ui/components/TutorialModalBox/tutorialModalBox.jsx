@@ -1,6 +1,7 @@
 import './tutorialModal.scss';
 import React from 'react';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 
 export function TutorialModalBox({
   handleClose,
@@ -40,6 +41,8 @@ export function TutorialModalBox({
         </div>
         <div className='tutorial-modal-main__info'>
           <label className='tutorial-modal-main__text'>As setas nas laterais são utilizadas para passar as imagens.</label>
+
+          <label className='tutorial-modal-main__text '>Para mais informações <Link to='/help' className='link'> clique aqui</Link></label>
         </div>
       </section>
     </div>
