@@ -7,6 +7,7 @@ export { PersonProfileBox } from './PersonProfileBox/personProfileBox';
 export { ChangePasswordBox } from './ChangePasswordBox/changePasswordBox';
 export { CreatePostBox } from './CreatePostBox/createPostBox';
 export { ModalBox } from './ModalBox/modalBox';
+export { TutorialModalBox } from './TutorialModalBox/tutorialModalBox';
 export { PostBox } from './PostBox/postBox';
 export { PostModalBox } from './PostModalBox/postModalBox';
 export { SearchFriendBox } from './SearchFriendBox/searchFriendBox';

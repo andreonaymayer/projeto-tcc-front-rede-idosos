@@ -159,6 +159,11 @@
       height: 320px;
     }
   }
+
+  .help-button {
+    margin-top: 10px;
+    margin-bottom: -40px;
+  }
 }
 .create-post-container {
   .slick-slider {
@@ -205,6 +210,11 @@
           width: 100%;
         }
       }
+    }
+
+    .help-button {
+      margin-top: 10px;
+      margin-left: 25px;
     }
   }
 }

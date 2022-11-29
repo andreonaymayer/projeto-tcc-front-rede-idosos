@@ -1,8 +1,6 @@
 import './searchFriend.scss';
 import perfil from '../../../images/perfil.jpeg'
-import { Link, useHistory } from 'react-router-dom';
-import { ModalBox } from '../ModalBox/modalBox';
-import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useApi } from '../../../hooks/api';
 
 export function SearchFriendBox({ profile, setShowModalFailed, setShowModalSuccess }) {

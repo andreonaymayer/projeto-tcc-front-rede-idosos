@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useApi } from '../../../hooks/api';
-import { Header, ListFriendRequestBox, ModalBox } from '../../components';
+import { Header, ListFriendRequestBox, ModalBox, TutorialModalBox } from '../../components';
+import perfil from '../../../images/perfil.jpeg'
 import './index.scss'
 
 export function ListFriendsRequestsScreen() {
@@ -9,6 +10,7 @@ export function ListFriendsRequestsScreen() {
 	const api = useApi();
 	const [showModalAdded, setShowModalAdded] = useState(false);
 	const [showModalDenied, setShowModalDenied] = useState(false);
+	const [helpModal, setHelpModal] = useState(false);
 
   useEffect(() => {
 
@@ -25,10 +27,17 @@ export function ListFriendsRequestsScreen() {
   function closeModal() {
 		setShowModalAdded(false);
 		setShowModalDenied(false);
+    setHelpModal(false);
 	}
+
+  function handleHelp() {
+    setHelpModal(!helpModal)
+  }
+
 
 	return (
     <>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
 			<ModalBox
         show={showModalAdded}
         handleClose={() => closeModal()}
@@ -50,6 +59,7 @@ export function ListFriendsRequestsScreen() {
         <div className='listFriendsRequests__container'>
           <div className='listFriendsRequests__search'>
             <h1>Pedidos de amizade</h1>
+            <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
           </div>
           <div className='listFriendsRequests__results'>
             {requests && requests.length > 0 ? requests.map(request => <ListFriendRequestBox request={request} setShowModalAdded={setShowModalAdded} setShowModalDenied={setShowModalDenied}/>) : <h3>Você não possui nenhuma solicitação pendente!</h3>}

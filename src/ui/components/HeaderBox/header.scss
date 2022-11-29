@@ -53,13 +53,15 @@
     }
 
     .exit-button {
-      background-color: #3478E3;
+      background-color: #4A804E;
       display: flex;
       align-items: center;
     }
 
-    .help-button {
-      background-color: #4A804E;
+    .help-button-header {
+      background-color: #3478E3;
+      display: flex;
+      align-items: center;
       margin-bottom: 10px;
     }
   }

@@ -7,6 +7,7 @@ import perfil from '../../../images/perfil.jpeg'
 import { Link, useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import { ModalBox } from '../ModalBox/modalBox';
+import { TutorialModalBox } from '../TutorialModalBox/tutorialModalBox';
 
 export function CreatePostBox({ user }) {
   const post = JSON.parse(localStorage.getItem('post'))
@@ -19,6 +20,7 @@ export function CreatePostBox({ user }) {
 	const [title, setTitle] = useState('Imagem adicionada com sucesso!');
 	const [mainText, setMainText] = useState('Agora você pode adicionar mais imagens ou adicionar algum texto na sua publicação.');
 	const [buttonText, setButtonText] = useState('Imagem adicionada');
+	const [helpModal, setHelpModal] = useState(false);
   const [imagePreview, setImagePreview] = useState(post ? post.midiaUrls : []);
   const date = new Date();
   const day = date.getDate();
@@ -111,7 +113,7 @@ export function CreatePostBox({ user }) {
   function closeModal() {
 		setShowModalSuccess(false);
 		setShowModalFailed(false);
-
+    setHelpModal(false);
 
     if (isPublished) {
       history.push('/home')
@@ -125,8 +127,14 @@ export function CreatePostBox({ user }) {
     }
 	}
 
+  function handleHelp() {
+    setHelpModal(!helpModal)
+  }
+
+
 	return (
     <>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
 			<ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
@@ -149,6 +157,7 @@ export function CreatePostBox({ user }) {
             <div className='create-post-wrapper__row'>
               <div className='create-post-wrapper__layout'>
                 <div className='create-post-wrapper__inputs'>
+                  <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
                   <h1 className='create-post-title'>Nova publicação</h1>
                   <div className='profile-submit__container'>
                     <button className={selectPictureButton} disabled={editPost}>

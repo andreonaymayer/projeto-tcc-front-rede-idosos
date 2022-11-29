@@ -1,0 +1,169 @@
+.tutorial-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tutorial-modal-main {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background: #E2F1E4;
+  width: 80%;
+  height: 70%;
+  top: 50%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  padding: 50px 0 20px;
+  border-radius: 25px;
+
+  .icon-cursor {
+    cursor: pointer;
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__help {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+    z-index: 10;
+  }
+
+  &__added-photo {
+    display: flex !important;
+    justify-content: center;
+    width: 95% !important;
+    margin: 10px;
+    height: 500px;
+  }
+
+  .slick-prev {
+    left: 55px;
+    z-index: 3;
+  }
+
+  .slick-next {
+    right: 55px;
+    z-index: 3;
+  }
+
+  .slick-next::before, .slick-prev::before {
+    color: black;
+  }
+
+  &__label {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .button-close {
+    height: 35px;
+    width: 80px;
+    border: none;
+    border-radius: 25px;
+    background: #EB4141;
+    color: white;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__cancel-button,
+  &__confirm-button {
+    border: 1px solid #B8BBBF;
+    padding: 10px;
+    min-width: 45%;
+  }
+
+  &__confirm-button {
+    background-color: #000;
+    color: #fff
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Montserrat';
+  }
+
+  &__text {
+    font-size: 20px;
+    font-family: 'Montserrat';
+  }
+
+  &__button {
+    border: none;
+    width: 60%;
+    margin: auto;
+    height: 35px;
+    border-radius: 25px;
+    margin-top: 15px;
+    outline: none;
+    font-weight: 800;
+    font-family: 'Montserrat';
+
+    &--success {
+      color: #2A562A;
+      background: #AEC5B1;
+    }
+
+    &--danger {
+      color: #692326;
+      background: #F3D8DA;
+    }
+
+    &--warning {
+      color: #89702E;
+      background: #FDF3D1;
+    }
+
+    &__info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    margin: auto;
+    left: 50%;
+    height: 50%;
+
+    &__help {
+      margin: 0 30px;
+    }
+
+    &__added-photo {
+      height: 240px;
+    }
+  }
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}

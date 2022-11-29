@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useApi } from '../../../hooks/api';
-import { Header, ListFriendsBox, ModalBox } from '../../components';
+import { Header, ListFriendsBox, ModalBox, TutorialModalBox } from '../../components';
+import perfil from '../../../images/perfil.jpeg'
 import './index.scss'
 
 export function ListFriendsScreen() {
 	const [friends, setFriends] = useState();
 	const [showModalAdded, setShowModalAdded] = useState(false);
 	const [showModalDenied, setShowModalDenied] = useState(false);
+	const [helpModal, setHelpModal] = useState(false);
 	const api = useApi();
 
   useEffect(() => {
@@ -25,10 +27,16 @@ export function ListFriendsScreen() {
   function closeModal() {
 		setShowModalAdded(false);
 		setShowModalDenied(false);
+    setHelpModal(false);
 	}
+
+  function handleHelp() {
+    setHelpModal(!helpModal)
+  }
 
 	return (
     <>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
 			<ModalBox
         show={showModalAdded}
         handleClose={() => closeModal()}
@@ -50,6 +58,7 @@ export function ListFriendsScreen() {
         <div className='listFriends__container'>
           <div className='listFriends__search'>
             <h1>Amizades</h1>
+            <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
           </div>
           <div className='listFriends__results'>
             {friends && friends.length > 0

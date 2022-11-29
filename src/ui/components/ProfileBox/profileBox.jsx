@@ -6,7 +6,7 @@ import register from '../../../images/register.svg'
 import perfil from '../../../images/perfil.jpeg'
 import { Link } from 'react-router-dom';
 import { useApi } from '../../../hooks/api';
-import { ModalBox } from '../index';
+import { ModalBox, TutorialModalBox } from '../index';
 
 export function Profile({ user }) {
 	const [name, setName] = useState(user.name);
@@ -23,6 +23,7 @@ export function Profile({ user }) {
 	const [title, setTitle] = useState(false);
 	const [mainText, setMainText] = useState(false);
 	const [buttonText, setButtonText] = useState(false);
+	const [helpModal, setHelpModal] = useState(false);
   const isMobile = window.innerWidth < 500;
 	const api = useApi();
 
@@ -140,10 +141,17 @@ export function Profile({ user }) {
   function closeModal() {
 		setShowModalSuccess(false);
 		setShowModalFailed(false);
+    setHelpModal(false);
 	}
+
+
+  function handleHelp() {
+    setHelpModal(!helpModal)
+  }
 
 	return (
     <>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
 			<ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
@@ -166,6 +174,7 @@ export function Profile({ user }) {
             <div className='profile-wrapper__layout'>
               <div className='profile-wrapper__inputs'>
                 <h1 className='profile-title'>Minhas informações</h1>
+                {isMobile ? <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
                 {isMobile
                 ?
                   imagePreview || user.imgUrl
@@ -230,6 +239,7 @@ export function Profile({ user }) {
                   </Link>
                 </div>
               </div>
+              {!isMobile ? <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
           </div>
         </div>
       </div>

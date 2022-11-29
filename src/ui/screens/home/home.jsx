@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useApi } from '../../../hooks/api';
-import { Header, ModalBox, PostBox, PostModalBox } from '../../components';
+import { Header, ModalBox, PostBox, PostModalBox, TutorialModalBox } from '../../components';
+import perfil from '../../../images/perfil.jpeg'
 import './index.scss'
 
 export function HomeScreen() {
@@ -10,6 +11,7 @@ export function HomeScreen() {
 	const [showModalFailed, setShowModalFailed] = useState(false);
 	const [renderPosts, setRenderPosts] = useState(false);
 	const [postContent, setPostContent] = useState([]);
+	const [helpModal, setHelpModal] = useState(false);
   const nick = sessionStorage.getItem('nickname');
 	const api = useApi();
 
@@ -37,6 +39,7 @@ export function HomeScreen() {
   function closeModal() {
 		setShowModalSuccess(false);
 		setShowModalFailed(false);
+    setHelpModal(false);
   }
 
   function renderNewPosts() {
@@ -58,7 +61,8 @@ export function HomeScreen() {
 
 	return (
     <>
-      {modalPost && <PostModalBox setModalPost={setModalPost} modalPost={modalPost} post={postContent} setRenderPosts={setRenderPosts} renderPosts={renderPosts}/>}
+      {modalPost && <PostModalBox setHelpModal={setHelpModal} helpModal={helpModal} setModalPost={setModalPost} modalPost={modalPost} post={postContent} setRenderPosts={setRenderPosts} renderPosts={renderPosts}/>}
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
@@ -80,7 +84,7 @@ export function HomeScreen() {
       <div className="home-container__posts">
         <button className='home-container__button' onClick={renderNewPosts}>Procurar novas publicações</button>
         {friendsPosts && friendsPosts.length === 0 && <h3>Você não possui nenhuma publicação para ver!</h3>}
-        {friendsPosts ? friendsPosts.map(post => post.active && <PostBox post={post} handleSoftDelete={handleSoftDelete} isMyPost={post.autor.nick === nick} handleCommment={handleCommment} handleReaction={handleReaction}/>) : null}
+        {friendsPosts ? friendsPosts.map(post => post.active && <PostBox post={post} handleSoftDelete={handleSoftDelete} isMyPost={post.autor.nick === nick} handleCommment={handleCommment} handleReaction={handleReaction} setHelpModal={setHelpModal} helpModal={helpModal} />) : null}
       </div>
     </div>
     </>

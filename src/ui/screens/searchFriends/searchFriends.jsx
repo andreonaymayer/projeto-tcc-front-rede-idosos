@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useApi } from '../../../hooks/api';
-import { Header, ModalBox, SearchFriendBox } from '../../components';
+import perfil from '../../../images/perfil.jpeg'
+import { Header, ModalBox, SearchFriendBox, TutorialModalBox } from '../../components';
 import './index.scss'
 
 export function SearchFriendsScreen() {
@@ -9,6 +10,7 @@ export function SearchFriendsScreen() {
 	const [profiles, setProfiles] = useState('');
 	const [showModalSuccess, setShowModalSuccess] = useState(false);
 	const [showModalFailed, setShowModalFailed] = useState(false);
+	const [helpModal, setHelpModal] = useState(false);
 	const api = useApi();
 
   useEffect(() => {
@@ -28,14 +30,20 @@ export function SearchFriendsScreen() {
 		setSearchText(event.target.value);
 	}
 
-
   function closeModal() {
 		setShowModalSuccess(false);
 		setShowModalFailed(false);
+    setHelpModal(false);
 	}
+
+  function handleHelp() {
+    setHelpModal(!helpModal)
+  }
+
 
 	return (
     <>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[perfil, perfil, perfil]}/>
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
@@ -57,7 +65,10 @@ export function SearchFriendsScreen() {
         <div className='searchFriends__container'>
           <div className='searchFriends__search'>
             <h1>Procurar pessoas</h1>
-            <input type="text" placeholder='Procurar amigos' onChange={handleSearchText} className="searchFriends__input" value={searchText}></input>
+            <div className='searchFriends__help'>
+              <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
+              <input type="text" placeholder='Procurar amigos' onChange={handleSearchText} className="searchFriends__input" value={searchText}></input>
+            </div>
           </div>
           <div className='searchFriends__results'>
             {profiles && profiles.map(profile => <SearchFriendBox profile={profile} setShowModalSuccess={setShowModalSuccess} setShowModalFailed={setShowModalFailed}/>)}

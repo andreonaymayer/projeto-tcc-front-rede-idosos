@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useApi } from '../../../hooks/api';
 
-export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, handleCommment }) {
+export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, handleCommment, setHelpModal, helpModal }) {
   const date = new Date();
   const day = date.getDate();
   const year = date.getFullYear();
@@ -45,6 +45,10 @@ export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, hand
     history.push('profile')
   }
 
+  function handleHelp() {
+    setHelpModal(!helpModal)
+  }
+
 	return (
     <div className='post-wrapper'>
       <div className='post-wrapper__layout'>
@@ -61,14 +65,18 @@ export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, hand
               <label>{day} {nameOfMonthBR} {year}</label>
             </div>
           </div>
-          {isMyPost
-          ?
+
             <div className='post-delete-edit'>
-              <div onClick={() =>  handleSoftDelete(post)}>Excluir</div>
-              <div onClick={handleEditPost}>Editar</div>
+              <button className='help-button' onClick={handleHelp}>Ajuda</button>
+              {isMyPost
+              ?
+                <>
+                  <div onClick={() => handleSoftDelete(post)}>Excluir</div>
+                  <div onClick={handleEditPost}>Editar</div>
+                </>
+              :
+              null}
             </div>
-          :
-          null}
         </div>
         <div className={postInformation}>
           {post.midiaUrls.length > 0

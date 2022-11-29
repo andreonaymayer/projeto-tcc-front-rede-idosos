@@ -33,6 +33,15 @@
     flex-wrap: wrap;
   }
 
+  &__help {
+    display: flex;
+    align-items: center;
+  }
+
+  &__help-button {
+    margin-right: 10px;
+  }
+
   @media screen and (max-width: 480px) {
    &__container {
     width: 75%;
