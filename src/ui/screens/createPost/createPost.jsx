@@ -15,7 +15,7 @@ export function CreatePostScreen() {
     }
 
     getUserInfo();
-  }, []);
+  }, [api]);
 
 	return (
 		<>

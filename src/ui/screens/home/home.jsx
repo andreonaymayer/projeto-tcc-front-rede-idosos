@@ -35,7 +35,7 @@ export function HomeScreen() {
     }
 
     getFeed();
-  }, [showModalSuccess, renderPosts]);
+  }, [showModalSuccess, renderPosts, api]);
 
   async function handleSoftDelete(post) {
     const response = await api.softDeletePost(post.id);

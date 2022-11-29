@@ -25,7 +25,7 @@ export function ListFriendsRequestsScreen() {
 		}
 
     showSolicitations();
-  },[showModalAdded, showModalDenied]);
+  },[api, showModalAdded, showModalDenied]);
 
   function closeModal() {
 		setShowModalAdded(false);

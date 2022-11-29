@@ -27,7 +27,7 @@ export function SearchFriendsScreen() {
     }
 
     showProfiles();
-  }, [searchText]);
+  }, [api, searchText]);
 
 
   function handleSearchText(event) {

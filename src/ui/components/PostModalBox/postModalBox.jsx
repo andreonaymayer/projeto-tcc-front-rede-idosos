@@ -31,7 +31,7 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
     }
 
     getPost();
-  }, [renderPosts]);
+  }, [api, post, renderPosts]);
 
   const settings = {
     arrows: true,

@@ -18,7 +18,7 @@ export function ProfileScreen() {
     }
 
     getUserInfo();
-  }, []);
+  }, [api]);
 
   function renderProfileLogged() {
     if (!!user && !isNotYourProfile) {

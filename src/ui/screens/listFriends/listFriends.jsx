@@ -25,7 +25,7 @@ export function ListFriendsScreen() {
 		}
 
     showFriends();
-  },[showModalAdded]);
+  },[api, showModalAdded]);
 
   function closeModal() {
 		setShowModalAdded(false);
