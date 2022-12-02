@@ -14,6 +14,24 @@
     height: 50px;
     margin: 20px 0 0;
     font-size: 30px;
+    align-items: center;
+  }
+
+  &__none-posts {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__svg {
+    margin: auto;
+    background: transparent;
+    display: block;
+    margin-top: 20px;
+    display: none;
+  }
+
+  &__show-svg {
+    display: flex;
   }
 }
 

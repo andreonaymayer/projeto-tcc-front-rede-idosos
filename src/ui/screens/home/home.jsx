@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useApi} from '../../../hooks/api';
-import {Header, ModalBox, PostBox, PostModalBox, TutorialModalBox} from '../../components';
+import {Chat, Header, ModalBox, PostBox, PostModalBox, TutorialModalBox} from '../../components';
 import perfil from '../../../images/perfil1.jpeg'
 import './index.scss'
 import feed_1 from '../../../images/feed/feed-01.jpg'
@@ -23,6 +23,7 @@ export function HomeScreen() {
   const [renderPosts, setRenderPosts] = useState(false);
   const [postContent, setPostContent] = useState([]);
   const [helpModal, setHelpModal] = useState(false);
+  const [svgClasses, setSvgClasses] = useState('home-container__svg');
   const nick = sessionStorage.getItem('nickname');
   const api = useApi();
 
@@ -55,6 +56,11 @@ export function HomeScreen() {
 
   function renderNewPosts() {
     setRenderPosts(!renderPosts)
+    setSvgClasses('home-container__show-svg home-container__svg')
+
+    setTimeout(() => {
+      setSvgClasses('home-container__svg')
+    }, 2000);
   }
 
   async function handleReaction(postId) {
@@ -72,6 +78,7 @@ export function HomeScreen() {
 
   return (
     <>
+      <Chat />
       {modalPost && <PostModalBox setHelpModal={setHelpModal} helpModal={helpModal} setModalPost={setModalPost}
                                   modalPost={modalPost} post={postContent} setRenderPosts={setRenderPosts}
                                   renderPosts={renderPosts}/>}
@@ -97,7 +104,14 @@ export function HomeScreen() {
         <Header/>
         <div className="home-container__posts">
           <button className='home-container__button' onClick={renderNewPosts}>Procurar novas publicações</button>
-          {friendsPosts && friendsPosts.length === 0 && <h3>Você não possui nenhuma publicação para ver!</h3>}
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class={svgClasses} width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+              <circle cx="50" cy="50" fill="none" stroke="#1d0e0b" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1" />
+              </circle>
+            </svg>
+          </div>
+          {friendsPosts && friendsPosts.length === 0 && <h3 lassName='home-container__none-posts'>Você não possui nenhuma publicação para ver!</h3>}
           {friendsPosts ? friendsPosts.map(post => post.active &&
             <PostBox post={post} handleSoftDelete={handleSoftDelete} isMyPost={post.autor.nick === nick}
                      handleCommment={handleCommment} handleReaction={handleReaction} setHelpModal={setHelpModal}

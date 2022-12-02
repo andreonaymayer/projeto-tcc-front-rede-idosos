@@ -1,0 +1,32 @@
+.chat-container {
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  position: fixed;
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  .chat-button {
+    width: 80%;
+    background-color: #EB4141;
+    height: 45px;
+    font-size: 21px;
+    color: white;
+    margin: auto;
+    border: none;
+
+    &--open {
+      background-color: #4A804E;
+    }
+  }
+
+  .chat-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+}

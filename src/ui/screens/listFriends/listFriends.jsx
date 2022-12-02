@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useApi } from '../../../hooks/api';
-import { Header, ListFriendsBox, ModalBox, TutorialModalBox } from '../../components';
+import { Chat, Header, ListFriendsBox, ModalBox, TutorialModalBox } from '../../components';
 import perfil from '../../../images/perfil1.jpeg'
 import './index.scss'
 import amizade_1 from '../../../images/amizade/amizade-1.jpg'
@@ -39,6 +39,7 @@ export function ListFriendsScreen() {
 
 	return (
     <>
+      <Chat />
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[amizade_1,amizade_2,amizade_3]}/>
 			<ModalBox
         show={showModalAdded}

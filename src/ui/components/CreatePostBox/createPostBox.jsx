@@ -13,6 +13,7 @@ import publicacao_2 from '../../../images/publicacao/publicacao-2.jpg'
 import publicacao_3 from '../../../images/publicacao/publicacao-3.jpg'
 import publicacao_4 from '../../../images/publicacao/publicacao-4.jpg'
 import publicacao_5 from '../../../images/publicacao/publicacao-5.jpg'
+import { Chat } from '../Chat/chat';
 
 export function CreatePostBox({user}) {
   const post = JSON.parse(localStorage.getItem('post'))
@@ -139,6 +140,7 @@ export function CreatePostBox({user}) {
 
   return (
     <>
+      <Chat />
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
                         carrouselImages={[publicacao_1, publicacao_2, publicacao_3, publicacao_4, publicacao_5]}/>
       <ModalBox

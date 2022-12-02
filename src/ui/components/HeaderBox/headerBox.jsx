@@ -2,7 +2,7 @@ import './header.scss';
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {TutorialModalBox} from '../TutorialModalBox/tutorialModalBox';
-import perfil from '../../../images/perfil1.jpeg'
+import hamburger from '../../../images/hamburger.png'
 import logo from '../../../images/rede.png'
 import principal_1 from '../../../images/principal/principal-1.jpg'
 import principal_2 from '../../../images/principal/principal-2.jpg'
@@ -48,16 +48,23 @@ export function Header() {
     <>
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[principal_1,principal_2,principal_3]}/>
       <div className='header-container header-container-closed'>
-        {isMobile ? <div onClick={() => openHeader(true)} class="header-closed">Menu</div> : null}
+        {isMobile ? <div onClick={() => openHeader(true)} class="header-closed"><div>Menu</div><img className="header-container__hamburger" src={hamburger} alt='hamburguer'/></div> : null}
         <div className={showHeader}>
           <div className='header-group'>
             <div>
-              <Link to='/home'>
-                <img src={logo} className='header-group__logo'/>
-              </Link>
-              <div className='header-group__title' onClick={() => openHeader(false)}>
-                Menu
-              </div>
+              {!isMobile
+              ?
+                <Link to='/home'>
+                  <img src={logo} className='header-group__logo'/>
+                </Link>
+              : null}
+
+              {isMobile
+              ?
+                <Link to='/home' onClick={() => openHeader(false)}>
+                  <img src={logo} className='header-group__logo'/>
+                </Link>
+              : null}
             </div>
             <div className='header-group__links'>
               <Link className='link header-group__link' to='/profile'>Meu perfil</Link>

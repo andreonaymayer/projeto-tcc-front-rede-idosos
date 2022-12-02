@@ -1,8 +1,9 @@
-import { ChangePasswordBox } from '../../components';
+import { ChangePasswordBox, Chat } from '../../components';
 
 export function ChangePassword() {
 	return (
 		<>
+      <Chat />
 			<ChangePasswordBox />
 		</>
 	);

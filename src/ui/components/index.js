@@ -2,6 +2,7 @@ export { LoginBox } from './LoginBox/loginBox';
 export { RegisterBox } from './RegisterBox/registerBox';
 export { ForgotPassword } from './ForgotPasswordBox/forgotPasswordBox';
 export { Header } from './HeaderBox/headerBox';
+export { Chat } from './Chat/chat';
 export { Profile } from './ProfileBox/profileBox';
 export { PersonProfileBox } from './PersonProfileBox/personProfileBox';
 export { ChangePasswordBox } from './ChangePasswordBox/changePasswordBox';

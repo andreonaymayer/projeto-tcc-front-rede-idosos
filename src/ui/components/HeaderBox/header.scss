@@ -77,6 +77,10 @@
     width: 50%;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    &__hamburger {
+      height: 40px;
+    }
   }
 
   .display-none {
@@ -88,7 +92,7 @@
   }
 
   .header-closed {
-    width: 100%;
+    width: 90%;
     height: 50px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: white;
@@ -96,6 +100,7 @@
     align-items: center;
     padding-left: 15px;
     font-weight: 900;
+    justify-content: space-between;
   }
 
   .header-container-closed {

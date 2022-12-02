@@ -102,7 +102,7 @@ export function RegisterBox() {
         handleClose={() => closeModal(true)}
         title='Cadastro realizado!'
         mainText='O seu cadastro foi realizado com sucesso.'
-				buttonText='Cadastro bem sucessido!'
+				buttonText='Cadastro bem sucedido!'
 				buttonClass='modal-main__button--success'
       />
 			<ModalBox
@@ -118,7 +118,7 @@ export function RegisterBox() {
 					<h1 className='register-title'>Que bom que chegou aqui!</h1>
 					<h2 className='register-subtitle'>
 						Precisamos de algumas informações para criar o seu perfil, <br/> preencha os campos abaixo.
-						Ao registrar-se estaá pronto para usar nossa rede.
+						Ao registrar-se está pronto para usar nossa rede.
 					</h2>
 				</div>
 				<div className='register-wrapper'>
@@ -139,7 +139,7 @@ export function RegisterBox() {
 								<select onClick={onChangeState} className='register-wrapper__input register-wrapper__input--select'>{states ? states.map(state => <option key={state.id} value={state.id}>{state.name}</option>) : <option>Seleciona o seu estado</option>}</select>
 								<label className='register-wrapper__input-password'>Cidade</label>
 								<select onClick={onChangeCity} className='register-wrapper__input register-wrapper__input--select' disabled={!cities}>{cities && cities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}</select>
-								<label className='register-wrapper__input-password'>Detalhes</label>
+								<label className='register-wrapper__input-password'>Bio</label>
 								<textarea type='text' placeholder='Fale sobre você' className='register-wrapper__input register-wrapper__input--area' onChange={onChangeDetails}></textarea>
 							</div>
 						</div>

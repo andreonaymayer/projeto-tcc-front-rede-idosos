@@ -30,7 +30,9 @@ export function SearchFriendBox({ profile, setShowModalFailed, setShowModalSucce
       }
       <h2>{profile.name}</h2>
       <button className="searchResult__button" onClick={handleGoToUserProfile}>Ver mais</button>
-      <button className="searchResult__button" onClick={handleAddAsFriend}>Adicionar</button>
+      {!profile.friends && !profile.solicitacao ? <button className="searchResult__button" onClick={handleAddAsFriend}>Adicionar</button> : null}
+      {profile.friends && !profile.solicitacao ? <button className="searchResult__button">Amigo</button> : null}
+      {!profile.friends && profile.solicitacao ? <button className="searchResult__button">Solicitação pendente</button> : null}
     </div>
 	);
 }

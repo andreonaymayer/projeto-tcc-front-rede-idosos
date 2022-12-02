@@ -1,10 +1,11 @@
 import React from 'react';
-import { Header } from '../../components';
+import { Chat, Header } from '../../components';
 import './index.scss'
 
 export function HelpScreen() {
 	return (
     <div className="help-container">
+      <Chat />
       <Header />
       <div className="help-container__info">
         {/* sempre classname para adicionar uma classe, adiciona a classe no arquivo index.scss dentro da pasta help mesmo

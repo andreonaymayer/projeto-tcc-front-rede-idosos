@@ -97,7 +97,6 @@ export function useApi() {
     email,
     name,
     birthDate,
-    imgUrl,
     details,
     city
   ) {

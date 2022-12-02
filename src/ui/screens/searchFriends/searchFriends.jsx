@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {useState} from 'react';
 import {useApi} from '../../../hooks/api';
 import perfil from '../../../images/perfil1.jpeg'
-import {Header, ModalBox, SearchFriendBox, TutorialModalBox} from '../../components';
+import {Chat, Header, ModalBox, SearchFriendBox, TutorialModalBox} from '../../components';
 import './index.scss'
 import procurar_1 from '../../../images/procurarpessoas/procurarpessoas-1.jpg'
 import procurar_2 from '../../../images/procurarpessoas/procurarpessoas-2.jpg'
@@ -47,6 +47,7 @@ export function SearchFriendsScreen() {
 
   return (
     <>
+      <Chat />
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[procurar_1,
         procurar_2,
         procurar_3,

@@ -4,6 +4,7 @@ import React from 'react';
 import back from '../../../images/back.svg'
 import perfil from '../../../images/perfil1.jpeg'
 import { Link } from 'react-router-dom';
+import { Chat } from '../Chat/chat';
 
 export function PersonProfileBox({ user }) {
   const isMobile = window.innerWidth < 500;
@@ -14,6 +15,7 @@ export function PersonProfileBox({ user }) {
 
 	return (
     <>
+      <Chat />
       <div className='person-profile-container'>
         <div className='person-profile-wrapper'>
           <div className='person-profile-wrapper__enter'>
@@ -40,7 +42,7 @@ export function PersonProfileBox({ user }) {
                   </div>
 
                   <div className='person-profile-wrapper__div-label'>
-                    <label className='person-profile-wrapper__input-password'>Detalhes: {user.details}</label>
+                    <label className='person-profile-wrapper__input-password'>Bio: {user.details}</label>
                   </div>
                 </div>
               </div>

@@ -71,17 +71,17 @@ export function LoginBox() {
                 <img src={submit} />
               </button>
 
-              <button className='login-submit__button login-submit__button--reset'>
+              <Link className='login-submit__button login-submit__button--reset link'  to='/reset' >
                 Não lembro minha senha&nbsp;&nbsp;
                 <img src={help} />
-              </button>
+              </Link>
             </div>
           </div>
           <div className='login-wrapper__register'>
             <label className='login-wrapper__title'>Não tem cadastro? <br/> Clique no botão abaixo <br/> para se registrar.</label>
             <Link className='login-submit__button login-submit__button--register link' to={`/register`}>
               Registrar&nbsp;&nbsp;
-              <img src={register} />
+              <img src={register}/>
             </Link>
           </div>
         </div>

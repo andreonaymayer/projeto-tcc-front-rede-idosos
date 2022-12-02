@@ -6,7 +6,7 @@ import register from '../../../images/register.svg'
 import perfil from '../../../images/perfil1.jpeg'
 import {Link} from 'react-router-dom';
 import {useApi} from '../../../hooks/api';
-import {ModalBox, TutorialModalBox} from '../index';
+import {ModalBox, TutorialModalBox, Chat} from '../index';
 
 import ajudaPerfil_1 from '../../../images/perfil/perfil-1.jpg'
 import ajudaPerfil_2 from '../../../images/perfil/perfil-2.jpg'
@@ -24,7 +24,6 @@ export function Profile({user}) {
   const [city, setCity] = useState(user.city);
   const [cities, setCities] = useState('');
   const [imagePreview, setImagePreview] = useState();
-  const [imgUrl, setImgUrl] = useState('')
   const [showModalSuccess, setShowModalSuccess] = useState(false);
   const [showModalFailed, setShowModalFailed] = useState(false);
   const [title, setTitle] = useState(false);
@@ -47,7 +46,7 @@ export function Profile({user}) {
     }
   }
 
-  async function updateProfilePicture() {
+  async function updateProfilePicture(imgUrl) {
     const response = await api.updatePicture(imgUrl);
     if (response && response.status === 200) {
       setShowModalSuccess(true)
@@ -65,8 +64,6 @@ export function Profile({user}) {
           }
         });
         setStates(response.data)
-      } else {
-        alert("deu ruim")
       }
     }
 
@@ -75,8 +72,6 @@ export function Profile({user}) {
       if (response && response.status === 200) {
         showState(response.data.state.id);
         showCity(response.data.state.id, response.data.city.id);
-      } else {
-        alert("deu ruim")
       }
     }
 
@@ -85,7 +80,7 @@ export function Profile({user}) {
 
 
   async function putUserInfo() {
-    const response = await api.putUserInfo(email, name, birthDate, imgUrl, details, city);
+    const response = await api.putUserInfo(email, name, birthDate, details, city);
     if (response && response.status === 200) {
       setShowModalSuccess(true)
       setTitle('Informações alteradas!')
@@ -132,8 +127,7 @@ export function Profile({user}) {
     event.target.value = null;
     const response = await api.profileImage(image);
     setImagePreview(response.data);
-    setImgUrl(response.data)
-    updateProfilePicture();
+    updateProfilePicture(response.data);
 
     if (response.status === 200) {
       setShowModalSuccess(true)
@@ -158,6 +152,7 @@ export function Profile({user}) {
 
   return (
     <>
+      <Chat />
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
                         carrouselImages={[ajudaPerfil_1, ajudaPerfil_2, ajudaPerfil_3, ajudaPerfil_4, ajudaPerfil_5, ajudaPerfil_6]}/>
       <ModalBox
@@ -187,7 +182,7 @@ export function Profile({user}) {
                 {isMobile
                   ?
                   imagePreview || user.imgUrl
-                    ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview}
+                    ? <img className='profile-wrapper__image' src={imagePreview ? imagePreview : user.imgUrl}
                            alt='Foto do usuário'/>
                     : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário'/>
                   : null
@@ -210,7 +205,7 @@ export function Profile({user}) {
                 <select onClick={onChangeCity} className='profile-wrapper__input profile-wrapper__input--select'
                         disabled={!cities}>{cities && cities.map(city => <option key={city.id}
                                                                                  value={city.id}>{city.name}</option>)}</select>
-                <label className='profile-wrapper__input-password'>Detalhes</label>
+                <label className='profile-wrapper__input-password'>Bio</label>
                 <textarea type='text' placeholder='Fale sobre você'
                           className='profile-wrapper__input profile-wrapper__input--area' onChange={onChangeDetails}
                           value={details}></textarea>
@@ -222,7 +217,7 @@ export function Profile({user}) {
                 {!isMobile
                   ?
                   imagePreview || user.imgUrl
-                    ? <img className='profile-wrapper__image' src={user.imgUrl ? user.imgUrl : imagePreview}
+                    ? <img className='profile-wrapper__image' src={imagePreview ? imagePreview : user.imgUrl}
                            alt='Foto do usuário'/>
                     : <img className='profile-wrapper__image' src={perfil} alt='Foto do usuário'/>
                   :
