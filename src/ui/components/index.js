@@ -3,6 +3,7 @@ export { RegisterBox } from './RegisterBox/registerBox';
 export { ForgotPassword } from './ForgotPasswordBox/forgotPasswordBox';
 export { Header } from './HeaderBox/headerBox';
 export { Chat } from './Chat/chat';
+export { ChatWithPerson } from './ChatWithPerson/chatWithPerson';
 export { Profile } from './ProfileBox/profileBox';
 export { PersonProfileBox } from './PersonProfileBox/personProfileBox';
 export { ChangePasswordBox } from './ChangePasswordBox/changePasswordBox';

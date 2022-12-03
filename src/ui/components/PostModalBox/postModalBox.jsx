@@ -26,7 +26,6 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
       const response = await api.getPostComments(post.id);
       if (response.status === 200) {
         post.comentarios = response.data
-        console.log('teste', response.data)
       }
     }
 

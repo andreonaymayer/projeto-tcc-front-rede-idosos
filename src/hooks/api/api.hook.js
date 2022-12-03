@@ -309,6 +309,42 @@ export function useApi() {
 		}
 	}
 
+  async function startChat(nick) {
+		try {
+			const response = await axios.post(`/v1/chat/new-chat/${nick}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function getChatMessages(chatId) {
+		try {
+			const response = await axios.get(`/v1/chat/get/${chatId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function sendMessage(chatId, mensagem) {
+		try {
+			const response = await axios.post(`/v1/chat/send-msg/${chatId}`, {mensagem});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function checkForNewMessages(chatId) {
+		try {
+			const response = await axios.get(`/v1/chat/check/${chatId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
 
 	return useCallback(
 		{
@@ -340,7 +376,11 @@ export function useApi() {
       setReaction,
       updatePicture,
       addComment,
-      getPostComments
+      getPostComments,
+      startChat,
+      getChatMessages,
+      sendMessage,
+      checkForNewMessages
 		},
 		[]
 	);
