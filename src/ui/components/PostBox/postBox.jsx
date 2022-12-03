@@ -10,11 +10,11 @@ export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, hand
   const date = new Date();
   const day = date.getDate();
   const year = date.getFullYear();
-  const history = useHistory();
-	const api = useApi();
   const nameOfMonthBR = date.toLocaleString('pt-BR', {
     month: 'long',
   });
+  const history = useHistory();
+	const api = useApi();
   const postInformation = post.midiaUrls.length == 0 ? 'post-information justifyStart' : 'post-information'
 
   const settings = {

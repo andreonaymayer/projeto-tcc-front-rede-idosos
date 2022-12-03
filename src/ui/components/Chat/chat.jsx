@@ -58,7 +58,7 @@ export function Chat() {
   async function newChat(nick) {
     const response = await api.startChat(nick);
     if (response && response.status === 200) {
-      setChatId(response.data)
+      setChatId(response.data.id)
       setChatOpened(true)
     } else if (response.status === 400) {
       const chatIdRegex = response.data.message.substr([response.data.message.length - 6], response.data.message.length);

@@ -309,6 +309,15 @@ export function useApi() {
 		}
 	}
 
+  async function deleteComment(comentarioId) {
+		try {
+			const response = await axios.delete(`/v1/comment/delete/${comentarioId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
   async function startChat(nick) {
 		try {
 			const response = await axios.post(`/v1/chat/new-chat/${nick}`);
@@ -380,7 +389,8 @@ export function useApi() {
       startChat,
       getChatMessages,
       sendMessage,
-      checkForNewMessages
+      checkForNewMessages,
+      deleteComment
 		},
 		[]
 	);

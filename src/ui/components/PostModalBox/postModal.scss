@@ -109,6 +109,22 @@
 
   &__wrapper {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__flex {
+    display: flex;
+  }
+
+  &__delete-comment {
+    background: red;
+    color: white;
+    height: 25px;
+    width: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
 
   .slick-slider {

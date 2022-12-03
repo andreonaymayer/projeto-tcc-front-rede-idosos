@@ -23,12 +23,12 @@ export function ChatWithPerson({ closeChat, chatMessages, chatId, getChatMessage
   }
 
   useEffect(() => {
+    console.log(chatId)
     const interval = setInterval(() => {
       async function checkMessages() {
         const response = await api.checkForNewMessages(chatId);
         if (response && response.status === 200) {
-          console.log(chatMessages.length, response.data)
-          if(chatMessages && chatMessages.length < response.data) {
+          if (chatMessages && chatMessages.length < response.data) {
             getChatMessages(chatId)
           }
         }

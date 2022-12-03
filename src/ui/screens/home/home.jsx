@@ -75,7 +75,6 @@ export function HomeScreen() {
     setPostContent(post)
   }
 
-
   return (
     <>
       <Chat />

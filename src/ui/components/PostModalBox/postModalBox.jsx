@@ -8,12 +8,20 @@ import seta from '../../../images/send.svg'
 
 
 export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRenderPosts }) {
+  const nick = sessionStorage.getItem('nickname');
+  console.log(post)
   const isMobile = window.innerWidth < 500;
   const [text, setText] = useState();
 	const api = useApi();
   const body = document.getElementsByTagName('body')
   const root = document.getElementById('root')
   const thereIsImagesClass = post.midiaUrls.length > 0 ? 'post-modal__container-image' : 'post-modal__container-image post-modal__container-image--empty'
+  const date = new Date();
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const nameOfMonthBR = date.toLocaleString('pt-BR', {
+    month: 'long',
+  });
 
   if (modalPost) {
     body[0].classList.add('overflow-hidden-body')
@@ -56,7 +64,14 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
     if(response && response.status === 200) {
       setRenderPosts(!renderPosts)
     }
+  }
 
+  async function deleteComment(comentarioId) {
+    const response = await api.deleteComment(comentarioId);
+
+    if(response && response.status === 200) {
+      setRenderPosts(!renderPosts)
+    }
   }
 
 	return (
@@ -94,7 +109,7 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
             </div>
             <div className='post-modal__container-name-date'>
               <label className='post-modal__container-name'>{post.autor.name}</label>
-              <label>{post.data}</label>
+              <label>{day} {nameOfMonthBR} {year}</label>
             </div>
           </div>
           <div className='post-modal__container-content'>
@@ -125,25 +140,34 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
             <div>
             {post.comentarios && post.comentarios.length > 0
             ? post.comentarios.map((comentario, key) =>
-              <>
-                <div className='post-modal__container-user post-modal__container-user--comment' id={key}>
-                  <div className='post-modal__wrapper'>
-                    <div>
-                      {comentario.autor.imgUrl
-                        ? <img class="post-modal__image post-modal__image--comment" src={comentario.autor.imgUrl} alt="imagem de perfil" />
-                        : <img class="post-modal__image post-modal__image--comment" src={perfil} alt="imagem de perfil" />}
+              comentario.comentario.active && (
+                <>
+                  <div className='post-modal__container-user post-modal__container-user--comment' id={key}>
+                    <div className='post-modal__wrapper'>
+                      <div className='post-modal__flex'>
+                        <div>
+                          {comentario.autor.imgUrl
+                            ? <img class="post-modal__image post-modal__image--comment" src={comentario.autor.imgUrl} alt="imagem de perfil" />
+                            : <img class="post-modal__image post-modal__image--comment" src={perfil} alt="imagem de perfil" />}
+                        </div>
+                        <div className='post-modal__container-name-date'>
+                          <label className='post-modal__container-name post-modal__container-name--comment'>{comentario.autor.name}</label>
+                        </div>
+                      </div>
+                      {nick === comentario.autor.nick && (
+                        <div className='post-modal__delete-comment' onClick={() => deleteComment(comentario.comentario.id)}>
+                          Deletar
+                        </div>
+                      )}
                     </div>
-                    <div className='post-modal__container-name-date'>
-                      <label className='post-modal__container-name post-modal__container-name--comment'>{comentario.autor.name}</label>
+                    <div className='post-modal__container-content'>
+                      <label className='post-modal__container-text post-modal__container-text--comment'>
+                        {comentario.comentario.conteudo.replace('{"text":"', '').replace('"}', '')}
+                      </label>
                     </div>
                   </div>
-                  <div className='post-modal__container-content'>
-                    <label className='post-modal__container-text post-modal__container-text--comment'>
-                      {comentario.comentario.conteudo.replace('{"text":"', '').replace('"}', '')}
-                    </label>
-                  </div>
-                </div>
-              </>
+                </>
+              )
             )
             : null}
             </div>
