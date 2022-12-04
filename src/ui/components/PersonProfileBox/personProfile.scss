@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .person-profile-container {
 
   .person-profile-title {
@@ -86,7 +87,7 @@
       font-size: 18px;
       display: flex;
       flex-direction: row;
-      background: #f9fff9;
+      background: $fundo-geral;
       border-radius: 25px;
       padding: 15px;
       margin: 25px 0;
@@ -117,7 +118,7 @@
       }
 
       &--image {
-        background-color: #4A804E;
+        background-color: $verde-forte-principal;
         margin-bottom: -70px;
       }
     }
@@ -171,7 +172,7 @@
         font-size: 18px;
         display: flex;
         flex-direction: row;
-        background: #f9fff9;
+        background: $fundo-geral;
         border-radius: 25px;
         padding: 15px;
         margin: 10px 0;

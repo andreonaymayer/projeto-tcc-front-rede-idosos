@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .post-wrapper {
   display: flex;
   justify-content: space-evenly;
@@ -6,6 +7,7 @@
   padding: 0 30px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   width: 1000px;
+  border-radius: $radius-md;
 
   &__layout {
     align-items: center;
@@ -24,14 +26,49 @@
   padding: 20px 0 10px 10px;
   justify-content: space-between;
 
+  //TODO ver se isso esta certo nao sei usar esse negocio direito
   .post-delete-edit {
     align-items: center;
     width: 260px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-weight: 800;
   }
+
+  //TODO ver se isso esta certo nao sei usar esse negocio direito
+  .post-delete {
+    color: $delete-color;
+    border: 2px solid $delete-color;
+    background: none;
+    height: 34px;
+    width: 68px;
+    font-size: 16px;
+    border-radius: 25px;
+  }
+
+  .post-delete:hover {
+    color: #ffffff;
+    border: none;
+    background: $delete-color;
+  }
+
+  //TODO ver se isso esta certo nao sei usar esse negocio direito
+  .post-edit {
+    color: $edit-color;
+    border: 2px solid $edit-color;
+    background: none;
+    height: 34px;
+    width: 68px;
+    font-size: 16px;
+    border-radius: 25px;
+  }
+
+  .post-edit:hover {
+    color: #ffffff;
+    border: none;
+    background: $edit-color;
+  }
+
 
   &__container {
     display: flex;
@@ -41,6 +78,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    border: $border-clean;
   }
 
   &__info {
@@ -67,6 +105,7 @@
     margin-top: 10px;
     margin-left: 10px;
   }
+
   &__text-size {
     font-size: 20px;
   }
@@ -82,21 +121,26 @@
 .post-buttons {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .post-button {
   height: 50px;
-  background-color: #4A804E;
+  background-color: $verde-forte-principal;
   color: #fff;
   outline: none;
   border: none;
-  width: 30%;
+  width: 100%;
   margin: 20px 0;
   font-weight: 500;
   font-family: 'Montserrat';
-  text-align: inherit;
   font-size: 16px;
+  text-align: center;
+  border-radius: $radius-sm;
+  &:hover {
+    background-color: $verde-forte-principal-hover;
+  }
 }
 
 .justifyStart {

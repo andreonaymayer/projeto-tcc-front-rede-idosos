@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .events-wrapper {
   display: flex;
   justify-content: space-evenly;
@@ -91,7 +92,7 @@
 
 .events-button {
   height: 50px;
-  background-color: #4A804E;
+  background-color: $verde-forte-principal;
   color: #fff;
   outline: none;
   border: none;
@@ -120,7 +121,7 @@
   top: 20px;
   position: absolute;
   width: 100%;
-  background: #f9fff9;
+  background: $fundo-geral;
   height: 100vh;
 
   &__details {
@@ -164,7 +165,7 @@
   &__button-participate {
     outline: none;
     border: none;
-    background: #4A804E;
+    background: $verde-forte-principal;
     color: #fff;
     height: 30px;
     width: 80px;

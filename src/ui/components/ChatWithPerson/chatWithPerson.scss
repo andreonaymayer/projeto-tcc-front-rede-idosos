@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .chat-with-person {
   .chat-container {
     right: 350px;
@@ -22,7 +23,7 @@
       border: none;
 
       &--open {
-        background-color: #4A804E;
+        background-color: $verde-forte-principal;
       }
     }
 
@@ -86,7 +87,7 @@
       &__button {
         border: none;
         height: 30px;
-        background: #4A804E;
+        background: $verde-forte-principal;
         color: #fff;
       }
     }

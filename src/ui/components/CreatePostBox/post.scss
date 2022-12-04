@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .create-post-container {
   .create-post-wrapper {
     display: flex;
@@ -82,7 +83,7 @@
 
     &__button {
       width: 100%;
-      background-color: #4A804E;
+      background-color: $verde-forte-principal;
       border-radius: 25px;
       height: 70px;
       font-size: 25px;
@@ -163,6 +164,7 @@
   .help-button {
     margin-top: 10px;
     margin-bottom: -40px;
+
   }
 }
 .create-post-container {

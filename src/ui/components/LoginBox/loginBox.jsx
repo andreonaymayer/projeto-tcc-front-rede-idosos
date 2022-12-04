@@ -61,7 +61,7 @@ export function LoginBox() {
             <br/>
             <div className='login-wrapper__inputs'>
               <label className='login-wrapper__input-mail'>E-mail</label>
-              <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='login-wrapper__input' onChange={onChangeEmail}></input>
+              <input type='email' placeholder='Clique aqui e digite seu e-mail.' className='login-wrapper__input' onChange={onChangeEmail}></input>
               <label className='login-wrapper__input-password'>Senha</label>
               <input type='password' placeholder='Exemplo: @!MinhaS3nha*' className='login-wrapper__input' onChange={onChangePassword}></input>
             </div>
@@ -72,7 +72,7 @@ export function LoginBox() {
               </button>
 
               <Link className='login-submit__button login-submit__button--reset link'  to='/reset' >
-                Não lembro minha senha&nbsp;&nbsp;
+                Não lembro minha senha
                 <img src={help} />
               </Link>
             </div>

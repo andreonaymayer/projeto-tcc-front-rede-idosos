@@ -60,7 +60,7 @@ export function EventsBox({ event, handleSoftDelete, setHelpModal, helpModal, ha
              </div>
 
                <div className='events-delete-edit'>
-                 <button className='help-button' onClick={handleHelp}>Ajuda</button>
+                 <button className='help-button help-cursor' onClick={handleHelp}>Ajuda</button>
                  <label onClick={handleSeeMore}>Ver Mais</label>
                  {event.autor.nick === nick
                  ?

@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .profile-container {
 
   .profile-title {
@@ -115,7 +116,7 @@
       }
 
       &--image {
-        background-color: #4A804E;
+        background-color: $verde-forte-principal;
         margin-bottom: -70px;
       }
     }

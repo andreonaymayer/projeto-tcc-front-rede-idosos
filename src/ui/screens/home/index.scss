@@ -1,3 +1,5 @@
+@import '/src/assets/colors';
+//TODO ver se n fiz merda aqui
 .home-container {
   display: flex;
   flex-direction: row;
@@ -8,13 +10,19 @@
 
   &__button {
     outline: none;
-    background: #E2F1E4;
+    background: $atualizar-botao;
     width: 1060px;
     border: none;
     height: 50px;
     margin: 20px 0 0;
     font-size: 30px;
     align-items: center;
+    border-radius: $radius-md;
+    color: #2a2a2a;
+  }
+  &__button:hover {
+    background: $atualizar-botao-hover;
+    color: black;
   }
 
   &__none-posts {
