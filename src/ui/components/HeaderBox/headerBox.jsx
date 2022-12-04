@@ -73,6 +73,8 @@ export function Header() {
               <Link className='link header-group__link' to='/search-friend'>Procurar por amigos</Link>
               <Link className='link header-group__link' to='/friends-requests'>Solicitações de amizade</Link>
               <Link className='link header-group__link' to='/friends'>Amizades</Link>
+              <Link className='link header-group__link' to='/create-event'>Criar evento</Link>
+              <Link className='link header-group__link' to='/home-events'>Ver eventos</Link>
             </div>
           </div>
           <div className='header-group'>

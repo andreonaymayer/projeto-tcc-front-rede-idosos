@@ -1,6 +1,7 @@
 export { LoginScreen } from './login/login';
 export { RegisterScreen } from './register/register';
 export { HomeScreen } from './home/home';
+export { HomeEventsScreen } from './homeEvents/homeEvents';
 export { HelpScreen } from './help/help';
 export { ForgotPasswordScreen } from './forgotPassword/forgotPassword';
 export { ProfileScreen } from './profile/profile';
@@ -9,3 +10,4 @@ export { CreatePostScreen } from './createPost/createPost';
 export { SearchFriendsScreen } from './searchFriends/searchFriends';
 export { ListFriendsRequestsScreen } from './listFriendsRequests/listFriendsRequests';
 export { ListFriendsScreen } from './listFriends/listFriends';
+export { CreateEventScreen } from './createEvent/createEvent';

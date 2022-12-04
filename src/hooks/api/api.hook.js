@@ -354,6 +354,41 @@ export function useApi() {
 		}
 	}
 
+  async function createEvent(data, descricao, titulo, imgUrl) {
+		try {
+			const response = await axios.post(`/v1/event`, {data, descricao, imgUrl, titulo});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function listEvents() {
+		try {
+			const response = await axios.get(`/v1/event/list`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function deleteEvent(eventId) {
+		try {
+			const response = await axios.delete(`/v1/event/delete/${eventId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
+  async function participateEvent(eventId) {
+		try {
+			const response = await axios.post(`/v1/event/participar-desistir/${eventId}`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
 
 	return useCallback(
 		{
@@ -390,7 +425,11 @@ export function useApi() {
       getChatMessages,
       sendMessage,
       checkForNewMessages,
-      deleteComment
+      deleteComment,
+      createEvent,
+      listEvents,
+      deleteEvent,
+      participateEvent
 		},
 		[]
 	);

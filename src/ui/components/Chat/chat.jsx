@@ -127,7 +127,7 @@ export function Chat() {
           </div>
         }
       </div>
-      {chatId && chatOpened && (
+      {chatId && chatOpened && chatMessages && (
         <ChatWithPerson  closeChat={closeChat} chatMessages={chatMessages} chatId={chatId} getChatMessages={getChatMessages}/>
       )}
     </>

@@ -5,6 +5,7 @@ import seta from '../../../images/send.svg'
 
 export function ChatWithPerson({ closeChat, chatMessages, chatId, getChatMessages }) {
   const [messageText, setMessageText] = useState('');
+  const [isMessageSended, setIsMessageSended] = useState(false);
 	const api = useApi();
 
   function handleSendMessage(event) {
@@ -19,16 +20,16 @@ export function ChatWithPerson({ closeChat, chatMessages, chatId, getChatMessage
     if (response && response.status === 200) {
       setMessageText('')
       getChatMessages(chatId)
+      setIsMessageSended(!isMessageSended)
     }
   }
 
   useEffect(() => {
-    console.log(chatId)
     const interval = setInterval(() => {
       async function checkMessages() {
         const response = await api.checkForNewMessages(chatId);
         if (response && response.status === 200) {
-          if (chatMessages && chatMessages.length < response.data) {
+          if (chatMessages.length < response.data) {
             getChatMessages(chatId)
           }
         }
@@ -38,7 +39,7 @@ export function ChatWithPerson({ closeChat, chatMessages, chatId, getChatMessage
     }, 3000);
 
     return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-  }, [])
+  }, [isMessageSended, api])
 
 
   return (

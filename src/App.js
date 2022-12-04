@@ -12,8 +12,10 @@ import {
   SearchFriendsScreen,
   ListFriendsRequestsScreen,
   ListFriendsScreen,
-  HelpScreen
+  HelpScreen,
+  HomeEventsScreen
 } from './ui/screens';
+import { CreateEventBox } from './ui/components';
 function App() {
   setTimeout(() => {
     let removeIframe = document.getElementsByTagName('iframe');
@@ -55,6 +57,12 @@ function App() {
         </Route>
         <Route path="/friends" exact>
           <ListFriendsScreen />
+        </Route>
+        <Route path="/create-event" exact>
+          <CreateEventBox />
+        </Route>
+        <Route path="/home-events" exact>
+          <HomeEventsScreen />
         </Route>
 			</Switch>
 		</div>

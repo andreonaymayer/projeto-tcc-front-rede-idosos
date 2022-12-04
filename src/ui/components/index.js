@@ -15,3 +15,5 @@ export { PostModalBox } from './PostModalBox/postModalBox';
 export { SearchFriendBox } from './SearchFriendBox/searchFriendBox';
 export { ListFriendRequestBox } from './ListFriendsRequest/listFriendRequestBox';
 export { ListFriendsBox } from './ListFriends/listFriendsBox';
+export { CreateEventBox } from './CreateEventBox/createEventBox';
+export { EventsBox } from './EventsBox/eventsBox';
