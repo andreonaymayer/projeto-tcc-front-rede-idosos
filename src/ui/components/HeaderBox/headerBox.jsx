@@ -10,6 +10,8 @@ import principal_3 from '../../../images/principal/principal-3.jpg'
 
 // TODO aqui é o botao
 export function Header() {
+  const isOnPage = 'header-group__link--selected link header-group__link'
+  const isNotOnPage = 'link header-group__link'
   const [helpModal, setHelpModal] = useState(false);
   const isMobile = window.innerWidth < 500;
   const showHeader = !isMobile ? 'header-test' : 'header-test display-none';
@@ -33,6 +35,14 @@ export function Header() {
       }
     }
 
+  }
+
+  function pageFinder(pathname) {
+    if (window.location.pathname === pathname) {
+      return isOnPage;
+    } else {
+      return isNotOnPage
+    }
   }
 
 
@@ -67,14 +77,15 @@ export function Header() {
               : null}
             </div>
             <div className='header-group__links'>
-              <Link className='link header-group__link' to='/profile'>Meu perfil</Link>
-              <Link className='link header-group__link' to='/create-post'>Criar publicação</Link>
-              <Link className='link header-group__link' to='/home'>Ver publicações</Link>
-              <Link className='link header-group__link' to='/search-friend'>Procurar por amigos</Link>
-              <Link className='link header-group__link' to='/friends-requests'>Solicitações de amizade</Link>
-              <Link className='link header-group__link' to='/friends'>Amizades</Link>
-              <Link className='link header-group__link' to='/create-event'>Criar evento</Link>
-              <Link className='link header-group__link' to='/home-events'>Ver eventos</Link>
+              <Link className={pageFinder('/profile')} to='/profile'>Meu perfil</Link>
+              <Link className={pageFinder('/create-post')} to='/create-post'>Criar publicação</Link>
+              <Link className={pageFinder('/home')} to='/home'>Ver publicações</Link>
+              <Link className={pageFinder('/search-friend')} to='/search-friend'>Procurar por amigos</Link>
+              <Link className={pageFinder('/friends-requests')} to='/friends-requests'>Solicitações de amizade</Link>
+              <Link className={pageFinder('/friends')} to='/friends'>Amizades</Link>
+              <Link className={pageFinder('/create-event')} to='/create-event'>Criar evento</Link>
+              <Link className={pageFinder('/home-events')} to='/home-events'>Ver eventos</Link>
+              <Link className={pageFinder('/album')} to='/album'>Meu álbum</Link>
             </div>
           </div>
           <div className='header-group'>

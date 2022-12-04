@@ -132,6 +132,12 @@
     &__text-post {
       margin: 0 10px;
     }
+
+    .post-delete-edit {
+      flex-direction: column;
+      justify-content: space-around;
+      width: 100px;
+    }
   }
 
   .post-button {

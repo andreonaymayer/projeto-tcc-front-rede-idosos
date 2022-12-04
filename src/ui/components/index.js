@@ -17,3 +17,4 @@ export { ListFriendRequestBox } from './ListFriendsRequest/listFriendRequestBox'
 export { ListFriendsBox } from './ListFriends/listFriendsBox';
 export { CreateEventBox } from './CreateEventBox/createEventBox';
 export { EventsBox } from './EventsBox/eventsBox';
+export { AlbumBox } from './AlbumBox/albumBox';

@@ -11,3 +11,4 @@ export { SearchFriendsScreen } from './searchFriends/searchFriends';
 export { ListFriendsRequestsScreen } from './listFriendsRequests/listFriendsRequests';
 export { ListFriendsScreen } from './listFriends/listFriends';
 export { CreateEventScreen } from './createEvent/createEvent';
+export { AlbumScreen } from './album/album';

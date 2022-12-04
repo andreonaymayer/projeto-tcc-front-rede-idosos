@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 import seta from '../../../images/send.svg'
 
 
-export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRenderPosts }) {
+export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRenderPosts, showInputComments = true }) {
   const nick = sessionStorage.getItem('nickname');
   console.log(post)
   const isMobile = window.innerWidth < 500;
@@ -154,7 +154,7 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
                           <label className='post-modal__container-name post-modal__container-name--comment'>{comentario.autor.name}</label>
                         </div>
                       </div>
-                      {nick === comentario.autor.nick && (
+                      {nick === comentario.autor.nick && showInputComments && (
                         <div className='post-modal__delete-comment' onClick={() => deleteComment(comentario.comentario.id)}>
                           Deletar
                         </div>
@@ -171,10 +171,12 @@ export function PostModalBox({ setModalPost, modalPost, post, renderPosts, setRe
             )
             : null}
             </div>
-            <div className='post-modal__form'>
-              <input className='post-modal__input' type="text" placeholder='Adicione um comentário' onChange={handleText} value={text}/>
-              <button className='post-modal__button' onClick={addComment}>  <img src={seta} /> </button>
-            </div>
+            {showInputComments &&
+              <div className='post-modal__form'>
+                <input className='post-modal__input' type="text" placeholder='Adicione um comentário' onChange={handleText} value={text}/>
+                <button className='post-modal__button' onClick={addComment}>  <img src={seta} /> </button>
+              </div>
+            }
           </div>
         </div>
       </div>

@@ -1,0 +1,25 @@
+.album-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 20px;
+
+  &__wrapper-photo {
+    display: flex;
+    justify-content: center;
+    background: black;
+  }
+
+  &__photo {
+    width: fit-content;
+    height: 300px;
+  }
+
+  &__open-post {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 90%;
+  }
+}

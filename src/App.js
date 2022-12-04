@@ -13,7 +13,8 @@ import {
   ListFriendsRequestsScreen,
   ListFriendsScreen,
   HelpScreen,
-  HomeEventsScreen
+  HomeEventsScreen,
+  AlbumScreen
 } from './ui/screens';
 import { CreateEventBox } from './ui/components';
 function App() {
@@ -63,6 +64,9 @@ function App() {
         </Route>
         <Route path="/home-events" exact>
           <HomeEventsScreen />
+        </Route>
+        <Route path="/album" exact>
+          <AlbumScreen />
         </Route>
 			</Switch>
 		</div>

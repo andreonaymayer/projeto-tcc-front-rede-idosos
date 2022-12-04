@@ -390,6 +390,15 @@ export function useApi() {
 		}
 	}
 
+  async function getAlbum() {
+		try {
+			const response = await axios.get(`/v1/album`);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
 	return useCallback(
 		{
 			createToken,
@@ -429,7 +438,8 @@ export function useApi() {
       createEvent,
       listEvents,
       deleteEvent,
-      participateEvent
+      participateEvent,
+      getAlbum
 		},
 		[]
 	);
