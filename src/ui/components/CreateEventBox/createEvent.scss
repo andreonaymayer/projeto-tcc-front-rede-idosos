@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .create-event-container {
   &__welcome {
     display: flex;
@@ -110,7 +111,7 @@
       }
 
       &--delete {
-        background-color: #EB4141;
+        background-color: $delete-color;
         width: 30%;
       }
     }
