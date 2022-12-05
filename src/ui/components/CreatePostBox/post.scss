@@ -109,8 +109,12 @@
       }
 
       &--publish {
-        background-color: #3478E3;
+        background-color: $help-color;
         width: 40%;
+
+        &:hover {
+          background-color: $help-color-hover;
+        }
       }
 
       &--disabled {

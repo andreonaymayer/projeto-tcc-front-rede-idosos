@@ -105,7 +105,7 @@ export function CreateEventBox() {
 						<div className='create-event-wrapper__layout'>
 							<div className='create-event-wrapper__inputs'>
 								<label className='create-event-wrapper__input-password'>Título</label>
-								<input type='text' placeholder='Exemplo: Dominique da Silva' className='create-event-wrapper__input' onChange={onChangeTitulo}></input>
+								<input type='text' placeholder='Nome do evento' className='create-event-wrapper__input' onChange={onChangeTitulo}></input>
 								<label className='create-event-wrapper__input-password'>Data de Início</label>
 								<input type='date' placeholder='Exemplo: 01/01/1962' className='create-event-wrapper__input' onChange={onChangeStartDate}></input>
 								<label className='create-event-wrapper__input-password'>Descrição</label>

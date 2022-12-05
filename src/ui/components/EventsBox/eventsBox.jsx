@@ -61,7 +61,7 @@ export function EventsBox({ event, handleSoftDelete, setHelpModal, helpModal, ha
 
                <div className='events-delete-edit'>
                  <button className='help-button help-cursor' onClick={handleHelp}>Ajuda</button>
-                 <label onClick={handleSeeMore}>Ver Mais</label>
+                 <label className='vermais' onClick={handleSeeMore}>Ver Mais</label>
                  {event.autor.nick === nick
                  ?
                    <>
@@ -84,7 +84,7 @@ export function EventsBox({ event, handleSoftDelete, setHelpModal, helpModal, ha
           <div className='events-see-more'>
             <div className='events__details'>
               <h3>Detalhes do evento: {event.titulo}</h3>
-              <div onClick={goBackToAllEvents}>Ver mais eventos</div>
+              <div className='vermais'  onClick={goBackToAllEvents}>Voltar aos eventos</div>
             </div>
 
             <div className='events-profile__container' onClick={goToProfile}>
