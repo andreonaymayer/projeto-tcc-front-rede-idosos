@@ -1,6 +1,7 @@
 @import '/src/assets/colors';
 .chat-container {
   right: 60px;
+  border-radius: $radius-sm $radius-sm 0 0;
   bottom: 0;
   width: 20%;
   position: fixed;
@@ -10,10 +11,24 @@
 
   .chat-content {
     height: 350px;
+    padding-right:10px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+      height: 40px;
+      //border: 1px solid black;
+      border-radius: $radius-sm;
+      //outline: none;
+      font-size: 16px;
+      margin-bottom: .5rem;
+    }
   }
 
   .chat-button {
-    width: 80%;
+    width: 100%;
+    border-radius: $radius-sm;
     background-color: #EB4141;
     height: 45px;
     font-size: 21px;
@@ -22,7 +37,9 @@
     border: none;
 
     &--open {
-      background-color: $verde-forte-principal;
+      background-color: $edit-color;
+      width: 100%;
+      border-radius: $radius-sm;
     }
   }
 
@@ -36,15 +53,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 5px;
+
 
     &__container {
-      border: 1px solid black;
+      border: $border-clean;
+      border-radius: $radius-sm;
+      padding-right: 10px;
     }
 
     &__image {
       width: 60px;
       height: 60px;
+      border-radius: 100%;
     }
 
     &__name {
@@ -54,23 +74,27 @@
     }
 
     &__overflow {
+      display: flex;
+      flex-direction: column;
       overflow: auto;
       height: 300px;
+      gap: 5px;
     }
 
     &__input {
-      width: 94%;
       height: 40px;
-      margin: 5px;
-      border: 1px solid black;
-      outline: none;
+      //border: 1px solid black;
+      border-radius: $radius-sm;
+      font-size: 16px;
+      //outline: none;
     }
 
     &__button {
       border: none;
       height: 30px;
-      background: $verde-forte-principal;
+      background: $edit-color;
       color: #fff;
+      border-radius: $radius-sm;
     }
   }
 }
