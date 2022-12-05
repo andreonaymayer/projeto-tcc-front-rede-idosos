@@ -48,12 +48,12 @@ export function EventsBox({ event, handleSoftDelete, setHelpModal, helpModal, ha
              <div className='events-profile__container' onClick={goToProfile}>
                <div>
                  {event.autor.imgUrl
-                   ? <img className='events-profile__picture' src={event.autor.imgUrl} alt='Foto do usuário'/>
-                   : <img className='events-profile__picture' src={perfil} alt='Foto do usuário'/>
+                   ? <img className='events-profile__picture clicavel' src={event.autor.imgUrl} alt='Foto do usuário'/>
+                   : <img className='events-profile__picture clicavel' src={perfil} alt='Foto do usuário'/>
                  }
                </div>
                <div className='events-profile__info'>
-                 <label className='events-profile__title'>{event.titulo}</label>
+                 <label className='events-profile__title clicavel'>{event.titulo}</label>
                  <label className='events-profile__subtitle'>{event.dataEscrita}</label>
                  <label className='events-profile__subtitle'>Criado por: {event.autor.name}</label>
                </div>

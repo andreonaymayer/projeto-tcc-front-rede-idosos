@@ -33,6 +33,10 @@ label {
 
 /*LINK*/
 
+.clicavel {
+  cursor: var(--link)
+}
+
 button {
   cursor: var(--link)
 }
