@@ -1,4 +1,22 @@
+@import '/src/assets/colors';
+
+
+.vermais {
+  background: none;
+  padding: 8px;
+  border-radius: 100px;
+  color: $verde-forte-principal-hover;
+  font-weight: 500;
+  outline: 2px solid $verde-forte-principal-hover;
+  outline-offset: -2px;
+  &:hover {
+    color: white;
+    background: $verde-forte-principal-hover;
+  }
+}
+
 .events-wrapper {
+  border-radius: $radius-md;
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
@@ -40,6 +58,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    border: $border-clean;
   }
 
   &__info {
@@ -91,7 +110,7 @@
 
 .events-button {
   height: 50px;
-  background-color: #4A804E;
+  background-color: $verde-forte-principal;
   color: #fff;
   outline: none;
   border: none;
@@ -120,7 +139,7 @@
   top: 20px;
   position: absolute;
   width: 100%;
-  background: #f9fff9;
+  background: $fundo-geral;
   height: 100vh;
 
   &__details {
@@ -164,7 +183,7 @@
   &__button-participate {
     outline: none;
     border: none;
-    background: #4A804E;
+    background: $verde-forte-principal;
     color: #fff;
     height: 30px;
     width: 80px;

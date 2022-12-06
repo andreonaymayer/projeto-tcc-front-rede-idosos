@@ -1,12 +1,14 @@
+@import '/src/assets/colors';
 .friendsRequests {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 27%;
   height: 260px;
-  border: 1px solid black;
+  border: $border-clean;
+  border-radius: $radius-md;
   padding: 20px 5px;
-  margin: 20px;
+  margin: 10px;
 
   &__photo {
     height: 70px;
@@ -15,6 +17,7 @@
   }
 
   &__button {
+    border-radius: $radius-sm;
     width: 80%;
     height: 30px;
     border: none;

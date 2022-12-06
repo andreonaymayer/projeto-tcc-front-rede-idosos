@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .profile-container {
 
   .profile-title {
@@ -99,7 +100,7 @@
 
     &__button {
       width: 100%;
-      background-color: #3478E3;
+      background-color: $help-color;
       border-radius: 25px;
       height: 70px;
       font-size: 21px;
@@ -115,7 +116,7 @@
       }
 
       &--image {
-        background-color: #4A804E;
+        background-color: $verde-forte-principal;
         margin-bottom: -70px;
       }
     }

@@ -165,7 +165,7 @@ export function CreatePostBox({user}) {
             <div className='create-post-wrapper__row'>
               <div className='create-post-wrapper__layout'>
                 <div className='create-post-wrapper__inputs'>
-                  <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
+                  <button className='help-button searchFriends__help-button help-cursor' onClick={handleHelp}>Ajuda</button>
                   <h1 className='create-post-title'>Nova publicação</h1>
                   <div className='profile-submit__container'>
                     <button className={selectPictureButton} disabled={editPost}>

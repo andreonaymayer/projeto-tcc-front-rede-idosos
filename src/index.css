@@ -1,8 +1,69 @@
+
 body {
   margin: 0;
-  font-family: 'Montserrat'
+  font-family: 'Montserrat';
 }
 
+input::placeholder{
+
+}
+
+/*CURSOR*/
+:root {
+  --normal:url('../src/assets/cursores/Normal Select.cur'), default;
+  --ajuda: url('../src/assets/cursores/Help Select.cur'), pointer !important;
+  --link: url('../src/assets/cursores/Link Select.cur'), pointer;
+  --texto: url('../src/assets/cursores/Text Select.cur'), pointer;
+}
+
+/*DEFAULT*/
+body {
+  cursor: var(--normal)
+}
+
+label {
+  cursor: var(--normal)
+}
+
+/*HELP*/
+
+.help-cursor {
+  cursor: var(--ajuda)
+}
+
+/*LINK*/
+
+.clicavel {
+  cursor: var(--link)
+}
+
+button {
+  cursor: var(--link)
+}
+
+a {
+  cursor: var(--link)
+}
+
+.post-profile__picture, .post-profile__name {
+  cursor: var(--link)
+}
+
+input {
+  cursor: var(--link);
+  caret-color: #de0303;
+}
+
+/*TEXT*/
+
+textarea {
+  cursor: var(--texto);
+  caret-color: #de0303;
+  caret-shape: bar;
+
+}
+
+/*CURSOR*/
 .back-image-rotate {
   transform: rotate(180deg);
 }

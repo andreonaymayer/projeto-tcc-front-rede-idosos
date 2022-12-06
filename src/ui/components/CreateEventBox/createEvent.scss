@@ -1,3 +1,5 @@
+@import '/src/assets/colors';
+
 .create-event-container {
   &__welcome {
     display: flex;
@@ -6,6 +8,7 @@
   }
 
   .create-event-subtitle {
+    text-align: center;
     font-weight: 500;
     margin: -10px 0 40px 0;
   }
@@ -93,7 +96,7 @@
 
     &__button {
       width: 30%;
-      background-color: #3478E3;
+      background-color: $help-color;
       border-radius: 25px;
       height: 70px;
       font-size: 25px;
@@ -105,12 +108,12 @@
       margin-top: 40px;
 
       &--reset {
-        background-color: #A1CAF9;
+        background-color: $edit-color;
         width: 100%;
       }
 
       &--delete {
-        background-color: #EB4141;
+        background-color: $delete-color;
         width: 30%;
       }
     }

@@ -55,7 +55,7 @@ export function ChangePasswordBox() {
         mainText='Tivemos um problema, tente novamente.'
 				buttonText='Cadastro não realizado!'
 				buttonClass='modal-main__button--danger'
-      />  
+      />
       <div className='changePassword-container'>
         <div className='changePassword-container__welcome'>
           <h1 className='changePassword-title'>Alterar senha</h1>

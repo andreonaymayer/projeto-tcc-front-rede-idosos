@@ -1,12 +1,12 @@
 import './chatWithPerson.scss';
 import React, {useEffect, useState} from 'react';
-import { useApi } from '../../../hooks/api';
+import {useApi} from '../../../hooks/api';
 import seta from '../../../images/send.svg'
 
-export function ChatWithPerson({ closeChat, chatMessages, chatId, getChatMessages }) {
+export function ChatWithPerson({closeChat, chatMessages, chatId, getChatMessages}) {
   const [messageText, setMessageText] = useState('');
   const [isMessageSended, setIsMessageSended] = useState(false);
-	const api = useApi();
+  const api = useApi();
 
   function handleSendMessage(event) {
     setMessageText(event.target.value);
@@ -48,23 +48,26 @@ export function ChatWithPerson({ closeChat, chatMessages, chatId, getChatMessage
         <div className='chat-group'>
           <button className='chat-button' onClick={closeChat}>Fechar conversar</button>
         </div>
-          <div className='chat-content'>
-            <div className='chat-message__container'>
-              {chatMessages && chatMessages.length > 0 && chatMessages.map(messages =>
-                <div className={messages.myProfile ? 'chat-message__my-message chat-message' : 'chat-message'}>
-                  <label className='chat-message__name'>{messages.nameRemetente}</label>
-                  <label className={messages.myProfile ? 'chat-message__my-text' : ''}>
-                    {messages.text.replace('{"mensagem":"', '').replace('"}', '')}
-                  </label>
-                </div>
-              )}
-            </div>
-            <div className='chat-friends__send-message'>
-              <input type="text" placeholder='Envie sua mensagem' onChange={handleSendMessage} className="chat-friends__input" value={messageText}></input>
-              <button class="chat-friends__send" onClick={sendMessage}> <img src={seta} /> </button>
-            </div>
-
+        <div className='chat-content'>
+          <div className='chat-message__container'>
+            {chatMessages && chatMessages.length > 0 && chatMessages.map(messages =>
+              <div className={messages.myProfile ? 'chat-message__my-message chat-message' : 'chat-message'}>
+                <label className='chat-message__name'>{messages.nameRemetente}</label>
+                <label className={messages.myProfile ? 'chat-message__my-text' : ''}>
+                  {messages.text.replace('{"mensagem":"', '').replace('"}', '')}
+                </label>
+              </div>
+            )}
           </div>
+          <div className='chat-friends__send-message'>
+            <div className='chat-friends__send-message__ladoALado'>
+              <input type="text" placeholder='Envie sua mensagem' onChange={handleSendMessage}
+                     className="chat-friends__input" value={messageText}></input>
+              <button class="chat-friends__send" onClick={sendMessage}><img src={seta}/></button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );

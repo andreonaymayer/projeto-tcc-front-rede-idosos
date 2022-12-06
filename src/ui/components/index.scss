@@ -1,20 +1,25 @@
+@import './src/assets/colors';
+
 body {
-	background-color: #f9fff9 !important;
+  background-color: $fundo-geral !important;
 }
 
 .link:hover,
 .link:visited,
 .link:link,
 .link:active {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .help-button {
   border: none;
   height: 35px;
   width: 70px;
-  background: #0E4EB4;
+  background: $help-color;
   color: #fff;
   font-size: 16px;
   border-radius: 25px;
+  &:hover {
+    background: $help-color-hover;
+  }
 }

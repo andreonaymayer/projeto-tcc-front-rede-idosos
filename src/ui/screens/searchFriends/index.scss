@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .searchFriends {
   display: flex;
 
@@ -8,7 +9,7 @@
     background-color: #fff;
     padding: 0 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-left: 20%;
+    margin-left: 23%;
     width: 60%;
     flex-direction: column;
   }
@@ -22,10 +23,11 @@
   &__input {
     height: 40px;
     margin: auto 0;
-    border-radius: 25px;
-    border: 1px solid black;
+    border-radius: $radius-sm;
+    //border: 1px solid black;
     padding-left: 15px;
-    outline: none;
+    //outline: none;
+    font-size: 16px;
   }
 
   &__results {

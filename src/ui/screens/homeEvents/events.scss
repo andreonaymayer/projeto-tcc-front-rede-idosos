@@ -1,12 +1,14 @@
+@import '/src/assets/colors';
 .home-events-container {
   display: flex;
   flex-direction: row;
 
   &__posts {
-    margin-left: 20%;
+    margin-left: 23%;
   }
 
   &__button {
+    border-radius: $radius-md;
     outline: none;
     background: #E2F1E4;
     width: 1060px;

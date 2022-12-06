@@ -91,7 +91,7 @@ export function Header() {
           <div className='header-group'>
           </div>
           <div className='header-wrapper-buttons'>
-            <button className='help-button-header header-button' onClick={handleHelp}>
+            <button className='help-button-header header-button help-cursor' onClick={handleHelp}>
               Ajuda
             </button>
 

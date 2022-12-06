@@ -1,3 +1,5 @@
+@import '/src/assets/colors';
+@use "sass:list";
 .create-post-container {
   .create-post-wrapper {
     display: flex;
@@ -82,7 +84,7 @@
 
     &__button {
       width: 100%;
-      background-color: #4A804E;
+      background-color: $verde-forte-principal;
       border-radius: 25px;
       height: 70px;
       font-size: 25px;
@@ -94,13 +96,25 @@
       margin-bottom: -70px;
 
       &--delete {
-        background-color: #EB4141;
+        color: $delete-color;
+        background: none;
         width: 40%;
+        outline: 3px solid $delete-color;
+        outline-offset: -3px;
+        text-align: center;
+        &:hover{
+          color: white;
+          background-color: $delete-color;
+        }
       }
 
       &--publish {
-        background-color: #3478E3;
+        background-color: $help-color;
         width: 40%;
+
+        &:hover {
+          background-color: $help-color-hover;
+        }
       }
 
       &--disabled {
@@ -163,6 +177,7 @@
   .help-button {
     margin-top: 10px;
     margin-bottom: -40px;
+
   }
 }
 .create-post-container {

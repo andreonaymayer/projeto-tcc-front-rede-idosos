@@ -67,12 +67,12 @@ export function PostBox({ post, handleSoftDelete, isMyPost, handleReaction, hand
           </div>
 
             <div className='post-delete-edit'>
-              <button className='help-button' onClick={handleHelp}>Ajuda</button>
+              <button className='help-button help-cursor' onClick={handleHelp}>Ajuda</button>
               {isMyPost
               ?
                 <>
-                  <div onClick={() => handleSoftDelete(post)}>Excluir</div>
-                  <div onClick={handleEditPost}>Editar</div>
+                  <button className='post-delete' onClick={() => handleSoftDelete(post)}>Excluir</button>
+                  <button className='post-edit' onClick={handleEditPost}>Editar</button>
                 </>
               :
               null}

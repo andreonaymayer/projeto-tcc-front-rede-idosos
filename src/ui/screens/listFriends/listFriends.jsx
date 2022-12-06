@@ -62,7 +62,7 @@ export function ListFriendsScreen() {
         <div className='listFriends__container'>
           <div className='listFriends__search'>
             <h1>Amizades</h1>
-            <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
+            <button className='help-button searchFriends__help-button help-cursor' onClick={handleHelp}>Ajuda</button>
           </div>
           <div className='listFriends__results'>
             {friends && friends.length > 0

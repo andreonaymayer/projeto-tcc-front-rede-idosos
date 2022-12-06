@@ -94,7 +94,7 @@ export function Chat() {
         </div>
         {isChatOpen &&
           <div className='chat-content'>
-            <input type="text" placeholder='Procurar amigos' onChange={handleSearchText} className="chat-friends__input" value={searchText}></input>
+            <input type="text" placeholder='Procurar amigos' onChange={handleSearchText} className="chat-content__input" value={searchText}></input>
             <div className='chat-friends__overflow'>
               {friends && friends.length > 0 && profiles.length === 0 && (
                 friends.map(friend =>

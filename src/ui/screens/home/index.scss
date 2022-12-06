@@ -1,20 +1,29 @@
+@import '/src/assets/colors';
+//TODO ver se n fiz merda aqui
 .home-container {
   display: flex;
   flex-direction: row;
 
   &__posts {
-    margin-left: 20%;
+    margin-left: 23%;
   }
 
   &__button {
     outline: none;
-    background: #E2F1E4;
+    background: $atualizar-botao;
     width: 1060px;
     border: none;
     height: 50px;
     margin: 20px 0 0;
     font-size: 30px;
     align-items: center;
+    border-radius: $radius-md;
+    color: #2a2a2a;
+  }
+  &__button:hover {
+    border-radius: $radius-md;
+    background: $atualizar-botao-hover;
+    color: black;
   }
 
   &__none-posts {
@@ -43,6 +52,7 @@
     }
 
     &__button {
+      border-radius: $radius-md;
       width: 400px;
       font-size: 20px;
     }

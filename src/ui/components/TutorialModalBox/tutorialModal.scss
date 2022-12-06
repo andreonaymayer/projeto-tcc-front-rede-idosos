@@ -1,3 +1,4 @@
+@import '/src/assets/colors';
 .tutorial-modal {
   position: fixed;
   top: 0;
@@ -73,7 +74,7 @@
     width: 80px;
     border: none;
     border-radius: 25px;
-    background: #EB4141;
+    background: $cancel-color;
     color: white;
   }
 

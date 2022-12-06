@@ -178,7 +178,7 @@ export function Profile({user}) {
               <div className='profile-wrapper__inputs'>
                 <h1 className='profile-title'>Minhas informações</h1>
                 {isMobile ?
-                  <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
+                  <button className='help-button profile-submit__help help-cursor' onClick={handleHelp}>Ajuda</button> : null}
                 {isMobile
                   ?
                   imagePreview || user.imgUrl
@@ -254,7 +254,7 @@ export function Profile({user}) {
               </div>
             </div>
             {!isMobile ?
-              <button className='help-button profile-submit__help' onClick={handleHelp}>Ajuda</button> : null}
+              <button className='help-button profile-submit__help help-cursor' onClick={handleHelp}>Ajuda</button> : null}
           </div>
         </div>
       </div>

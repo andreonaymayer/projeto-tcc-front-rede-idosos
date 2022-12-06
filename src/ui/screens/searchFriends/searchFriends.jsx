@@ -74,7 +74,7 @@ export function SearchFriendsScreen() {
           <div className='searchFriends__search'>
             <h1>Procurar pessoas</h1>
             <div className='searchFriends__help'>
-              <button className='help-button searchFriends__help-button' onClick={handleHelp}>Ajuda</button>
+              <button className='help-button searchFriends__help-button help-cursor' onClick={handleHelp}>Ajuda</button>
               <input type="text" placeholder='Procurar amigos' onChange={handleSearchText}
                      className="searchFriends__input" value={searchText}></input>
             </div>

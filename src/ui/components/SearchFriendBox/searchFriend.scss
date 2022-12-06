@@ -1,20 +1,25 @@
+@import '/src/assets/colors';
 .searchResult {
+  border-radius: $radius-md;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 27%;
   height: 260px;
-  border: 1px solid black;
+  border: $border-clean;
+  //box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 20px 5px;
-  margin: 20px;
+  margin: 10px;
 
   &__photo {
+    border: $border-clean;
     height: 70px;
     width: 70px;
     border-radius: 50px;
   }
 
   &__button {
+    border-radius: $radius-sm;
     width: 80%;
     height: 30px;
     border: none;
