@@ -40,6 +40,9 @@
       background-color: $edit-color;
       width: 100%;
       border-radius: $radius-sm;
+      &:hover{
+        background-color: $edit-color-hover;
+      }
     }
   }
 

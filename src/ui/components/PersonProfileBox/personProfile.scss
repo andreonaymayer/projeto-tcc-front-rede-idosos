@@ -115,6 +115,9 @@
 
       &--reset {
         background-color: #A1CAF9;
+        &:hover{
+          background-color: $help-color;
+        }
       }
 
       &--image {

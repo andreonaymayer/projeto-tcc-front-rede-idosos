@@ -126,11 +126,11 @@ export function RegisterBox() {
 						<div className='register-wrapper__layout'>
 							<div className='register-wrapper__inputs'>
 								<label className='register-wrapper__input-password'>Nome</label>
-								<input type='text' placeholder='Exemplo: Dominique da Silva' className='register-wrapper__input' onChange={onChangeName}></input>
+								<input type='text' placeholder='Digite seu nome aqui' className='register-wrapper__input' onChange={onChangeName}></input>
 								<label className='register-wrapper__input-password'>Email</label>
-								<input type='email' placeholder='Exemplo: seunome@exemplo.com' className='register-wrapper__input' onChange={onChangeEmail}></input>
+								<input type='email' placeholder='Digite seu e-mail aqui' className='register-wrapper__input' onChange={onChangeEmail}></input>
 								<label className='register-wrapper__input-password'>Senha</label>
-								<input type='password' placeholder='Exemplo: @!MinhaS3nha*' className='register-wrapper__input' onChange={onChangePassword}></input>
+								<input type='password' placeholder='Digite sua senha aqui' className='register-wrapper__input' onChange={onChangePassword}></input>
 								<label className='register-wrapper__input-password'>Data de nascimento</label>
 								<input type='date' placeholder='Exemplo: 01/01/1962' className='register-wrapper__input' onChange={onChangeBirthDate}></input>
 							</div>

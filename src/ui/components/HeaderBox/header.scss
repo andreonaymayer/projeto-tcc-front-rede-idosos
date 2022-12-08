@@ -1,4 +1,18 @@
 @import '/src/assets/colors';
+.logo-link{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+
+  &__span{
+    color: black;
+    font-size: 120%;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+  }
+}
+
 .header-container {
   background-color: $fundo-geral;
   display: flex;
@@ -8,6 +22,7 @@
   z-index: 2;
 
   .header-group {
+    overflow: auto;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -24,8 +39,8 @@
     }
 
     &__logo {
-      height: 90px;
-      padding-bottom: 1rem;
+      width: 100%;
+      filter: contrast(100);
     }
 
     &__link {
@@ -35,7 +50,8 @@
       border-bottom: $border-clean;
 
       &--selected {
-        background: #E2F1E4;
+        background-color: $help-color;
+        color: white;
       }
 
       &:hover {
@@ -43,40 +59,47 @@
         padding: 19px 10px;
         background: #E2F1E4;
       }
+
+      &--selected:hover{
+        color: white;
+        background-color: $help-color-hover;
+        border-bottom: 3px solid rgb(0, 0, 0);
+      }
     }
   }
 
   .header-wrapper-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2%;
 
     .header-button {
       color: #fff;
       outline: none;
       border: none;
       height: 50px;
-      margin: 0 20px;
       font-size: 18px;
       font-weight: 500;
-      text-align: left;
-      padding-left: 10px;
+      text-align: center;
       border-radius: $radius-sm;
     }
 
     .exit-button {
+      text-align: center;
       background-color: $verde-forte-principal;
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 40%;
       &:hover {
         background-color: $verde-forte-principal-hover;
       }
     }
 
     .help-button-header {
+      width: 40%;
       background-color: $help-color;
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
 
       &:hover {
         background-color: $help-color-hover;

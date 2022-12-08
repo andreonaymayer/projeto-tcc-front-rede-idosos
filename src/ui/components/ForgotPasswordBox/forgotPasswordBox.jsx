@@ -42,7 +42,7 @@ export function ForgotPassword() {
           <div className='forgotPassword-wrapper__layout'>
             <div className='forgotPassword-wrapper__inputs'>
               <label className='forgotPassword-wrapper__input-password'>Email</label>
-              <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='forgotPassword-wrapper__input' onChange={onChangeEmail}></input>
+              <input type='email' placeholder='Digite seu e-mail aqui' className='forgotPassword-wrapper__input' onChange={onChangeEmail}></input>
             </div>
           </div>
           <div className='forgotPassword-wrapper__layout'>

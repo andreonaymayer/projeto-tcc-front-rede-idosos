@@ -188,10 +188,10 @@ export function Profile({user}) {
                   : null
                 }
                 <label className='profile-wrapper__input-password'>Nome</label>
-                <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input'
+                <input type='text' placeholder='Digite seu nome aqui' className='profile-wrapper__input'
                        onChange={onChangeName} value={name}></input>
                 <label className='profile-wrapper__input-password'>Email</label>
-                <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='profile-wrapper__input'
+                <input type='email' placeholder='Digite seu e-mail aqui' className='profile-wrapper__input'
                        onChange={onChangeEmail} value={email}></input>
                 <label className='profile-wrapper__input-password'>Data de nascimento</label>
                 <input type='date' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input'

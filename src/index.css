@@ -10,10 +10,11 @@ input::placeholder{
 
 /*CURSOR*/
 :root {
-  --normal:url('../src/assets/cursores/Normal Select.cur'), default;
-  --ajuda: url('../src/assets/cursores/Help Select.cur'), pointer !important;
-  --link: url('../src/assets/cursores/Link Select.cur'), pointer;
-  --texto: url('../src/assets/cursores/Text Select.cur'), pointer;
+  --normal:url('assets/cursores/CursorNormal'), default;
+  --ajuda: url('../src/assets/cursores/Ajuda'), pointer !important;
+  --link: url('../src/assets/cursores/Link'), pointer;
+  --texto: url('../src/assets/cursores/Digitando'), pointer;
+  --proibido: url('../src/assets/cursores/Proibido.cur'), pointer;
 }
 
 /*DEFAULT*/
@@ -23,6 +24,14 @@ body {
 
 label {
   cursor: var(--normal)
+}
+
+select {
+  cursor: var(--link);
+}
+
+:disabled {
+  cursor:  var(--proibido);
 }
 
 /*HELP*/
@@ -50,7 +59,7 @@ a {
 }
 
 input {
-  cursor: var(--link);
+  cursor: var(--texto);
   caret-color: #de0303;
 }
 
