@@ -89,7 +89,9 @@ export function Chat() {
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[principal_1,principal_2,principal_3]}/>
       <div className='chat-container chat-container-closed'>
         <div className='chat-group'>
-          {!isChatOpen && <button className='chat-button chat-button--open' onClick={() => openChat(true)}>Abrir Chat</button>}
+          {!isChatOpen && <div className='flex_minimize'>
+            {/*<p className='flex_minimize__minimize'>—</p>*/}
+            <button className='chat-button chat-button--open' onClick={() => openChat(true)}>Abrir Chat</button></div>}
           {isChatOpen && <button className='chat-button' onClick={() => openChat(false)}>Fechar Chat</button>}
         </div>
         {isChatOpen &&

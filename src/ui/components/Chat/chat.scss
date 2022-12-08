@@ -1,4 +1,13 @@
 @import '/src/assets/colors';
+//.flex_minimize {
+//  display: flex;
+//  flex-direction: row;
+//  &__minimize {
+//    font-weight: bold;
+//    padding-right: 10px;
+//  }
+//}
+
 .chat-container {
   right: 60px;
   border-radius: $radius-sm $radius-sm 0 0;

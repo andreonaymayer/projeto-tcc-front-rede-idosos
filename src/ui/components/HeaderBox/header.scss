@@ -11,6 +11,12 @@
     width: 100%;
     text-align: center;
   }
+  &:hover{
+    background-color: $atualizar-botao-hover;
+    outline: 3px solid $atualizar-botao-hover;
+    border-radius: $radius-sm;
+  }
+
 }
 
 .header-container {
@@ -50,8 +56,8 @@
       border-bottom: $border-clean;
 
       &--selected {
-        background-color: $help-color;
-        color: white;
+        background-color: $atualizar-botao-hover;
+        color: black;
       }
 
       &:hover {

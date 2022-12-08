@@ -231,7 +231,7 @@ export function Profile({user}) {
                     accept="image/*"
                     id="icon-button-file"
                     type="file"
-                    className="profile-submit__input"
+                    className="clicavel profile-submit__input"
                     onChange={addPhoto}
                   />
                 </div>

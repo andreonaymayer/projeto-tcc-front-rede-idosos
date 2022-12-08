@@ -60,7 +60,7 @@
       height: 34px;
       background-color: #fff;
       border: 2px solid #A4A4A4;
-      border-radius: 50px;
+      border-radius: $radius-md;
       text-indent: 15px;
       margin-top: 5px;
 
@@ -72,11 +72,13 @@
         height: 60px;
         padding: 10px 5px;
         resize: none;
+        font-size: 18px;
       }
     }
 
     &__input::placeholder {
       font-family: 'Montserrat';
+      font-size: 18px;
     }
 
     &__input-mail {
@@ -113,6 +115,7 @@
 
       &--reset {
         background-color: #A1CAF9;
+        text-align: center;
       }
 
       &--image {

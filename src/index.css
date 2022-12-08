@@ -1,4 +1,10 @@
 
+/*LINK*/
+
+.clicavel {
+  cursor: var(--link)
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat';
@@ -38,12 +44,6 @@ select {
 
 .help-cursor {
   cursor: var(--ajuda)
-}
-
-/*LINK*/
-
-.clicavel {
-  cursor: var(--link)
 }
 
 button {
