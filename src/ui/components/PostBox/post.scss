@@ -163,7 +163,10 @@
   .post-information {
     flex-direction: column-reverse;
     justify-content: flex-end;
-    margin-left: 70px;
+
+    .slick-slider {
+      margin: 0 auto;
+    }
   }
 
   .post-profile {

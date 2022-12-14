@@ -74,6 +74,7 @@ export function Header() {
               ?
                 <Link to='/home' onClick={() => openHeader(false)}>
                   <img src={logo} className='header-group__logo'/>
+                  <span className='logo-link__span logo-link__span--mobile'>Clique aqui para voltar.</span>
                 </Link>
               : null}
             </div>

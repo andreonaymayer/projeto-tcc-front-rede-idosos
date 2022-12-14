@@ -15,10 +15,10 @@ import ajudaPerfil_4 from '../../../images/perfil/perfil-4.jpg'
 import ajudaPerfil_5 from '../../../images/perfil/perfil-5.jpg'
 import ajudaPerfil_6 from '../../../images/perfil/perfil-6.jpg'
 
-export function Profile({user}) {
+export function Profile({user, birth}) {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [birthDate, setBirthDate] = useState(user.birthDate);
+  const [birthDate, setBirthDate] = useState(birth);
   const [details, setDetails] = useState(user.details);
   const [states, setStates] = useState();
   const [city, setCity] = useState(user.city);

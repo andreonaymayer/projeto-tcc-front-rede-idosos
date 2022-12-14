@@ -4,13 +4,19 @@
   flex-direction: column;
   text-decoration: none;
 
-  &__span{
+  &__span {
     color: black;
     font-size: 120%;
     font-weight: bold;
     width: 100%;
     text-align: center;
+
+    &--mobile {
+      font-size: 12px;
+      padding-left: 10px;
+    }
   }
+
   &:hover{
     background-color: $atualizar-botao-hover;
     outline: 3px solid $atualizar-botao-hover;

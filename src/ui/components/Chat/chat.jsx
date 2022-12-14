@@ -8,7 +8,7 @@ import { useApi } from '../../../hooks/api';
 import perfil from '../../../images/perfil1.jpeg'
 import { ChatWithPerson } from '../ChatWithPerson/chatWithPerson';
 
-export function Chat() {
+export function Chat({isFromHome = false}) {
   const [helpModal, setHelpModal] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
 	const [friends, setFriends] = useState();
@@ -18,7 +18,9 @@ export function Chat() {
   const [chatOpened, setChatOpened] = useState(false);
   const [chatMessages, setChatMessages] = useState();
 	const api = useApi();
+  const isOpened = JSON.parse(localStorage.getItem('isOpened'))
 
+  if (isOpened) openChat(true);
 
   function openChat(clicked = false) {
     if (clicked) {
@@ -26,6 +28,7 @@ export function Chat() {
     } else {
       setIsChatOpen(false)
     }
+    localStorage.removeItem('isOpened');
   }
 
   function closeModal() {
@@ -89,9 +92,10 @@ export function Chat() {
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[principal_1,principal_2,principal_3]}/>
       <div className='chat-container chat-container-closed'>
         <div className='chat-group'>
-          {!isChatOpen && <div className='flex_minimize'>
-            {/*<p className='flex_minimize__minimize'>—</p>*/}
-            <button className='chat-button chat-button--open' onClick={() => openChat(true)}>Abrir Chat</button></div>}
+          {!isChatOpen && !isFromHome && <div className='flex_minimize'>
+            <button className='chat-button chat-button--open' onClick={() => openChat(true)}>Abrir Chat</button>
+            </div>
+          }
           {isChatOpen && <button className='chat-button' onClick={() => openChat(false)}>Fechar Chat</button>}
         </div>
         {isChatOpen &&

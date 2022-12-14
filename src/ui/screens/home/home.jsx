@@ -63,6 +63,11 @@ export function HomeScreen() {
     }, 2000);
   }
 
+  function openChat() {
+    setRenderPosts(!renderPosts)
+    localStorage.setItem('isOpened', true);
+  }
+
   async function handleReaction(postId) {
     const response = await api.setReaction(postId);
     if (response.status === 200) {
@@ -77,7 +82,7 @@ export function HomeScreen() {
 
   return (
     <>
-      <Chat />
+      <Chat isFromHome={true} />
       {modalPost && <PostModalBox setHelpModal={setHelpModal} helpModal={helpModal} setModalPost={setModalPost}
                                   modalPost={modalPost} post={postContent} setRenderPosts={setRenderPosts}
                                   renderPosts={renderPosts}/>}
@@ -102,7 +107,10 @@ export function HomeScreen() {
       <div className="home-container">
         <Header/>
         <div className="home-container__posts">
-          <button className='home-container__button' onClick={renderNewPosts}>Procurar novas publicações</button>
+          <div className='home-container__buttons'>
+            <button className='home-container__button' onClick={renderNewPosts}>Procurar novas publicações</button>
+            <button className='chat-button' onClick={() => openChat()}>Abrir Chat</button>
+          </div>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" class={svgClasses} width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
               <circle cx="50" cy="50" fill="none" stroke="#1d0e0b" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
