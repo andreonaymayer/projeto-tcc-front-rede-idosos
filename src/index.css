@@ -1,8 +1,20 @@
 
 /*LINK*/
 
+button::before{
+  cursor: var(--link);
+}
+
 .clicavel {
-  cursor: var(--link)
+  cursor: var(--link);
+}
+
+input[type=file] {
+  cursor: var(--link);
+}
+
+textarea{
+  font-family: 'Montserrat';
 }
 
 body {
@@ -10,8 +22,15 @@ body {
   font-family: 'Montserrat';
 }
 
-input::placeholder{
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
 
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 /*CURSOR*/
@@ -58,18 +77,37 @@ a {
   cursor: var(--link)
 }
 
-input {
+/*TEXT*/
+
+input[type=text]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=email]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=password]:focus {
+  background-color: #eef9ff;
+}
+
+textarea[type=text]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=date]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=text] {
   cursor: var(--texto);
   caret-color: #de0303;
 }
-
-/*TEXT*/
 
 textarea {
   cursor: var(--texto);
   caret-color: #de0303;
   caret-shape: bar;
-
 }
 
 /*CURSOR*/

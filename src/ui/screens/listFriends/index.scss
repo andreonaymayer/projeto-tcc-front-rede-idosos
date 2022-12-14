@@ -1,15 +1,18 @@
+@import '/src/assets/colors';
+
 .listFriends {
   display: flex;
 
   &__container {
+    border-radius: $radius-md;
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
     background-color: #fff;
     padding: 0 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-left: 20%;
-    width: 60%;
+    margin-left: 23%;
+    width: 70%;
     flex-direction: column;
   }
 
@@ -30,8 +33,8 @@
   }
 
   &__results {
-    //display: flex;
-    //flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
   }
 

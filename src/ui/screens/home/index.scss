@@ -34,14 +34,18 @@
 
   .chat-button {
     outline: none;
-    background: #E2F1E4;
+    background: $edit-color-hover;
     border: none;
     width: 200px;
     margin: 20px 0 0;
-    font-size: 18px;
+    font-size: 26px;
     align-items: center;
     border-radius: 1rem;
-    color: #2a2a2a;
+    color: white;
+    &:hover {
+      background: $edit-color;
+      color: white;
+    }
   }
 
   &__none-posts {

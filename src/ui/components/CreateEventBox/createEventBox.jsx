@@ -97,7 +97,7 @@ export function CreateEventBox() {
 					<h1 className='create-event-title'>Vamos cadastrar seu evento!</h1>
 					<h2 className='create-event-subtitle'>
             Precisamos de algumas informações para criar o seu evento,<br/>
-            preencha os campos abaixo. Ao registrar-se estaá pronto para publicar seu evento.
+            preencha os campos abaixo. Ao clicar em registrar seu evento será salvo e publicado.
 					</h2>
 				</div>
 				<div className='create-event-wrapper'>

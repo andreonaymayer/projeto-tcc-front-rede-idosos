@@ -239,7 +239,7 @@ export function Profile({user, birth}) {
 
               <div className='profile-wrapper__editor'>
                 <button className='profile-submit__button' onClick={handleSubmit}>
-                  Registrar&nbsp;&nbsp;
+                  Registrar modificações&nbsp;&nbsp;
                   <img src={register}/>
                 </button>
 

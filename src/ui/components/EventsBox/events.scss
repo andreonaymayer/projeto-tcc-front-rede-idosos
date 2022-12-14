@@ -181,15 +181,25 @@
   }
 
   &__button-participate {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    border-radius: $radius-md;
     outline: none;
     border: none;
     background: $verde-forte-principal;
     color: #fff;
-    height: 30px;
-    width: 80px;
+    &:hover{
+      background-color: $verde-forte-principal-hover;
+    }
   }
 
   &__participants {
+    margin-right: 10px;
+    border: $border-clean;
+    border-radius: 100%;
     width: 90px;
     clip-path: circle();
     height: 90px;
