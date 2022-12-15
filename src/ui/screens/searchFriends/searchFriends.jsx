@@ -47,11 +47,46 @@ export function SearchFriendsScreen() {
 
   return (
     <>
-      <Chat />
+      <Chat/>
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[procurar_1,
         procurar_2,
         procurar_3,
-        procurar_4]}/>
+        procurar_4]}
+                        showImage={false}
+                        htmlBody={
+                          <div className="andreo">
+                            <h1 id="ajuda-procurar-amigos">Ajuda: Procurar amigos</h1>
+                            <p>A seção de procurar amigos é bem simples, basta clicar no campo <strong>Procurar
+                              amigos</strong> e digitar o nome da pessoa que voce deseja encontrar.</p>
+                            <p>Você pode digitar devagar e os resultados aparecerão conforme o nome que você esta
+                              escrevendo for parecido com o nome da pessoa que você busca.</p>
+                            <p>Caso não haja pessoas com o nome digitado, não aparecerá nenhum resultado.</p>
+                            <ul>
+                              <li><a href="#ajuda--procurar-amigos">Ajuda: Procurar amigos</a>
+                                <ul>
+                                  <li><a href="#o-que-posso-fazer">O que posso fazer</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                            <h3 id="o-que-posso-fazer">O que posso fazer</h3>
+                            <ol>
+                              <li>Para adicionar uma pessoa, encontre o seu cartão com nome e foto e clique no
+                                botão <strong>Adicionar</strong>.
+                              </li>
+                              <li><p>Para ver o perfil completo, clique em <strong>ver mais</strong>. As informações
+                                são.</p>
+                                <ul>
+                                  <li>Nome;</li>
+                                  <li>Estado;</li>
+                                  <li>Cidade;</li>
+                                  <li>Bio (detalhes).</li>
+                                </ul>
+                                <p>Para sair da tela de detalhes, clique em voltar.</p>
+                              </li>
+                            </ol>
+                            <div className="fim"></div>
+                          </div>}
+      />
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}

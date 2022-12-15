@@ -40,7 +40,47 @@ export function ListFriendsScreen() {
 	return (
     <>
       <Chat />
-      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[amizade_1,amizade_2,amizade_3]}/>
+      <TutorialModalBox handleClose={() => closeModal()} show={helpModal} carrouselImages={[amizade_1,amizade_2,amizade_3]} showImage={false}
+      htmlBody={
+        <div className='andreo'>
+          <h1 id="ajuda-amizades">Ajuda: Amizades</h1>
+          <p>Sobre a tela amizades, é bem simples, lista todos seus amigos e da opções de ver seus perfis ou remover amizade.</p>
+          <ul>
+            <li><a href="#ajuda--amizades">Ajuda: Amizades</a><ul>
+              <li><a href="#elementos">Elementos</a><ul>
+                <li><a href="#botes">Botões</a><ul>
+                  <li><a href="#o-que-posso-fazer">O que posso fazer?</a></li>
+                </ul>
+                </li>
+              </ul>
+              </li>
+            </ul>
+            </li>
+          </ul>
+          <h2 id="elementos">Elementos</h2>
+          <p>Uma breve explicação sobre os campos e botões da tela <strong>Meu perfil</strong></p>
+          <h3 id="bot-es">Botões</h3>
+          <p>Apenas dois botões:</p>
+          <ul>
+            <li>Ver mais</li>
+            <li>Adicionar</li>
+          </ul>
+          <h4 id="o-que-posso-fazer-">O que posso fazer?</h4>
+          <ol>
+            <li>Para adicionar uma pessoa, encontre o seu cartão com nome e foto e clique no botão <strong>Adicionar</strong>.</li>
+            <li><p>Para ver o perfil completo, clique em <strong>ver mais</strong>. As informações são.</p>
+            </li>
+            <li><p>Nome;</p>
+            </li>
+            <li>Estado;</li>
+            <li>Cidade;</li>
+            <li>Bio (detalhes).</li>
+          </ol>
+          <p>Para sair da tela de detalhes, clique em voltar.</p>
+
+          <div className='fim'></div>
+        </div>
+      }/>
 			<ModalBox
         show={showModalAdded}
         handleClose={() => closeModal()}

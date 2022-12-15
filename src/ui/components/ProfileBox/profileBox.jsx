@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import './profile.scss';
+import '../../../../src/assets/help_styles.scss'
 import React, {useEffect, useState} from 'react';
 import back from '../../../images/back.svg'
 import register from '../../../images/register.svg'
@@ -152,9 +153,121 @@ export function Profile({user, birth}) {
 
   return (
     <>
-      <Chat />
+      <Chat/>
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
-                        carrouselImages={[ajudaPerfil_1, ajudaPerfil_2, ajudaPerfil_3, ajudaPerfil_4, ajudaPerfil_5, ajudaPerfil_6]} showImage={false} htmlBody={<div>wef8g9y213gfuwef</div>}/>
+                        carrouselImages={[ajudaPerfil_1, ajudaPerfil_2, ajudaPerfil_3, ajudaPerfil_4, ajudaPerfil_5, ajudaPerfil_6]}
+                        showImage={false} htmlBody={
+        <div className="andreo">
+          <h1 id="ajuda-meu-perfil">Ajuda: Meu perfil</h1>
+          <p>Nesta seção, você pode observar suas informações, altera-las e colocar ou alterar sua foto do perfil.</p>
+          <ul>
+            <li><a href="#ajuda--meu-perfil">Ajuda: Meu perfil</a>
+              <ul>
+                <li><a href="#como-adicionar-ou-alterar-imagem-de-perfil">Como adicionar ou alterar imagem de perfil</a>
+                </li>
+                <li><a href="#elementos">Elementos</a>
+                  <ul>
+                    <li><a href="#botes">Botões</a></li>
+                    <li><a href="#campos">Campos</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h2 id="como-adicionar-ou-alterar-imagem-de-perfil">Como adicionar ou alterar imagem de perfil</h2>
+          <p>Ao se cadastrar, seu perfil vem com a foto padrão da nossa rede.</p>
+          <p>Para adicionar uma imagem, você precida saber onde ela está em seu computador
+            (pasta ou diretório).</p>
+          <p>Sabendo onde está a foto basta clicar no botão <strong>Selecione uma nova foto</strong>
+            ao clicar, seu computador vai abrir uma janela para procurar pelo arquivo nas pastas do seu computador.</p>
+          <p>Após selecionar, confirme no botão do canto.</p>
+          <p><strong><em>Como será aberta a janela de localização da imagem, vai depender do seu sistema.</em></strong>
+          </p>
+          <h2 id="elementos">Elementos</h2>
+          <p>Uma breve explicação sobre os campos e botões da tela <strong>Meu perfil</strong></p>
+          <h3 id="bot-es">Botões</h3>
+          <table>
+            <thead>
+            <tr>
+              <th>Botão</th>
+              <th>O que ele faz</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Selecionar uma nova foto</td>
+              <td>Abre uma janela do seu computador para selecionar a sua nova imagem de perfil.</td>
+            </tr>
+            <tr>
+              <td>Registrar modificações</td>
+              <td>Conclui a sua modificação, salva as novas informaçõe e volta para a tela inicial.</td>
+            </tr>
+            <tr>
+              <td>Alterar senha</td>
+              <td>Vai para a tela de troca de senha.</td>
+            </tr>
+            <tr>
+              <td>Não desejo mudar nada</td>
+              <td>Volta para a tela inicial sem modificar as informações do campo.</td>
+            </tr>
+            </tbody>
+          </table>
+          <h3 id="campos">Campos</h3>
+          <table>
+            <thead>
+            <tr>
+              <th>Nome do campo</th>
+              <th>Para que serve</th>
+              <th>Ação</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Nome</td>
+              <td>Identificar você pelo nome. Pode ser apenas o primeiro e ultimo nome.</td>
+              <td>Clicar e escrever</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>Vai ser a sua identidade dentro da rede social, e também servirá caso precise recuperar a senha deste
+                sistema.
+              </td>
+              <td>Clicar e escrever</td>
+            </tr>
+            <tr>
+              <td>Senha</td>
+              <td>É a senha que será usada para identificação para quando for entrar na rede social.</td>
+              <td>Clicar e escrever</td>
+            </tr>
+            <tr>
+              <td>Data de nascimento</td>
+              <td>É a sua data de nascimento, para que seus amigos saibam quando é seu aniversário</td>
+              <td>Clicar e escrever ou selecionar a data clicando no ícone do calendário</td>
+            </tr>
+            <tr>
+              <td>Estado</td>
+              <td>É o estado em que está morando atualmente. Servirá para a criação de eventos no durante o uso da rede,
+                se for do seu interesse criar alguma.
+              </td>
+              <td>Clicar e selecionar</td>
+            </tr>
+            <tr>
+              <td>Cidade</td>
+              <td>É a cidade em que está morando atualmente.</td>
+              <td>Clicar e selecionar</td>
+            </tr>
+            <tr>
+              <td>Bio</td>
+              <td>Aqui você pode escrever o que quiser sobre você. Dica: escreva sobre seus passa-tempos, seus gostos
+                musicais, seus animais de estimação e tudo que quiser.
+              </td>
+              <td>Clicar e escrever</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      }/>
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
@@ -178,7 +291,8 @@ export function Profile({user, birth}) {
               <div className='profile-wrapper__inputs'>
                 <h1 className='profile-title'>Minhas informações</h1>
                 {isMobile ?
-                  <button className='help-button profile-submit__help help-cursor' onClick={handleHelp}>Ajuda</button> : null}
+                  <button className='help-button profile-submit__help help-cursor'
+                          onClick={handleHelp}>Ajuda</button> : null}
                 {isMobile
                   ?
                   imagePreview || user.imgUrl
@@ -254,7 +368,8 @@ export function Profile({user, birth}) {
               </div>
             </div>
             {!isMobile ?
-              <button className='help-button profile-submit__help help-cursor' onClick={handleHelp}>Ajuda</button> : null}
+              <button className='help-button profile-submit__help help-cursor'
+                      onClick={handleHelp}>Ajuda</button> : null}
           </div>
         </div>
       </div>

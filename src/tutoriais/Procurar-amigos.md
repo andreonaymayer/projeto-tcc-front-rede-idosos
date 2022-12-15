@@ -6,8 +6,10 @@ Você pode digitar devagar e os resultados aparecerão conforme o nome que você
 
 Caso não haja pessoas com o nome digitado, não aparecerá nenhum resultado.
 
+* [Ajuda: Procurar amigos](#ajuda--procurar-amigos)
+    * [O que posso fazer](#o-que-posso-fazer)
 
-### O que posso fazer?
+### O que posso fazer
 1. Para adicionar uma pessoa, encontre o seu cartão com nome e foto e clique no botão **Adicionar**.
 2. Para ver o perfil completo, clique em **ver mais**. As informações são.
 

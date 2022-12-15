@@ -17,6 +17,7 @@ import {
   AlbumScreen
 } from './ui/screens';
 import { CreateEventBox } from './ui/components';
+import {HelpInitial} from "./ui/screens/help-initial/help";
 function App() {
   setTimeout(() => {
     let removeIframe = document.getElementsByTagName('iframe');
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path="/help" exact>
           <HelpScreen />
+        </Route>
+        <Route path="/help-initial" exact>
+          <HelpInitial />
         </Route>
         <Route path="/reset" exact>
           <ForgotPasswordScreen />

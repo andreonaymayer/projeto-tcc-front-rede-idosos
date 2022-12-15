@@ -2,7 +2,15 @@
 
 Nesta seção, você pode observar suas informações, altera-las e colocar ou alterar sua foto do perfil.
 
-## Como adicionar ou alterar imagem de perfil?
+
+* [Ajuda: Meu perfil](#ajuda--meu-perfil)
+  * [Como adicionar ou alterar imagem de perfil](#como-adicionar-ou-alterar-imagem-de-perfil)
+  * [Elementos](#elementos)
+    * [Botões](#botes)
+    * [Campos](#campos)
+
+
+## Como adicionar ou alterar imagem de perfil
 
 Ao se cadastrar, seu perfil vem com a foto padrão da nossa rede.
 

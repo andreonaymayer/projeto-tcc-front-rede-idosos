@@ -3,7 +3,15 @@
 Nesta tela é possivel criar uma nova publicação, que aparecerá no seu mural e no de seus amigos.
 Caso vocêe coloque uma ou algumas imagens, essas imagens vão aparecer também no seu Album.
 
-### O que preciso em uma publicação?
+* [Ajuda: Nova publicação](#ajuda--nova-publicao)
+    * [O que preciso em uma publicação?](#o-que-preciso-em-uma-publicao)
+      * [Criando uma publicação](#criando-uma-publicao)
+      * [Como vai aparecer](#como-vai-aparecer)
+    * [Elementos](#elementos)
+      * [Botões](#botes)
+      * [Campos](#campos)
+
+### O que preciso em uma publicação
 
 Na sua publicação você pode apenas colocar um texto ou apenas colocar imagens (uma ou muitas) ou colocar texto e imagens.
 
