@@ -83,6 +83,14 @@ input[type=text]:focus {
   background-color: #eef9ff;
 }
 
+input[type=email] {
+  cursor: var(--texto);
+}
+
+input[type=password] {
+  cursor: var(--texto);
+}
+
 input[type=email]:focus {
   background-color: #eef9ff;
 }
