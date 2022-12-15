@@ -78,6 +78,16 @@
   .fim {
     height: 100px;
   }
+
+  .voltar {
+    padding: 15px;
+    color: white;
+    background-color: $cancel-color;
+    &:hover{
+      color: white;
+      background-color: $cancel-color-hover;
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {

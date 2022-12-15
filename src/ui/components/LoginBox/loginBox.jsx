@@ -47,7 +47,7 @@ export function LoginBox() {
         handleClose={() => closeModal()}
         title='Tivemos um problema!'
         mainText='Tivemos um problema, tente novamente.'
-				buttonText='Login não realizada!'
+				buttonText='Login não realizado'
 				buttonClass='modal-main__button--danger'
       />
       <div className='login-container'>
@@ -82,6 +82,10 @@ export function LoginBox() {
             <Link className='login-submit__button login-submit__button--register link' to={`/register`}>
               Registrar&nbsp;&nbsp;
               <img src={register}/>
+            </Link>&nbsp;&nbsp;
+            <label className='login-wrapper__title'>Não sabe usar o computador? Não sabe por onde começar?<br/> Clique no botão abaixo.</label>
+            <Link className='login-submit__ajudinha login-submit__ajudinha--register link' to={`/help-initial`}>
+              Ajuda&nbsp;&nbsp;
             </Link>
           </div>
         </div>
