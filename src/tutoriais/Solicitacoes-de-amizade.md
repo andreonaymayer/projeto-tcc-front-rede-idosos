@@ -1,6 +1,13 @@
 # Ajuda: Solicitações de amizade
 Esta tela é onde encontramos as solicitações de outras pessoas para estarem na sua lista de amigos na Melhor Rede.
 
+
+* [Ajuda: Solicitações de amizade](#ajuda--solicitaes-de-amizade)
+    * [Elementos](#elementos)
+      * [Lista](#lista)
+    * [O que posso fazer?](#o-que-posso-fazer)
+
+
 ### Elementos
 
 Uma breve explicação sobre os campos e botões da tela **Solicitações de amizade**

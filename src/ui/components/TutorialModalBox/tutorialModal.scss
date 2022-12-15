@@ -173,7 +173,16 @@
   @media screen and (max-width: 480px) {
     margin: auto;
     left: 50%;
-    height: 50%;
+    top:50%;
+    height: 80%;
+    padding-bottom: 20%;
+
+    .tutorial-modal-main {
+
+      &__container {
+        max-height: 100%;
+      }
+    }
 
     &__help {
       margin: 0 30px;

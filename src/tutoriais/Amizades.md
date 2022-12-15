@@ -1,6 +1,13 @@
 # Ajuda: Amizades
 Sobre a tela amizades, é bem simples, lista todos seus amigos e da opções de ver seus perfis ou remover amizade.
 
+
+* [Ajuda: Amizades](#ajuda--amizades)
+  * [Elementos](#elementos)
+    * [Botões](#botes)
+      * [O que posso fazer?](#o-que-posso-fazer)
+
+
 ## Elementos
 
 Uma breve explicação sobre os campos e botões da tela **Meu perfil**
