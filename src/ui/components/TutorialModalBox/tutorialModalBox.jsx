@@ -45,9 +45,9 @@ export function TutorialModalBox({
             : <div className='tutorial-modal-main__content-container'>{htmlBody}</div>
           }
           <div className='tutorial-modal-main__info'>
-            <label className='tutorial-modal-main__text'>As setas nas laterais são utilizadas para passar as imagens.</label>
+            {/*<label className='tutorial-modal-main__text'>As setas nas laterais são utilizadas para passar as imagens.</label>*/}
 
-            <label className='tutorial-modal-main__text '>Para mais informações <Link to='/help' className='link'> clique aqui</Link></label>
+            <label className='tutorial-modal-main__text '>Está com dificuldades com o computador?  <Link to='/help' className='link bold'> Clique aqui</Link></label>
           </div>
         </div>
       </section>

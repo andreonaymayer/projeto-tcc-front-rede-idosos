@@ -1,6 +1,6 @@
 import React from 'react';
 import {Chat, Header} from '../../components';
-import './help_styles.scss'
+import '../../../assets/help_styles.scss'
 import leftMouse from '../../../../src/tutoriais/img/left-mouse.png'
 import rightMouse from '../../../../src/tutoriais/img/right-mouse.png'
 import scroolMouse from '../../../../src/tutoriais/img/scrool-mouse.png'
