@@ -13,7 +13,7 @@ import publicacao_2 from '../../../images/publicacao/publicacao-2.jpg'
 import publicacao_3 from '../../../images/publicacao/publicacao-3.jpg'
 import publicacao_4 from '../../../images/publicacao/publicacao-4.jpg'
 import publicacao_5 from '../../../images/publicacao/publicacao-5.jpg'
-import { Chat } from '../Chat/chat';
+import {Chat} from '../Chat/chat';
 
 export function CreatePostBox({user}) {
   const post = JSON.parse(localStorage.getItem('post'))
@@ -140,9 +140,87 @@ export function CreatePostBox({user}) {
 
   return (
     <>
-      <Chat />
+      <Chat/>
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
-                        carrouselImages={[publicacao_1, publicacao_2, publicacao_3, publicacao_4, publicacao_5]}/>
+                        showImage={false}
+                        carrouselImages={[publicacao_1, publicacao_2, publicacao_3, publicacao_4, publicacao_5]}
+                        htmlBody={
+        <div className="andreo">
+          <h1 id="ajuda-nova-publica-o">Ajuda: Nova publicação</h1>
+          <p>Nesta tela é possivel criar uma nova publicação, que aparecerá no seu mural e no de seus amigos.
+            Caso vocêe coloque uma ou algumas imagens, essas imagens vão aparecer também no seu Album.</p>
+          <ul>
+            <li><a href="#ajuda--nova-publicao">Ajuda: Nova publicação</a><ul>
+              <li><a href="#o-que-preciso-em-uma-publicao">O que preciso em uma publicação?</a><ul>
+                <li><a href="#criando-uma-publicao">Criando uma publicação</a></li>
+                <li><a href="#como-vai-aparecer">Como vai aparecer</a></li>
+              </ul>
+              </li>
+              <li><a href="#elementos">Elementos</a><ul>
+                <li><a href="#botes">Botões</a></li>
+                <li><a href="#campos">Campos</a></li>
+              </ul>
+              </li>
+            </ul>
+            </li>
+          </ul>
+          <h3 id="o-que-preciso-em-uma-publica-o">O que preciso em uma publicação</h3>
+          <p>Na sua publicação você pode apenas colocar um texto ou apenas colocar imagens (uma ou muitas) ou colocar texto e imagens.</p>
+          <h4 id="criando-uma-publica-o">Criando uma publicação</h4>
+          <ol>
+            <li>Caso quiser inserir imagens clique no botão Selecionar nova foto.<ol>
+              <li>Para selecionar mais de uma foto, basta clicar novamente e selecionar novamente.</li>
+              <li>Não existe um limite de imagens.</li>
+              <li>Toda vez que se insere uma imagem, é exibido uma mensagem de confirmação.<ol>
+                <li>Para fechar a mensagem, clique no X, no canto da tela.</li>
+              </ol>
+              </li>
+            </ol>
+            </li>
+          </ol>
+          <ol>
+            <li>Caso queira inserir o texto, clique no campo, observe o cursor e digite o que desejar.<ol>
+              <li>Não há limite do tamanho de texto, mas para que ele apareça bem na tela do seu amigo, não deve ser muito grande. O ideal são 300 letras, numeros, espaços e simbolos.</li>
+            </ol>
+            </li>
+          </ol>
+          <ol>
+            <li>Pronto, agora se clicar em registrar sua publicação será salva e exibida no seu mural e no de seus amigos.</li>
+          </ol>
+          <h4 id="como-vai-aparecer">Como vai aparecer</h4>
+          <p>É uma pré-visualização de como sua publicação será exibida no seu mural e no de seus amigos.</p>
+          <p>Observe que se você adicionou mais de uma imagem, ao lado direito e esquerdo das imagens tem um ícone de setinha para seu respectivo lado.
+            Ao clicar na setinha da direita, vai passar para a próxima imagem e da esquerda para a imagem anterior.</p>
+          <h3 id="elementos">Elementos</h3>
+          <p>Uma breve explicação sobre os campos e botões da tela <strong>Criar publicações</strong></p>
+          <h4 id="bot-es">Botões</h4>
+          <table>
+            <thead>
+            <tr>
+              <th>Botão</th>
+              <th>O que ele faz</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Selecionar uma nova foto</td>
+              <td>Abre uma janela do seu computador para selecionar a sua nova imagem de perfil.</td>
+            </tr>
+            <tr>
+              <td>Registrar</td>
+              <td>Salva sua publicação e exibe para você e seus amigos no mural.</td>
+            </tr>
+            <tr>
+              <td>Desistir da publicação</td>
+              <td>Não salva a sua publicação e volta para a tela de inicio.</td>
+            </tr>
+            </tbody>
+          </table>
+          <h4 id="campos">Campos</h4>
+          <p>Aqui há apenas o campo <strong>Descrição</strong> que é um campo de texto.</p>
+          <div className="fim"></div>
+        </div>
+                        }/>
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}
@@ -165,7 +243,8 @@ export function CreatePostBox({user}) {
             <div className='create-post-wrapper__row'>
               <div className='create-post-wrapper__layout'>
                 <div className='create-post-wrapper__inputs'>
-                  <button className='help-button searchFriends__help-button help-cursor' onClick={handleHelp}>Ajuda</button>
+                  <button className='help-button searchFriends__help-button help-cursor' onClick={handleHelp}>Ajuda
+                  </button>
                   <h1 className='create-post-title'>Nova publicação</h1>
                   <div className='profile-submit__container'>
                     <button className={selectPictureButton} disabled={editPost}>
