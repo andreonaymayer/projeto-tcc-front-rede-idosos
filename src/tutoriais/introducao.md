@@ -20,6 +20,21 @@ E lembre-se, sempre que precisar de ajuda, clique no botão azul ***Ajuda*** e e
 
 ## Conteúdo
 
+<!-- TOC -->
+* [Preciso de ajuda](#preciso-de-ajuda)
+  * [Conteúdo](#contedo)
+  * [O que faz o mouse?](#o-que-faz-o-mouse)
+    * [Ponteiros do mouse](#ponteiros-do-mouse)
+  * [O que faz o teclado?](#o-que-faz-o-teclado)
+    * [Funções básicas do teclado](#funes-bsicas-do-teclado)
+    * [Acentos](#acentos)
+  * [Como usar os campos?](#como-usar-os-campos)
+    * [Campos do tipo data](#campos-do-tipo-data)
+      * [Importante:](#importante-)
+    * [Campos do tipo lista ou seleção](#campos-do-tipo-lista-ou-seleo)
+    * [Campos de texto](#campos-de-texto)
+<!-- TOC -->
+
 ## O que faz o mouse?
 
 O mouse é a setinha que utilizamos para apontar, como se fosse com o dedo o que queremos fazer no computador. Os mouses
@@ -37,8 +52,6 @@ Observações sobre o mouse:
 1. Para rolar a tela, pode se usar também o gesto de arrastar na barra de rolagem, como no exemplo abaixo:
 
    Para arrastar, clique e segure no botão esquerdo e movimente o mouse.
-
-   <img class="img" src="../tutoriais/img/scrool-bar.png" alt="">
 
 
 2. Se você estiver em um notebook, deve usar o touchpad. Onde voce vai arrastar o dedo em cima para mover o mouse.

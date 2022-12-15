@@ -1,0 +1,114 @@
+@import '/src/assets/colors';
+.help-container {
+  display: flex;
+  flex-direction: row;
+
+  &__info {
+    width: 70%;
+    border-radius: $radius-md;
+    margin-left: 23%;
+    box-shadow: $shaddow-bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.andreo{
+  border-radius: $radius-md;
+  background-color: white;
+  padding: 20px;
+  .img{
+    //max-width: 200px;
+    //max-height: 200px;
+    width: 100%;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-radius: .5rem;
+  }
+
+  ul,li {
+    margin: 1.5rem 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: blue;
+
+    padding: .5rem;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: $radius-sm;
+
+
+    &:hover {
+      background-color: #A1CAF9;
+      color: darkblue;
+      box-shadow: $shaddow;
+    }
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    background-color: #2A562A;
+    color: white;
+    font-weight: bold;
+    padding: 4px;
+    //border: 1px solid #2A562A;
+  }
+
+  td {
+    padding: 4px;
+    border: $border-clean;
+  }
+
+  table, th, td{
+    border-collapse: collapse;
+    align-content: start;
+  }
+
+  p, th, td {
+    font-weight: normal;
+    font-size: 20px;
+  }
+
+
+  .fim {
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .help-container {
+    &__info {
+      margin-left: 0;
+      margin: 50px auto 0;
+
+        width: 98%;
+
+    }
+  }
+
+  .andreo {
+    table {
+      width: 100%;
+    }
+
+    a {
+      //text-decoration: none;
+      color: blue;
+      //background-color: #A1CAF9;
+      //padding: .5rem;
+      font-size: 18px;
+      font-weight: bold;
+      //border-radius: $radius-sm;
+      //box-shadow: $shaddow;
+
+      &:hover {
+        color: darkblue;
+      }
+    }
+  }
+}
