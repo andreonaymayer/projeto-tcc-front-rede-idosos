@@ -87,7 +87,7 @@ export function HomeScreen() {
                                   modalPost={modalPost} post={postContent} setRenderPosts={setRenderPosts}
                                   renderPosts={renderPosts}/>}
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
-                        carrouselImages={[feed_1, feed_2, feed_3, feed_4, feed_5, feed_6, feed_7, feed_8, feed_9, feed_10, feed_11]}/>
+                        carrouselImages={[feed_1, feed_2, feed_3, feed_4, feed_5, feed_6, feed_7, feed_8, feed_9, feed_10, feed_11]} showImage={false} htmlBody={<h1>Batata</h1>}/>
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}

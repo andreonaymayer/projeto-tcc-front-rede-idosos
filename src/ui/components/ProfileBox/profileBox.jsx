@@ -154,7 +154,7 @@ export function Profile({user, birth}) {
     <>
       <Chat />
       <TutorialModalBox handleClose={() => closeModal()} show={helpModal}
-                        carrouselImages={[ajudaPerfil_1, ajudaPerfil_2, ajudaPerfil_3, ajudaPerfil_4, ajudaPerfil_5, ajudaPerfil_6]}/>
+                        carrouselImages={[ajudaPerfil_1, ajudaPerfil_2, ajudaPerfil_3, ajudaPerfil_4, ajudaPerfil_5, ajudaPerfil_6]} showImage={false} htmlBody={<div>wef8g9y213gfuwef</div>}/>
       <ModalBox
         show={showModalSuccess}
         handleClose={() => closeModal()}

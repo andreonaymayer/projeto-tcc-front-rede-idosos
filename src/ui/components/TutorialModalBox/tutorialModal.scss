@@ -17,10 +17,9 @@
   flex-direction: column;
   position: fixed;
   background: #E2F1E4;
-  width: 80%;
-  //height: 70%;
+  width: 90%;
   top: 50%;
-  left: 48%;
+  left: 50%;
   transform: translate(-50%, -50%);
   padding: 50px 0 20px;
   border-radius: 25px;
@@ -81,6 +80,15 @@
   &__container {
     display: flex;
     flex-direction: column;
+    max-height: 620px;
+  }
+
+  &__content-container {
+    display: flex;
+    width: 80%;
+    margin: 10px auto;
+    word-break: normal;
+    overflow: auto;
   }
 
   &__buttons-container {
