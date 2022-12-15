@@ -15,10 +15,10 @@ import ajudaPerfil_4 from '../../../images/perfil/perfil-4.jpg'
 import ajudaPerfil_5 from '../../../images/perfil/perfil-5.jpg'
 import ajudaPerfil_6 from '../../../images/perfil/perfil-6.jpg'
 
-export function Profile({user}) {
+export function Profile({user, birth}) {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [birthDate, setBirthDate] = useState(user.birthDate);
+  const [birthDate, setBirthDate] = useState(birth);
   const [details, setDetails] = useState(user.details);
   const [states, setStates] = useState();
   const [city, setCity] = useState(user.city);
@@ -188,10 +188,10 @@ export function Profile({user}) {
                   : null
                 }
                 <label className='profile-wrapper__input-password'>Nome</label>
-                <input type='text' placeholder='Exemplo: Dominique da Silva' className='profile-wrapper__input'
+                <input type='text' placeholder='Digite seu nome aqui' className='profile-wrapper__input'
                        onChange={onChangeName} value={name}></input>
                 <label className='profile-wrapper__input-password'>Email</label>
-                <input type='email' placeholder='Exemplo: seunome@exemplo.com' className='profile-wrapper__input'
+                <input type='email' placeholder='Digite seu e-mail aqui' className='profile-wrapper__input'
                        onChange={onChangeEmail} value={email}></input>
                 <label className='profile-wrapper__input-password'>Data de nascimento</label>
                 <input type='date' placeholder='Exemplo: 01/01/1962' className='profile-wrapper__input'
@@ -231,7 +231,7 @@ export function Profile({user}) {
                     accept="image/*"
                     id="icon-button-file"
                     type="file"
-                    className="profile-submit__input"
+                    className="clicavel profile-submit__input"
                     onChange={addPhoto}
                   />
                 </div>
@@ -239,7 +239,7 @@ export function Profile({user}) {
 
               <div className='profile-wrapper__editor'>
                 <button className='profile-submit__button' onClick={handleSubmit}>
-                  Registrar&nbsp;&nbsp;
+                  Registrar modificações&nbsp;&nbsp;
                   <img src={register}/>
                 </button>
 

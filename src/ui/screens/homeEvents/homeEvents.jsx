@@ -79,7 +79,8 @@ export function HomeEventsScreen() {
       <div className="home-events-container">
         <Header/>
         <div className="home-events-container__posts">
-          <button className='home-events-container__button' onClick={renderNewPosts}>Procurar novas publicações</button>
+          <button className='home-events-container__button' onClick={renderNewPosts}>Procurar novos eventos
+          </button>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" class={svgClasses} width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
               <circle cx="50" cy="50" fill="none" stroke="#1d0e0b" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">

@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {TutorialModalBox} from '../TutorialModalBox/tutorialModalBox';
 import hamburger from '../../../images/hamburger.png'
-import logo from '../../../images/rede.png'
+import logo from '../../../images/logoredeidosos.png'
 import principal_1 from '../../../images/principal/principal-1.jpg'
 import principal_2 from '../../../images/principal/principal-2.jpg'
 import principal_3 from '../../../images/principal/principal-3.jpg'
@@ -64,8 +64,9 @@ export function Header() {
             <div>
               {!isMobile
               ?
-                <Link to='/home'>
+                <Link className='logo-link' to='/home'>
                   <img src={logo} className='header-group__logo'/>
+                  <span className='logo-link__span'>Clique aqui para voltar.</span>
                 </Link>
               : null}
 
@@ -73,6 +74,7 @@ export function Header() {
               ?
                 <Link to='/home' onClick={() => openHeader(false)}>
                   <img src={logo} className='header-group__logo'/>
+                  <span className='logo-link__span logo-link__span--mobile'>Clique aqui para voltar.</span>
                 </Link>
               : null}
             </div>
@@ -87,8 +89,6 @@ export function Header() {
               <Link className={pageFinder('/home-events')} to='/home-events'>Ver eventos</Link>
               <Link className={pageFinder('/album')} to='/album'>Meu álbum</Link>
             </div>
-          </div>
-          <div className='header-group'>
           </div>
           <div className='header-wrapper-buttons'>
             <button className='help-button-header header-button help-cursor' onClick={handleHelp}>

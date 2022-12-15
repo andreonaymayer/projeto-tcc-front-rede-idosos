@@ -37,7 +37,7 @@ export function ListFriendRequestBox({ request, setShowModalAdded, setShowModalD
         <h4>{request.name}</h4>
         <button className="friendsRequests__button" onClick={handleAddAsFriend}>Adicionar</button>
         <button className="friendsRequests__button" onClick={handleDenyAsFriend}>Recusar</button>
-        <button className="friendsRequests__button"  onClick={goToProfile}>Ver mais</button>
+        <button className="friendsRequests__button recusar"  onClick={goToProfile}>Ver mais</button>
       </div>
     </>
 	);

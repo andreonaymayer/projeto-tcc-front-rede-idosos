@@ -1,22 +1,39 @@
+@import '/src/assets/colors';
 .album-container {
+  box-shadow: $shaddow;
+  background-color: white;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  margin: 20px;
+  width:48%;
+  border-radius: $radius-md;
+  margin: 10px;
 
   &__wrapper-photo {
     display: flex;
     justify-content: center;
-    background: black;
+    background: white;
   }
 
   &__photo {
-    width: fit-content;
-    height: 300px;
+    width: 100%;
+    height: fit-content;
   }
 
   &__open-post {
     text-align: center;
+    margin: 20px;
+    font-size: 17px;
+    font-weight: bold;
+
+    &__span{
+      color: white;
+      border-radius: $radius-md;
+      padding: 10px;
+      background-color: $help-color;
+      &:hover{
+        background-color: $help-color-hover;
+      }
+  }
   }
 
   @media screen and (max-width: 480px) {

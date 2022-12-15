@@ -46,7 +46,7 @@ export function ChatWithPerson({closeChat, chatMessages, chatId, getChatMessages
     <div className='chat-with-person'>
       <div className='chat-container chat-container-closed'>
         <div className='chat-group'>
-          <button className='chat-button' onClick={closeChat}>Fechar conversar</button>
+          <button className='chat-button' onClick={closeChat}>Fechar conversa</button>
         </div>
         <div className='chat-content'>
           <div className='chat-message__container'>

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './events.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import perfil from '../../../images/perfil1.jpeg'
 import { useHistory } from 'react-router-dom'
 import { useApi } from '../../../hooks/api';
@@ -9,8 +9,22 @@ export function EventsBox({ event, handleSoftDelete, setHelpModal, helpModal, ha
   const nick = sessionStorage.getItem('nickname');
   const contentClasses = event.imgUrl ? 'events__content' : 'events__content events__content--start'
   const [seeMore, setSeeMore] = useState();
+  const [date, setDate] = useState();
   const history = useHistory();
 	const api = useApi();
+
+
+  useEffect(() => {
+    async function getDate() {
+      const response = await api.getDate(event.data);
+      if (response && response.status === 200) {
+        setDate(response.data)
+      }
+    }
+
+    getDate();
+  }, [api]);
+
 
   function goToProfile() {
     const autor = {
@@ -54,7 +68,7 @@ export function EventsBox({ event, handleSoftDelete, setHelpModal, helpModal, ha
                </div>
                <div className='events-profile__info'>
                  <label className='events-profile__title clicavel'>{event.titulo}</label>
-                 <label className='events-profile__subtitle'>{event.dataEscrita}</label>
+                 <label className='events-profile__subtitle'>{date}</label>
                  <label className='events-profile__subtitle'>Criado por: {event.autor.name}</label>
                </div>
              </div>

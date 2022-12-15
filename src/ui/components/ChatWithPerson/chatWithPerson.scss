@@ -24,6 +24,10 @@
       margin: auto;
       border: none;
 
+      &:hover{
+        background-color: $cancel-color-hover;
+      }
+
       &--open {
         background-color: $verde-forte-principal;
       }

@@ -1,4 +1,13 @@
 @import '/src/assets/colors';
+//.flex_minimize {
+//  display: flex;
+//  flex-direction: row;
+//  &__minimize {
+//    font-weight: bold;
+//    padding-right: 10px;
+//  }
+//}
+
 .chat-container {
   right: 60px;
   border-radius: $radius-sm $radius-sm 0 0;
@@ -36,10 +45,17 @@
     margin: auto;
     border: none;
 
+    &:hover{
+      background-color: $cancel-color-hover;
+    }
+
     &--open {
       background-color: $edit-color;
       width: 100%;
       border-radius: $radius-sm;
+      &:hover{
+        background-color: $edit-color-hover;
+      }
     }
   }
 

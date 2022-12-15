@@ -8,10 +8,15 @@
     margin-left: 23%;
   }
 
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
   &__button {
     outline: none;
     background: $atualizar-botao;
-    width: 1060px;
+    width: 850px;
     border: none;
     height: 50px;
     margin: 20px 0 0;
@@ -20,10 +25,27 @@
     border-radius: $radius-md;
     color: #2a2a2a;
   }
+
   &__button:hover {
     border-radius: $radius-md;
     background: $atualizar-botao-hover;
     color: black;
+  }
+
+  .chat-button {
+    outline: none;
+    background: $edit-color-hover;
+    border: none;
+    width: 200px;
+    margin: 20px 0 0;
+    font-size: 26px;
+    align-items: center;
+    border-radius: 1rem;
+    color: white;
+    &:hover {
+      background: $edit-color;
+      color: white;
+    }
   }
 
   &__none-posts {
@@ -53,9 +75,12 @@
 
     &__button {
       border-radius: $radius-md;
-      width: 400px;
-      font-size: 20px;
+      width: 250px;
+      font-size: 18px;
+    }
+
+    .chat-button {
+      width: 120px;
     }
   }
-
 }

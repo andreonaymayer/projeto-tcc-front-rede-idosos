@@ -63,7 +63,7 @@ export function LoginBox() {
               <label className='login-wrapper__input-mail'>E-mail</label>
               <input type='email' placeholder='Clique aqui e digite seu e-mail.' className='login-wrapper__input' onChange={onChangeEmail}></input>
               <label className='login-wrapper__input-password'>Senha</label>
-              <input type='password' placeholder='Exemplo: @!MinhaS3nha*' className='login-wrapper__input' onChange={onChangePassword}></input>
+              <input type='password' placeholder='Digite sua senha aqui' className='login-wrapper__input' onChange={onChangePassword}></input>
             </div>
             <div className='login-submit'>
               <button className='login-submit__button' onClick={handleSubmit}>

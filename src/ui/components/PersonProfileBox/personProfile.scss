@@ -115,6 +115,9 @@
 
       &--reset {
         background-color: #A1CAF9;
+        &:hover{
+          background-color: $help-color;
+        }
       }
 
       &--image {
@@ -156,6 +159,7 @@
       }
 
       &__input-password {
+        font-size: 27px;
         padding: 0;
         word-break: break-all;
       }

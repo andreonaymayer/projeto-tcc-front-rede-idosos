@@ -99,6 +99,10 @@
       border: none;
       text-align: center;
 
+      &:hover {
+        background-color: $help-color-hover;
+      }
+
       &--reset {
         background-color: #A1CAF9;
         margin-top: 20px;

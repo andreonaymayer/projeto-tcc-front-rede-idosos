@@ -1,20 +1,24 @@
+@import '/src/assets/colors';
 .friends {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 27%;
   height: 260px;
-  border: 1px solid black;
+  border: $border-clean;
   padding: 20px 5px;
   margin: 20px;
+  border-radius: $radius-md;
 
   &__photo {
+    border: $border-clean;
     height: 70px;
     width: 70px;
     border-radius: 50px;
   }
 
   &__button {
+    border-radius: $radius-sm;
     width: 80%;
     height: 30px;
     border: none;

@@ -1,13 +1,14 @@
 import './modal.scss';
 import React from 'react';
 
-export function ModalBox({ 
+export function ModalBox({
   handleClose,
-  show, 
+  show,
   title,
   mainText,
   buttonText,
-  buttonClass
+  buttonClass,
+  isSoftDeleteModal = false
 }) {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
@@ -17,7 +18,7 @@ export function ModalBox({
         <div className='modal-main__icon-container' onClick={() => handleClose()}>
           <svg
             size='50'
-            viewBox="0 0 13 13" 
+            viewBox="0 0 13 13"
             fill="none"
             width= '15'
             height= '15'

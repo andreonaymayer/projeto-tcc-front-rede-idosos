@@ -399,6 +399,15 @@ export function useApi() {
 		}
 	}
 
+  async function getDate(date) {
+		try {
+			const response = await cadastroUsuario.post(`/v1/date/date-to-string`, {date});
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	}
+
 	return useCallback(
 		{
 			createToken,
@@ -439,7 +448,8 @@ export function useApi() {
       listEvents,
       deleteEvent,
       participateEvent,
-      getAlbum
+      getAlbum,
+      getDate
 		},
 		[]
 	);

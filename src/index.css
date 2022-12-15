@@ -1,19 +1,45 @@
 
+/*LINK*/
+
+button::before{
+  cursor: var(--link);
+}
+
+.clicavel {
+  cursor: var(--link);
+}
+
+input[type=file] {
+  cursor: var(--link);
+}
+
+textarea{
+  font-family: 'Montserrat';
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat';
 }
 
-input::placeholder{
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
 
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 /*CURSOR*/
 :root {
-  --normal:url('../src/assets/cursores/Normal Select.cur'), default;
-  --ajuda: url('../src/assets/cursores/Help Select.cur'), pointer !important;
-  --link: url('../src/assets/cursores/Link Select.cur'), pointer;
-  --texto: url('../src/assets/cursores/Text Select.cur'), pointer;
+  --normal:url('assets/cursores/CursorNormal'), default;
+  --ajuda: url('../src/assets/cursores/Ajuda'), pointer !important;
+  --link: url('../src/assets/cursores/Link'), pointer;
+  --texto: url('../src/assets/cursores/Digitando'), pointer;
+  --proibido: url('../src/assets/cursores/Proibido.cur'), pointer;
 }
 
 /*DEFAULT*/
@@ -25,16 +51,18 @@ label {
   cursor: var(--normal)
 }
 
+select {
+  cursor: var(--link);
+}
+
+:disabled {
+  cursor:  var(--proibido);
+}
+
 /*HELP*/
 
 .help-cursor {
   cursor: var(--ajuda)
-}
-
-/*LINK*/
-
-.clicavel {
-  cursor: var(--link)
 }
 
 button {
@@ -49,18 +77,45 @@ a {
   cursor: var(--link)
 }
 
-input {
-  cursor: var(--link);
-  caret-color: #de0303;
+/*TEXT*/
+
+input[type=text]:focus {
+  background-color: #eef9ff;
 }
 
-/*TEXT*/
+input[type=email] {
+  cursor: var(--texto);
+}
+
+input[type=password] {
+  cursor: var(--texto);
+}
+
+input[type=email]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=password]:focus {
+  background-color: #eef9ff;
+}
+
+textarea[type=text]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=date]:focus {
+  background-color: #eef9ff;
+}
+
+input[type=text] {
+  cursor: var(--texto);
+  caret-color: #de0303;
+}
 
 textarea {
   cursor: var(--texto);
   caret-color: #de0303;
   caret-shape: bar;
-
 }
 
 /*CURSOR*/
